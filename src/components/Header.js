@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link } from "react-router-dom"
 import {useState} from 'react';
 import {Room ,AccountCircle,NotificationsNone,ArrowDropDown,Menu,Close} from '@mui/icons-material';
 import '../index.css'
@@ -27,34 +28,32 @@ function Header() {
                 
             }}
         >
-            <div
-                style={{fontFamily:'Poppins-Bold',fontsize:'1.2 rem',color:'#1b1b1b',alignItems: 'center',textAlign:'center',display:'flex'}}
+            <Link to="/home"
+                style={{fontFamily:'Poppins-Bold',fontsize:'1.2 rem',textDecoration:"none",color:'#1b1b1b',alignItems: 'center',textAlign:'center',display:'flex'}}
             >
                 <h3 >KEJA</h3>
                 <Room style={{color:'#ffa31a'}}/>
-            </div>
+            </Link>
             <div
                 style={{
                 display:'flex',
                 alignItems:'center',
+                justifyContent:"center",
                 }} 
             >
-            <Menubar />
-            <div className="Menuopen" >
-                {showmenu ?
-                    <Menu style={{paddingTop:'6.5 px'}} onClick={Openmenu}/>
-                    :
-                    <div >
-                        <Close onClick={Closemenu}/>
-                        <Menubar/>
-                    </div>
-                }
-                
-            
-            </div>
-            <NotificationsNone style={{fontSize:'1.2 rem',margin:'0 7.5 px'}}/>
-            <AccountCircle style={{fontSize:'1.6 rem',margin:'0 7.5 px'}}/>
+            <NotificationsNone style={{fontSize:'1.2 rem',margin:'0 8 px'}}/>
+            <Link style={{fontSize:'1.4 rem',margin:'0 7.5 px',textDecoration:"none",color:"#000000"}} to='/login'>Sign in</Link>
             <ArrowDropDown />
+            <div style={{alignItems:"center"}}>
+                 {showmenu ?
+                    <Menu style={{marginTop:'10px'}} onClick={Openmenu}/>
+                     :
+                     <div >
+                         <Close onClick={Closemenu} style={{marginTop:'10px'}}/>
+                         <Menubar/>
+                     </div>
+                }
+            </div>
             </div>
         </div>
     )
@@ -62,27 +61,31 @@ function Header() {
 
 export default Header
 
-export const Menubar = ()=>{
+export const Menubar = () =>{
     return(
-    <div className=" Menubar_active">   
-        <ul>
-            <li
+        <div
             style={{
                 display: 'flex',
-                //flexDirection: 'column',
-                lineHeight:'50px',
-                justifyContent:'space-between',
+                flexDirection: 'column',
+                lineHeight:'60px',
+                //justifyContent:'space-between',
                 alignItems:'center',
                 fontFamily:'Poppins-Regular',
-                fontSize:'0.9rem',
+                fontSize:'1rem',
+                position:"absolute",
+                top:"32px",
+                width:"200px",
+                backgroundColor:"#ffffff",
+                height:"100vh",
+                float:"right",
+                right: "-10px" ,
+                zIndex:"999",
             }}
             >
             <p style={{margin: '0 10px'}}>Home</p>
             <p style={{margin: '0 10px'}}>Post an apartment</p>
             <p style={{margin: '0 10px'}}>About</p>
             <p style={{margin: '0 10px'}}>Contact</p>
-            </li>
-        </ul>
-    </div>
+        </div>
         )
 }

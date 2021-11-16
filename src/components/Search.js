@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AlignHorizontalLeftIcon from '@mui/icons-material/AlignHorizontalLeft';
 import Button from '@mui/material/Button';
 import {useState} from 'react'
+import { styled } from '@mui/material/styles';
 
 function Search() {
     const[value,setValue]=useState();
@@ -13,13 +14,20 @@ function Search() {
     const handleSubmit = (e) => {
         e.preventDefault();
     }
+    const ColorButton = styled(Button)(({ theme }) => ({
+        color: theme.palette.getContrastText("#ffa31a"),
+        backgroundColor: "#ffa31a",
+        '&:hover': {
+          backgroundColor: "#ffa31a",
+        },
+      }));
     return (
         <div>
             <div 
                 style={{
                     display: 'flex',
                     borderRadius:'999px',
-                    border:'1px solid grey',
+                    //border:'1px solid grey',
                     padding:'1px 4px',
                     alignItems:'center',
                 }}>
@@ -33,6 +41,7 @@ function Search() {
                         height:'100%',
                         width:'100%',
                         overflowWrap:'break-word',
+                        backgroundColour:"grey"
                     }}
                 />
             </div>
@@ -57,18 +66,18 @@ function Search() {
                     <div style={{
                         display:'flex',flexDirection:'column',
                     }}>
-                        <Button variant="outlined" href="#single" style={{margin:'5px 0'}}>
+                        <ColorButton variant="outlined" href="#single" style={{margin:'5px 0'}}>
                         Single
-                        </Button>
-                        <Button variant="outlined" href="#One Bedroom" style={{margin:'5px 0'}}>
+                        </ColorButton>
+                        <ColorButton variant="outlined" href="#One Bedroom" style={{margin:'5px 0'}}>
                             One Bedroom
-                        </Button>
-                        <Button variant="outlined" href="#Two Bedroom" style={{margin:'5px 0'}}>
+                        </ColorButton>
+                        <ColorButton variant="outlined" href="#Two Bedroom" style={{margin:'5px 0'}}>
                             Two Bedroom
-                        </Button>
-                        <Button variant="outlined" href="#Three Bedroom" style={{margin:'5px 0'}}>
+                        </ColorButton>
+                        <ColorButton variant="outlined" href="#Three Bedroom" style={{margin:'5px 0'}}>
                             Three Bedroom
-                        </Button>
+                        </ColorButton>
                     </div>
                 </div>
                 <div 
@@ -102,7 +111,7 @@ function Search() {
                         <p>Price monthly</p>
                         <p>Kshs.{value}</p>
                     </div>
-                    <input type="range" id="vol" name="Price" min="0" max="20000" default='6500' onChange={handleChange} style={{width: '100%'}}/>
+                    <input type="range" id="vol" name="Price" min="0" max="20000" default='6500' onChange={handleChange} style={{width: '100%',color:"#ffa31a"}}/>
                 </div>
                 <div style={{
                     display:'flex',
@@ -121,7 +130,7 @@ function Search() {
                     </div>
                 </div>
                 <div style={{display:'flex',justifyContent: 'space-around'}}>
-                    <Button variant="contained" type='submit' onSubmit={handleSubmit}>Submit</Button>
+                    <ColorButton variant="contained" type='submit' onSubmit={handleSubmit}>Submit</ColorButton>
                     <Button variant="outlined" type='reset'>Reset</Button>
                 </div>
             </form>
