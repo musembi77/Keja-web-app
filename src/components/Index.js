@@ -106,7 +106,7 @@ function Index(){
           </div>
           <img src="/download.jpg" alt="" style={{objectFit:"cover",width:"50%",height:"100%"}}/>
       </div>
-      <div style={{display:"flex",justifyContent:"space-between",backgroundColor:"#d04ed6",height:"100%",color:"white",fontFamily:"Poppins-Bold",padding:"10px"}}>
+      <div style={{display:"flex",justifyContent:"space-between",backgroundColor:"#08CCCC",height:"100%",color:"white",fontFamily:"Poppins-Bold",padding:"10px"}}>
         <div >
           <p style={{fontSize:"1.5rem"}}>100+ </p>
           <span>verified flats listed</span>

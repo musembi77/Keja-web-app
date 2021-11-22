@@ -10,7 +10,7 @@ function Header() {
     // }
     const [showmenu, setShowmenu]=useState('');
     const Openmenu = ()=>{
-        setShowmenu(false);
+        setShowmenu(true);
         console.log('menu opens');
     }
     const Closemenu = ()=>{
@@ -41,17 +41,17 @@ function Header() {
                 justifyContent:"center",
                 }} 
             >
-            <NotificationsNone style={{fontSize:'1.2 rem',margin:'0 8 px'}}/>
+            <NotificationsNone style={{fontSize:'1.2 rem',margin:'0 9px'}}/>
             <Link style={{fontSize:'1.4 rem',margin:'0 7.5 px',textDecoration:"none",color:"#000000"}} to='/login'>Sign in</Link>
             <ArrowDropDown />
             <div style={{alignItems:"center"}}>
-                 {showmenu ?
-                    <Menu style={{marginTop:'10px'}} onClick={Openmenu}/>
-                     :
-                     <div >
-                         <Close onClick={Closemenu} style={{marginTop:'10px'}}/>
-                         <Menubar/>
-                     </div>
+            {showmenu ?
+                <div >
+                    <Close onClick={Closemenu} style={{marginTop:'10px'}}/>
+                    <Menubar/>
+                </div>
+                :
+                <Menu style={{marginTop:'10px'}} onClick={Openmenu}/>
                 }
             </div>
             </div>
@@ -79,13 +79,22 @@ export const Menubar = () =>{
                 height:"100vh",
                 float:"right",
                 right: "-10px" ,
-                zIndex:"999",
+                zIndex:"999"
             }}
             >
-            <p style={{margin: '0 10px'}}>Home</p>
-            <p style={{margin: '0 10px'}}>Post an apartment</p>
-            <p style={{margin: '0 10px'}}>About</p>
-            <p style={{margin: '0 10px'}}>Contact</p>
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/' >Index</Link>
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>Login</Link>
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/property'>PropertyView</Link>
+            
+        {/*
+        
+        
+        <Link style={{margin: '0 10px'}}>Post an apartment</Link>
+            <Link style={{margin: '0 10px'}}>About</Link>
+            <Link style={{margin: '0 10px'}}>Contact</Link>
+        
+        */}
         </div>
         )
 }

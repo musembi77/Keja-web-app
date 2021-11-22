@@ -128,6 +128,9 @@ function Search() {
                     <div>
                         <input type="checkbox" /><label > kitchen</label>
                     </div>
+                    <div>
+                        <input type="checkbox" /><label > electricity</label>
+                    </div>
                 </div>
                 <div style={{display:'flex',justifyContent: 'space-around'}}>
                     <ColorButton variant="contained" type='submit' onSubmit={handleSubmit}>Submit</ColorButton>
