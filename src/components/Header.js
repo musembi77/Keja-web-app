@@ -28,7 +28,7 @@ function Header() {
                 
             }}
         >
-            <Link to="/home"
+            <Link to="/explore"
                 style={{fontFamily:'Poppins-Bold',fontsize:'1.2 rem',textDecoration:"none",color:'#1b1b1b',alignItems: 'center',textAlign:'center',display:'flex'}}
             >
                 <h3 >KEJA</h3>
@@ -48,7 +48,7 @@ function Header() {
             {showmenu ?
                 <div >
                     <Close onClick={Closemenu} style={{marginTop:'10px'}}/>
-                    <Menubar/>
+                    <Menubar onClick={Closemenu} />
                 </div>
                 :
                 <Menu style={{marginTop:'10px'}} onClick={Openmenu}/>
@@ -83,18 +83,11 @@ export const Menubar = () =>{
             }}
             >
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/' >Index</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>Login</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/property'>PropertyView</Link>
-            
-        {/*
-        
-        
-        <Link style={{margin: '0 10px'}}>Post an apartment</Link>
-            <Link style={{margin: '0 10px'}}>About</Link>
-            <Link style={{margin: '0 10px'}}>Contact</Link>
-        
-        */}
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/postanApartment'>Post an Apartment</Link>
         </div>
         )
 }

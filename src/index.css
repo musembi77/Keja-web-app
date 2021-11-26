@@ -4,6 +4,7 @@
   padding: 0;
   position: relative;
   font-family: "Poppins-regular";
+  cursor: S;
   
 }
 @font-face {
@@ -23,14 +24,14 @@
   height: 100vh;
   z-index: 1;
 }
-/* @media screen and (min-width:600px){
-    
-    .Menuopen{
-      display: none;
-      background-color: red;
-    }
-}
+
 @media screen and (max-width:600px){
+    
+  .scrollbar::-webkit-scrollbar{
+    display: none;
+  }
+}
+/*@media screen and (max-width:600px){
   .Menubar_active{
     display: none;
   }
