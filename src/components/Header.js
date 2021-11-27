@@ -41,7 +41,10 @@ function Header() {
                 justifyContent:"center",
                 }} 
             >
-            <NotificationsNone style={{fontSize:'1.2 rem',margin:'0 9px'}}/>
+            {
+                //<NotificationsNone style={{fontSize:'1.2 rem',margin:'0 9px'}}/>
+            }
+            
             <Link style={{fontSize:'1.4 rem',margin:'0 7.5 px',textDecoration:"none",color:"#000000"}} to='/login'>Sign in</Link>
             <ArrowDropDown />
             <div style={{alignItems:"center"}}>

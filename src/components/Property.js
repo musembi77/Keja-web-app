@@ -7,7 +7,7 @@ function Property(){
     <div  style={{
       lineHeight:"14px",
       fontSize:"0.7rem",
-      border:"1px solid grey",
+      //border:"1px solid grey",
       width:"10rem",
       borderRadius:"10px",
       height:"210px",

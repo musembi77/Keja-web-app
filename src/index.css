@@ -15,6 +15,19 @@
   font-family: "Poppins-regular";
   src: local("Poppins-Regular"), url(./fonts/Poppins-Regular.otf) format("opentype");
 }
+@font-face {
+  font-family: "Wandery";
+  src: local("Wandery"), url(./fonts/Wandery.otf) format("opentype");
+}
+@font-face {
+  font-family: "Portico-regular";
+  src: local("Portico-Regular"), url(./fonts/Portico-Regular.otf) format("opentype");
+}
+@font-face {
+  font-family: "Portico-outline";
+  src: local("Portico-Outline"), url(./fonts/Portico-Outline.otf) format("opentype");
+}
+
 .Menubar{
   position: absolute;
   top: 30px;
@@ -24,19 +37,25 @@
   height: 100vh;
   z-index: 1;
 }
-
+.btn_1{
+  display:flex;
+  justify-content: space-around;
+  background: linear-gradient(to right, #ffb75e, #ed8f03);
+  width:120px;
+  margin: 10px auto;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  text-decoration:none;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border-radius: 10px;
+  outline:"none"
+}
 @media screen and (max-width:600px){
     
   .scrollbar::-webkit-scrollbar{
     display: none;
   }
 }
-/*@media screen and (max-width:600px){
-  .Menubar_active{
-    display: none;
-  }
-   */
-  /* .Menuopen{
-    display: none;
-    background-color: red;
-  } */
