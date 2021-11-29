@@ -90,7 +90,8 @@ export const Menubar = () =>{
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/' >Index</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>Login</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/property'>PropertyView</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/postanApartment'>Post an Apartment</Link>
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/listwithUs'>List with Us</Link>
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/postlisting'>Post an Apartment</Link>
         </div>
         )
 }

@@ -4,10 +4,10 @@ import Home from './Home'
 import Explore from './Explore';
 import Index from './Index';
 import PropertyView from './PropertyView';
-import PostApartment from './PostApartment';
+import ListingLogin from './ListingLogin';
 import LoginPage from './LoginPage';
 import Header from '../components/Header';
-
+import PostListing from './PostListing'
 
 
 
@@ -22,7 +22,9 @@ function App() {
           <Route path='/explore'  element = {<Explore />}/>
           <Route path='/property'  element = {<PropertyView />}/>
           <Route path='/login'  element = {<LoginPage />}/>
-          <Route path='/postanApartment'  element = {<PostApartment />}/>
+          <Route path='/listwithUs'  element = {<ListingLogin />}/>
+          <Route path='/postlisting'  element = {<PostListing />}/>
+          
         </Routes>
       </Router>
     </div>

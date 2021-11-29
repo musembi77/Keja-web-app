@@ -119,7 +119,7 @@ function Index(){
           padding:"10px",
           textDecoration:"none"
           
-        }} to="./postanApartment">List an Apartment </Link>
+        }} to="./listwithUs">List an Apartment </Link>
       </div>
       {
         /*<div style={{display:"flex",height:"300px"}}>

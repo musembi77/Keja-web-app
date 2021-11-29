@@ -112,16 +112,16 @@ const Review=[
             //Ratings
           }
           <div >
-            <h4 style={{color:"#000000"}}>Stats</h4>
-            <div style={{display:"flex",justifyContent:"space-between"}}>
+            <div style={{display:"flex",justifyContent:""}}>
+              <p style={{color:"#000000"}}>Stats:</p>
               <div style={{fontSize:"1rem",display:"flex"}}>
-                <StarIcon style={{color:"#ffa31a",}}/>
-                <p style={{
-                  width:"55px",
-                  padding:"2.5px",
-                  fontSize:"0.85rem",
-                  fontFamily:"Poppins-bold"
-                }}>4.3</p>
+                  <StarIcon style={{color:"#ffa31a",fontSize:"1.2rem"}}/>
+                  <p style={{
+                    width:"55px",
+                    padding:"2.5px",
+                    fontSize:"0.85rem",
+                    fontFamily:"Poppins-bold"
+                  }}>4.3</p>
               </div>
             </div>
           {

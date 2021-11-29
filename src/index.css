@@ -58,4 +58,7 @@
   .scrollbar::-webkit-scrollbar{
     display: none;
   }
+  .side_1{
+    flex-direction: column;
+  }
 }
