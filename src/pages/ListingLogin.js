@@ -12,6 +12,7 @@ function PostApartment() {
   }))(Button);
   return(
     <div>
+     <div className='side_1' style={{display:"flex"}}>
       <ListingForm />
       <div  style={{backgroundColor:"#e5e5e5",width:"",height:"350px",flex:1,position:"relative"}}>
         <img src='./room6.jpg' alt='' style={{objectFit:"cover",width:"100%",height:"100%"}}/>
@@ -27,7 +28,9 @@ function PostApartment() {
             List Your Property
           </ColorButton>
         </div>
-      </div> 
+      </div>
+     </div>
+       
       {
         //Services
       }

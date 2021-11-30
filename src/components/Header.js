@@ -1,21 +1,21 @@
 import React from 'react';
 import {Link } from "react-router-dom"
 import {useState} from 'react';
-import {Room ,AccountCircle,NotificationsNone,ArrowDropDown,Menu,Close} from '@mui/icons-material';
+import {
+    Room ,
+    FavoriteBorder,
+    Menu,
+    Close,
+} 
+    from '@mui/icons-material';
 import '../index.css'
+
+
 function Header() {
-
-    // const HandleClick=()=>{
-
-    // }
     const [showmenu, setShowmenu]=useState('');
-    const Openmenu = ()=>{
-        setShowmenu(true);
-        console.log('menu opens');
-    }
-    const Closemenu = ()=>{
+
+    const HandleMenu=()=>{
         setShowmenu(!showmenu);
-        console.log('menu closes');
     }
     return (
         <div
@@ -41,21 +41,17 @@ function Header() {
                 justifyContent:"center",
                 }} 
             >
-            {
-                //<NotificationsNone style={{fontSize:'1.2 rem',margin:'0 9px'}}/>
-            }
-            
-            <Link style={{fontSize:'1.4 rem',margin:'0 7.5 px',textDecoration:"none",color:"#000000"}} to='/login'>Sign in</Link>
-            <ArrowDropDown />
+            <Link to='/wishlist' style={{textDecoration:"none",color:"#000000",paddingTop:"5px"}}><FavoriteBorder style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
+            <Link style={{fontSize:'1.4 rem',margin:'0 8px',textDecoration:"none",color:"#000000"}} to='/login'>Sign in</Link>
             <div style={{alignItems:"center"}}>
             {showmenu ?
                 <div >
-                    <Close onClick={Closemenu} style={{marginTop:'10px'}}/>
-                    <Menubar onClick={Closemenu} />
+                    <Close onClick={HandleMenu} style={{marginTop:'10px'}}/>
+                    <Menubar />
                 </div>
                 :
-                <Menu style={{marginTop:'10px'}} onClick={Openmenu}/>
-                }
+                <Menu style={{marginTop:'10px'}} onClick={HandleMenu}/>
+            }
             </div>
             </div>
         </div>
@@ -71,7 +67,6 @@ export const Menubar = () =>{
                 display: 'flex',
                 flexDirection: 'column',
                 lineHeight:'60px',
-                //justifyContent:'space-between',
                 alignItems:'center',
                 fontFamily:'Poppins-Regular',
                 fontSize:'1rem',
@@ -92,6 +87,7 @@ export const Menubar = () =>{
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/property'>PropertyView</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/listwithUs'>List with Us</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/postlisting'>Post an Apartment</Link>
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/wishlist'>WishList</Link>
         </div>
         )
 }

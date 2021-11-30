@@ -1,16 +1,19 @@
 import React from 'react'
 import {Link } from "react-router-dom"
-import RoomIcon from '@mui/icons-material/Room';
-import ShowerIcon from '@mui/icons-material/Shower';
-import BedIcon from '@mui/icons-material/Bed';
-import ElectricalServicesIcon from '@mui/icons-material/ElectricalServices';
-import StarIcon from '@mui/icons-material/Star';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CallIcon from '@mui/icons-material/Call';
+import {Room,
+        Shower,
+        Bed,
+        ElectricalServices,
+        Star,
+        AccountCircle,
+        Call,
+        Facebook,
+        Instagram,
+        WhatsApp,
+        FavoriteBorder,
+        Favorite,
+} from '@mui/icons-material'
 import LinkIcon from '@mui/icons-material/Link';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Button from '@mui/material/Button';
 import {useState} from 'react'
 import { styled } from '@mui/material/styles';
@@ -75,13 +78,24 @@ const Review=[
     review:"Good House I cold give it a 10 but it has water issues and electricity shortages once in a while at the most inconviniencing moments"
   },
 ]
+  const[like,setLike]=useState();
+
+  const HandleLike=()=>{
+    setLike(!like);
+  }
   return(
      <div style={{position:"relative"}}>
         {
           //Image
         }
-        <div>
+        <div style={{position:"relative",cursor:"pointer"}}>
           <img src="/room1.jpg" alt="logo" style={{width:"100%",height:"50vh",objectFit:"cover"}}/>
+          <div onClick={HandleLike} style={{width:"30px",height:"30px",backgroundColor:"#e5e5e5",borderRadius:"100px",textAlign:"center",position:"absolute",top:"10px",right:"10px"}}>
+          {like ? 
+            <Favorite style={{fontSize:"1.2rem",margin:"6px auto",color:"#ffa31a"}}/>
+            :
+            <FavoriteBorder style={{fontSize:"1.2rem",margin:"6px auto"}}/>}
+          </div>
         </div>
         {
           //Information
@@ -90,22 +104,22 @@ const Review=[
           <h3 style={{fontFamily:"Poppins-Bold",fontSize:"1.6rem"}}>Virmaj Towers</h3>
           <h4 style={{fontFamily:"Poppins-Bold",}}> Ksh 6,400 <span style={{color:"grey"}}>/ Month</span></h4>
           <div style={{display:'flex',color:"grey",}}>
-            <RoomIcon style={{fontSize:"1.4rem",color:"#ffa31a"}}/>
+            <Room style={{fontSize:"1.4rem",color:"#ffa31a"}}/>
             <p>Opposite Gate C,next to nyamwaj apartments</p>
           </div>
           <div style={{color:"grey",display:"flex",justifyContent:"space-between",width:"80px",fontSize:"1rem",margin:"5px 0"}}>
-            <ShowerIcon style={{fontSize:"1.3rem"}}/>
-            <BedIcon style={{fontSize:"1.3rem"}}/>
-            <ElectricalServicesIcon style={{fontSize:"1.3rem"}}/>
+            <Shower style={{fontSize:"1.3rem"}}/>
+            <Bed style={{fontSize:"1.3rem"}}/>
+            <ElectricalServices style={{fontSize:"1.3rem"}}/>
           </div>
           {
             //share
           }
           <div style={{display:"flex",}}>
             <p>Share :</p>
-            <Link to='' style={{margin:"0 5px"}}><WhatsAppIcon style={{fontSize:"1.3rem",color:"#25D366"}}/></Link>
-            <Link to='' style={{margin:"0 5px"}}><FacebookIcon style={{fontSize:"1.3rem",color:"#1877f2"}}/></Link>
-            <Link to='' style={{margin:"0 5px"}}><InstagramIcon style={{fontSize:"1.3rem",color:"#DD2A7B"}}/></Link>
+            <Link to='' style={{margin:"0 5px"}}><WhatsApp style={{fontSize:"1.3rem",color:"#25D366"}}/></Link>
+            <Link to='' style={{margin:"0 5px"}}><Facebook style={{fontSize:"1.3rem",color:"#1877f2"}}/></Link>
+            <Link to='' style={{margin:"0 5px"}}><Instagram style={{fontSize:"1.3rem",color:"#DD2A7B"}}/></Link>
             <Link to='' style={{margin:"0 5px"}}><LinkIcon style={{fontSize:"1.3rem",color:"#000000"}}/></Link>
           </div>
           {
@@ -115,7 +129,7 @@ const Review=[
             <div style={{display:"flex",justifyContent:""}}>
               <p style={{color:"#000000"}}>Stats:</p>
               <div style={{fontSize:"1rem",display:"flex"}}>
-                  <StarIcon style={{color:"#ffa31a",fontSize:"1.2rem"}}/>
+                  <Star style={{color:"#ffa31a",fontSize:"1.2rem"}}/>
                   <p style={{
                     width:"55px",
                     padding:"2.5px",
@@ -174,7 +188,7 @@ const Review=[
                       margin:" 0 8px",
                     }}>
                       <div style={{display:"flex"}}>
-                        <AccountCircleIcon style={{fontSize:"2rem"}}/>
+                        <AccountCircle style={{fontSize:"2rem"}}/>
                         <div style={{fontSize:"0.7rem"}}>
                           <p style={{color:"#000000"}}>{item.name}</p>
                           <span>{item.date}</span>
@@ -196,29 +210,16 @@ const Review=[
                 return(
                   <div style={{display:"flex",flexDirection:"column",margin:"10px 0",borderRadius:"10px",padding:"10px",backgroundColor:"#eeeeee"}}>
                     <div style={{display:"flex"}}>
-                      <AccountCircleIcon style={{fontSize:"2rem"}}/>
+                      <AccountCircle style={{fontSize:"2rem"}}/>
                       <div style={{lineHeight:"12px"}}>
                         <h5>{item.name}</h5>
                         <small>{item.title}</small>
                       </div>
                     </div>
                     <div style={{display:"flex",margin:"0 5px",alignItems:"center",fontSize:"13px"}}>
-                        <CallIcon style={{fontSize:"1rem"}}/>
+                        <Call style={{fontSize:"1rem"}}/>
                         <p>{item.callTel}</p>
-                    </div>          
-                    {
-                      /*<div style={{display:"flex",fontSize:"13px"}}>
-                      <div style={{display:"flex",margin:"0 5px",alignItems:"center"}}>
-                        <MessageIcon style={{fontSize:"1rem"}}/>
-                        <p>{item.messageTel}</p>
-                      </div>
-                      <div style={{display:"flex",margin:"0 5px",alignItems:"center"}}>
-                        <EmailIcon style={{fontSize:"1rem"}}/>
-                        <p>{item.email}</p>
-                        
-                      </div>
-                      </div>
-                    */}
+                    </div>
                   </div>
                 )
               })}
@@ -228,10 +229,7 @@ const Review=[
             (
               <ColorButton style={{display:"flex",margin:"10px 5px",alignItems:"center",fontSize:"13px",width:"100%",}} onClick={HandleContact}>      
                 <p>Check Availability</p>
-                  {//<link>{item.callTel}</link>
-                  }
               </ColorButton>
-              
             )
           }
             
