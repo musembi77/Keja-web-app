@@ -6,9 +6,6 @@ import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import WeekendIcon from '@mui/icons-material/Weekend';
 import WifiIcon from '@mui/icons-material/Wifi';
-//import Button from '@mui/material/Button';
-//import IconButton from '@mui/material/IconButton';
-//import CloseIcon from '@mui/icons-material/Close';
 
 function Home(){
   const Location=[
@@ -205,7 +202,6 @@ const Services=[
                   listStyle:"none",
                   color:'{item.color}',
                   borderRadius:"10px",
-                  //padding:"10px"
                 }}>
                   <li>
                     <Link style={{
