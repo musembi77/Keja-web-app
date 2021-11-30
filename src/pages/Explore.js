@@ -1,18 +1,8 @@
-import React ,{useState} from 'react'
+import React  from 'react'
 import Property from '../components/Property'
-import Search, { SearchFilter } from '../components/Search';
-import {SearchInput} from '../components/Search';
-import AlignHorizontalLeftIcon from '@mui/icons-material/AlignHorizontalLeft';
-import CloseIcon from '@mui/icons-material/Close';
-import IconButton from '@mui/material/IconButton';
-
+import { SearchFilter } from '../components/Search';
 
 function Explore() {
-    const[showFilter,setShowFilter]=useState();
-
-    const HandleFilter=()=>{
-        setShowFilter(!showFilter);
-    }
     const Components = [
         <Property />,
         <Property />,

@@ -1,7 +1,7 @@
 import React from 'react'
 import ListingForm from '../components/ListingForm';
-import { Button, makeStyles, withStyles } from "@material-ui/core";
-import {Link} from 'react-router-dom';
+import { Button, withStyles } from "@material-ui/core";
+
 
 function PostApartment() {
   const ColorButton = withStyles((theme) => ({

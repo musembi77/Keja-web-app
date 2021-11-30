@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, makeStyles, withStyles } from "@material-ui/core";
-import {Link} from 'react-router-dom';
+import { Button, withStyles } from "@material-ui/core";
+
 
 function ListingForm(){
   
@@ -19,15 +19,12 @@ function ListingForm(){
          <p style={{width:"30%"}}>Email:</p>
         <input
           type="text"
-          //value={email}
-          //onChange={(e) => setEmail(e.target.value)}
           style={{
             fontFamily: "Poppins-Regular",
             fontSize: "12px",
             color: "#1b1b1b",
             backgroundColor:"#e5e5e5",
             border: "none",
-            //height: "100%",
             padding: "5px 10px",
             margin: "0 11px",
             outline: "none",
