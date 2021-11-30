@@ -83,7 +83,7 @@ function LoginPage(){
                 />
                 <ColorButton
                   className="login_submit"
-                  type="submit"
+                  //type="submit"
                   //onClick={SignIn}
                 >
                   SIGN IN
