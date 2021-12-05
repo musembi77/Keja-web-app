@@ -28,99 +28,77 @@ function LoginPage(){
       const [username, setUsername] = useState("");
       //const [user, setUser] = useState(null);
     return(
-        <div style={{width:"300px",margin:"10% auto",backgroundColor:"#e5e5e5",padding:"10px",borderRadius:"10px"}}>
-        <form className={classes.root} noValidate autoComplete="on" >
-                <h5>Email: *</h5>
-                <input
-                  type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  style={{
-                    fontFamily: "Poppins-Regular",
-                    fontSize: "14px",
-                    color: "#1b1b1b",
-                    border: "none",
-                    height: "100%",
-                    padding: "5px 10px",
-                    margin: "11px",
-                    outline: "none",
-                    overflowWrap: "break-word",
-                  }}
-                />
-                <h5>Username: *</h5>
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  style={{
-                    fontFamily: "Poppins-Regular",
-                    fontSize: "14px",
-                    color: "#1b1b1b",
-                    border: "none",
-                    height: "100%",
-                    padding: "5px 10px",
-                    margin: "11px",
-                    outline: "none",
-                    overflowWrap: "break-word",
-                  }}
-                />
-                <h5>Password: *</h5>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  style={{
-                    fontFamily: "Poppins-Regular",
-                    fontSize: "14px",
-                    color: "#1b1b1b",
-                    border: "none",
-                    height: "100%",
-                    padding: "5px 10px",
-                    margin: "11px",
-                    outline: "none",
-                    overflowWrap: "break-word",
-                  }}
-                />
-                <ColorButton
-                  className="login_submit"
-                  //type="submit"
-                  //onClick={SignIn}
-                >
-                  SIGN IN
-                </ColorButton>
-                <p
-                  style={{
-                    fontSize: "12px",
-                    padding: "10px 0",
-                    textAlign: "center",
-                  }}
-                >
-                  By continuing you agree to our Terms & Conditions. See our
-                  Privacy Notice.
-                </p>
-
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    borderTop: "1px solid #ffa31a",
-                    marginTop: "10px",
-                  }}
-                >
-                  <p
+        <div>
+        <img src="./room6.jpg" style={{width:"100vw",height:"100vh",objectFit:"cover",position:"relative"}} alt="logo"/>
+        <div style={{
+          width:"300px",
+          margin:"10% auto",
+          backgroundColor:"#eee",
+          padding:"10px",
+          borderRadius:"10px",
+          position:"absolute",
+          top:"10px",
+          //left:"10%"
+          marginLeft:"10%"
+        }}>
+          <form className={classes.root} noValidate autoComplete="on" >
+                  <h5>Email: *</h5>
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     style={{
-                      fontSize: "14px",
-                      padding: "10px 0",
                       fontFamily: "Poppins-Regular",
+                      fontSize: "14px",
+                      color: "#1b1b1b",
+                      border: "none",
+                      height: "100%",
+                      padding: "5px 10px",
+                      margin: "11px",
+                      outline: "none",
+                      overflowWrap: "break-word",
                     }}
+                  />
+                  <h5>Username: *</h5>
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    style={{
+                      fontFamily: "Poppins-Regular",
+                      fontSize: "14px",
+                      color: "#1b1b1b",
+                      border: "none",
+                      height: "100%",
+                      padding: "5px 10px",
+                      margin: "11px",
+                      outline: "none",
+                      overflowWrap: "break-word",
+                    }}
+                  />
+                  <h5>Password: *</h5>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    style={{
+                      fontFamily: "Poppins-Regular",
+                      fontSize: "14px",
+                      color: "#1b1b1b",
+                      border: "none",
+                      height: "100%",
+                      padding: "5px 10px",
+                      margin: "11px",
+                      outline: "none",
+                      overflowWrap: "break-word",
+                    }}
+                  />
+                  <ColorButton
+                    className="login_submit"
+                    //type="submit"
+                    //onClick={SignIn}
                   >
-                    New to Keja?
-                  </p>
-                  <ColorButton className="login_submit" 
-                  //onClick={Register}
-                  >
-                    Create New Account
+                    SIGN IN
                   </ColorButton>
                   <p
                     style={{
@@ -129,11 +107,46 @@ function LoginPage(){
                       textAlign: "center",
                     }}
                   >
-                    Create an account to recieve newletters on new
-                    apartment,shows,Trending and be updated on special  and exciting offers.
+                    By continuing you agree to our Terms & Conditions. See our
+                    Privacy Notice.
                   </p>
-                </div>
-              </form>
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      borderTop: "1px solid #ffa31a",
+                      marginTop: "10px",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontSize: "14px",
+                        padding: "10px 0",
+                        fontFamily: "Poppins-Regular",
+                      }}
+                    >
+                      New to Keja?
+                    </p>
+                    <ColorButton className="login_submit" 
+                    //onClick={Register}
+                    >
+                      Create New Account
+                    </ColorButton>
+                    <p
+                      style={{
+                        fontSize: "12px",
+                        padding: "10px 0",
+                        textAlign: "center",
+                      }}
+                    >
+                      Create an account to recieve newletters on new
+                      apartment,shows,Trending and be updated on special  and exciting offers.
+                    </p>
+                  </div>
+                </form>
+        </div>
         </div>
     )
 }

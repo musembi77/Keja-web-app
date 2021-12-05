@@ -1,14 +1,9 @@
 import React  from 'react'
 import Property from '../components/Property'
 import { SearchFilter } from '../components/Search';
+import {propertydata} from '../components/dummydata.js'
 
 function Explore() {
-    const Components = [
-        <Property />,
-        <Property />,
-        <Property />,
-        <Property />,
-    ]
     return (
         <div style={{width:"100%"}}>
             <div style={{position:"relative"}}>
@@ -24,12 +19,14 @@ function Explore() {
                     }} >
                         <div style={{display:"flex",
                         flexWrap:"wrap",justifyContent:"space-around"   }}>
-                            {Components.map((Component, key) => (
-                                <div>
-                                {Component}
-                                </div>
-                                
-                            ))}
+                          {propertydata.map((property) => (
+                            <div>
+                              <Property
+                                property={property}
+                                //key={property.id}
+                                />
+                            </div>
+                          ))}
                         </div>
                         
                     </div>

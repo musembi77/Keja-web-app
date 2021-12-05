@@ -28,7 +28,7 @@ function Header() {
                 
             }}
         >
-            <Link to="/explore"
+            <Link to="/home"
                 style={{fontFamily:'Poppins-Bold',fontsize:'1.2 rem',textDecoration:"none",color:'#1b1b1b',alignItems: 'center',textAlign:'center',display:'flex'}}
             >
                 <h3 >KEJA</h3>

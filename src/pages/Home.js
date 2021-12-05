@@ -6,50 +6,14 @@ import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import WeekendIcon from '@mui/icons-material/Weekend';
 import WifiIcon from '@mui/icons-material/Wifi';
+import {newproperty} from '../components/dummydata.js'
+import {Location} from '../components/dummydata.js'
+//import {Services} from '../components/dummydata.js'
 
-function Home(){
-  const Location=[
-    {
-      image:"",
-      title:"Gate A",
-      link:"./explore",
-    },
-    {
-      image:"",
-      title:"Gate B",
-      link:"./explore",
-    },
-    {
-      image:"",
-      title:"Gate C",
-      link:"./explore",
-    },
-    {
-      image:"",
-      title:"Gate D",
-      link:"./explore",
+import ContentSlider from '../components/ContentSlider.js';
 
-    },
-    
-]
-const NewBuildings=[
-  {
-  image:"./room1.jpg",
-  title:"Virmaj",
-  },
-  {
-    image:"./room2.jpg",
-    title:"CDF",
-  },
-  {
-    image:"./room3.jpg",
-    title:"Executive",
-  },
-  {
-    image:"./room4.jpg",
-    title:"Nyamwaj",
-  },
-]
+
+function Home({property}){
 const Services=[
   {
   icon:<CreditScoreIcon />,
@@ -80,7 +44,7 @@ const Services=[
   return(
     <div>
       <SearchFilter />
-      <div style={{padding:"10px"}}>
+      <div style={{padding:"5px"}}>
       {
         //Communities
       } 
@@ -135,88 +99,76 @@ const Services=[
           overflow:"auto",
           whiteSpace:"nowrap",
           width:"100%",
-          margin:"10px",
+          margin:"5px",
           //padding:"10px",
         }} className="scrollbar">
-          {NewBuildings.map((item)=>{
+          {newproperty.map((property)=>{
             return(
-              <div> 
                 <ul style={{
                   //backgroundColor:"#f79d00",
-                  width:"175px",
-                  height:"150px",
+                  width:"150px",
+                  height:"100%",
                   textAlign:"center",
                   placeItems:"center",
                   position:"relative",
                   borderRadius:"10px",
-                  margin:"10px",
+                  //margin:"0 10px",
                   textDecoration:"none",
                   listStyle:"none",
                   //borderRadius:"30px"
                 }}>
-                  <li>
-                    <Link style={{
-                      color:"#000000",
-                      fontSize:"0.9rem",
-                      fontFamily:"Poppins-Bold",
-                      textDecoration:"none",
-                    }} to='/property'>
-                      <img src={item.image} alt='' style={{ width:"175px",height:"120px",objectFit:"cover"}}/>
-                      <p>{item.title}</p>
-                    </Link>
+                  <li >
+                    <ContentSlider
+                    property={property}
+                    />
                   </li>
                 </ul>
-                
-              </div>
-            )
+                )
           })}
         </div>
       </div>
       {
-        //Servives
+        //Services
       } 
       <div>
         <p>Services</p>
         <div style={{
           display:"flex",
-          //justifyContent:"space-between",
           alignItems:"center",
           textAlign:"center",
           overflow:"auto",
           whiteSpace:"nowrap",
-          width:"100%",
-          margin:"10px",
+          width:"90%",
         }} className="scrollbar">
           {Services.map((item)=>{
             return(
-              <div> 
-                <ul style={{
+              <ul style={{
                   backgroundColor:"#f79d00",
-                  width:"100px",
-                  height:"100%",
+                  width:"120px",
+                 
                   textAlign:"center",
                   placeItems:"center",
                   position:"relative",              
-                  margin:"0 10px",
+                  margin:"0 5px",
                   textDecoration:"none",
                   listStyle:"none",
-                  color:'{item.color}',
-                  borderRadius:"10px",
+                  borderRadius:"5px",
+
                 }}>
-                  <li>
+                  <li style={{width:"120px"}}>
                     <Link style={{
                       color:"#000000",
                       fontSize:"0.9rem",
                       fontFamily:"Poppins-Bold",
                       textDecoration:"none",
-                      padding:"10px"
-                    }} to='/property'>
+                      padding:"10px",
+
+                    }} to=''>
                       <div style={{fontSize:"20px"}}>{item.icon}</div>
                       <p>{item.title}</p>
                     </Link>
                   </li>
                 </ul>
-              </div>
             )
           })}
         </div>
@@ -234,40 +186,31 @@ const Services=[
           overflow:"auto",
           whiteSpace:"nowrap",
           width:"100%",
-          margin:"10px",
-          '&::-webkit-scrollbar-thumb': { display:"none" }
+          margin:"5px",
           //padding:"10px",
         }} className="scrollbar">
-          {NewBuildings.map((item)=>{
+          {newproperty.map((property)=>{
             return(
-              <div> 
                 <ul style={{
                   //backgroundColor:"#f79d00",
-                  width:"175px",
-                  height:"150px",
+                  width:"150px",
+                  height:"100%",
                   textAlign:"center",
                   placeItems:"center",
                   position:"relative",
                   borderRadius:"10px",
-                  margin:"10px",
+                  //margin:"0 10px",
                   textDecoration:"none",
                   listStyle:"none",
+                  //borderRadius:"30px"
                 }}>
-                  <li>
-                    <Link style={{
-                      color:"#000000",
-                      fontSize:"0.9rem",
-                      fontFamily:"Poppins-Bold",
-                      textDecoration:"none",
-                    }} to='/property'>
-                      <img src={item.image} alt='' style={{ width:"175px",height:"120px",objectFit:"cover"}}/>
-                      <p>{item.title}</p>
-                    </Link>
+                  <li >
+                    <ContentSlider
+                    property={property}
+                    />
                   </li>
                 </ul>
-                
-              </div>
-            )
+                )
           })}
         </div>
       </div>            
