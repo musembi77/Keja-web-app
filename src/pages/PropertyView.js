@@ -43,6 +43,7 @@ function PropertyView(){
                 contact2name={property.contact2name}
                 reviewdate={property.reviewdate}
                 reviewname={property.reviewname}
+                vacancy={property.vacancy}
           />
           )
       })}
@@ -68,7 +69,9 @@ const ViewDetails=({
             contact2,
             reviewname,
             reviewdate,
-            review,}
+            review,
+            vacancy,
+          }
             
 )=>{
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -112,10 +115,8 @@ const ViewDetails=({
         <Room style={{fontSize:"1.4rem",color:"#ffa31a"}}/>
         <p>{location}</p>
       </div>
-      <div style={{color:"grey",display:"flex",justifyContent:"space-between",width:"80px",fontSize:"1rem",margin:"5px 0"}}>
-        <Shower style={{fontSize:"1.3rem"}}/>
-        <Bed style={{fontSize:"1.3rem"}}/>
-        <ElectricalServices style={{fontSize:"1.3rem"}}/>
+      <div style={{color:"",display:"flex",width:"80px",fontSize:"1rem",margin:"5px 0"}}>
+        <p>Vacancy:<span style={{color:"#ffa31a",margin:"0 5px"}}>{vacancy}</span></p>
       </div>
       {
         //share

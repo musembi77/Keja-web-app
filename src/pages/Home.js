@@ -138,14 +138,14 @@ const Services=[
           textAlign:"center",
           overflow:"auto",
           whiteSpace:"nowrap",
-          width:"90%",
+          width:"100%",
         }} className="scrollbar">
           {Services.map((item)=>{
             return(
               <ul style={{
                   backgroundColor:"#f79d00",
                   width:"120px",
-                 
+                  height:"120px",
                   textAlign:"center",
                   placeItems:"center",
                   position:"relative",              
@@ -163,7 +163,7 @@ const Services=[
                       textDecoration:"none",
                       padding:"10px",
 
-                    }} to=''>
+                    }} to='/productview'>
                       <div style={{fontSize:"20px"}}>{item.icon}</div>
                       <p>{item.title}</p>
                     </Link>

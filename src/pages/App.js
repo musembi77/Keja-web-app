@@ -9,10 +9,19 @@ import LoginPage from './LoginPage';
 import Header from '../components/Header';
 import PostListing from './PostListing'
 import WishList from './WishList';
+import ProductView from './ProductView'
+import ApolloClient from 'apollo-boost'
+import {ApolloProvider } from 'react-apollo'
+
+const client = new ApolloClient({
+  uri:'http://localhost:5000/graphql'
+})
 
 function App() {
+
   return (
     <div >
+    <ApolloProvider client={client}>
       <Router>
         <Header/>
         <Routes>
@@ -24,9 +33,10 @@ function App() {
           <Route path='/wishlist'  element = {<WishList />}/>
           <Route path='/listwithUs'  element = {<ListingLogin />}/>
           <Route path='/postlisting'  element = {<PostListing />}/>
-          
+          <Route path='/productview'  element = {<ProductView />}/>
         </Routes>
       </Router>
+    </ApolloProvider>
     </div>
   );
 }

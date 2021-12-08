@@ -24,6 +24,7 @@ function Property({property}){
           contact1name:property.contact1name,
           contact2:property.contact2,
           contact2name:property.contact2name,
+          vacancy:property.vacancy
         },
       });
     }

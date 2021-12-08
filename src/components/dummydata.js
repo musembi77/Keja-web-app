@@ -40,7 +40,8 @@ export const propertydata=[
     {overviewimg:"./room1.jpg"},
     {overviewimg:"./room1.jpg"}
   ],
-  stats:"4.3"
+  stats:"4.3",
+  vacancy:20
 },
 {
   name:"Memory Apartments",

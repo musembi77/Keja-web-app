@@ -2,8 +2,19 @@ import React  from 'react'
 import Property from '../components/Property'
 import { SearchFilter } from '../components/Search';
 import {propertydata} from '../components/dummydata.js'
+import {gql} from 'apollo-boost'
+import {graphql} from 'react-apollo'
+
+const getPropertiesQuery = gql`
+    {
+        properties{
+            name
+        }
+    }
+`
 
 function Explore() {
+    console.log(getPropertiesQuery)
     return (
         <div style={{width:"100%"}}>
             <div style={{position:"relative"}}>
@@ -35,4 +46,4 @@ function Explore() {
     )
 }
 
-export default Explore
+export default graphql(getPropertiesQuery)(Explore);

@@ -53,6 +53,9 @@
   border-radius: 10px;
   outline:"none"
 }
+.form_handle{
+  width: 400px;
+}
 @media screen and (max-width:600px){
     
   .scrollbar::-webkit-scrollbar{
@@ -60,5 +63,9 @@
   }
   .side_1{
     flex-direction: column;
+  }
+  .form_handle{
+    width: 99%;
+    margin: 0 auto;
   }
 }
