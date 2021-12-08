@@ -6,7 +6,7 @@ function Property({property}){
     const [{ product }, dispatch] = useStateValue();
     const ViewProperty=()=>{
       console.log("dispatch fired");
-      console.log(product);
+      // console.log({product});
       dispatch({
         type: "VIEW_PROPERTY",
         product: {

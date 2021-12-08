@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import {Link } from "react-router-dom"
 import {Room,
         Shower,
@@ -15,12 +15,13 @@ import {Room,
 } from '@mui/icons-material'
 import LinkIcon from '@mui/icons-material/Link';
 import Button from '@mui/material/Button';
-import {useState} from 'react'
 import { styled } from '@mui/material/styles';
 import { useStateValue } from "../components/StateProvider";
 
 function PropertyView(){
-  const [{ product }] = useStateValue();
+  const [{ product,}] = useStateValue([]);
+  console.log(product)
+
   return(
     <div>
       {product.map((property)=>{
@@ -74,6 +75,7 @@ const ViewDetails=({
           }
             
 )=>{
+  console.log(name)
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText("#ffa31a"),
     backgroundColor: "#ffa31a",
@@ -158,88 +160,7 @@ const ViewDetails=({
         <h4 style={{color:"#000000"}}>Amenities</h4>
         <p>{amenities}</p>
       </div>
-      {
-        //overview
-      }
-      <div style={{color:"grey"}}>
-        <h4 style={{color:"#000000"}}>Overview</h4>
-        <div style={{display:"flex",flexWrap:"wrap"}}>
-          {overview.map((item)=>{
-            return(
-              <div>
-                <img 
-                src={item.overviewimg} 
-                alt='roomview'
-                style={{width:"150px",
-                  height:"100px",
-                  margin:"2.5px 5px", 
-                  objectFit:"cover",
-                  borderRadius:"10px"}}
-                />
-              </div>
-              )
-          })}
-        </div>
-      </div>
-      {
-          //Reviews
-        }
-        <div style={{color:""}}>
-        <h3 style={{}}>Reviews</h3>
-          <div style={{
-            display:"flex",
-            //justifyContent:"space-between",
-            alignItems:"center",
-            textAlign:"center",
-            overflow:"auto",
-            //whiteSpace:"nowrap",
-            width:"95%",
-            margin:"10px 0",
-          }} className="scrollbar">
-            {review.map((item)=>{
-              return(
-                <div> 
-                  <ul 
-                    style={{
-                      //backgroundColor:"#f79d00",
-                      width:"200px",
-                      height:"150px",
-                      textAlign:"center",
-                      placeItems:"center",
-                      borderRadius:"10px",
-                      margin:"0 5px",
-                      textDecoration:"none",
-                      listStyle:"none",
-                      //borderRadius:"30px"
-                    }}
-                    >
-                    <div style={{
-                        display:"flex",
-                        flexDirection:"column",
-                        //width:"175px",
-                        height:"150px",
-                        padding:"5px",
-                        fontSize:"0.9rem",
-                        fontFamily:"Poppins-regular",
-                        textAlign:"center",
-                        margin:" 0 8px",
-                      }}>
-                        <div style={{display:"flex"}}>
-                          <AccountCircle style={{fontSize:"2rem"}}/>
-                          <div style={{fontSize:"0.7rem"}}>
-                            <p style={{color:"#000000"}}>{item.name}</p>
-                            <span>{item.date}</span>
-                          </div>
-                        </div>
-                        
-                        <p style={{color:"grey",fontSize:"0.7rem",overflowWrap:"break-word"}}>{item.content}</p>
-                    </div>
-                  </ul>
-                </div>
-              )
-            })}
-          </div>
-        </div>
+      
 
         
 
@@ -275,3 +196,85 @@ const ViewDetails=({
   </div>
   )
 }
+
+//
+      //overview
+      // <div style={{color:"grey"}}>
+      //   <h4 style={{color:"#000000"}}>Overview</h4>
+      //   <div style={{display:"flex",flexWrap:"wrap"}}>
+      //     {overview.map((item)=>{
+      //       return(
+      //         <div>
+      //           <img 
+      //           src={item.overviewimg} 
+      //           alt='roomview'
+      //           style={{width:"150px",
+      //             height:"100px",
+      //             margin:"2.5px 5px", 
+      //             objectFit:"cover",
+      //             borderRadius:"10px"}}
+      //           />
+      //         </div>
+      //         )
+      //     })}
+      //   </div>
+      // </div>
+      // {
+      //     //Reviews
+      //   }
+      //   <div style={{color:""}}>
+      //   <h3 style={{}}>Reviews</h3>
+      //     <div style={{
+      //       display:"flex",
+      //       //justifyContent:"space-between",
+      //       alignItems:"center",
+      //       textAlign:"center",
+      //       overflow:"auto",
+      //       //whiteSpace:"nowrap",
+      //       width:"95%",
+      //       margin:"10px 0",
+      //     }} className="scrollbar">
+      //       {review.map((item)=>{
+      //         return(
+      //           <div> 
+      //             <ul 
+      //               style={{
+      //                 //backgroundColor:"#f79d00",
+      //                 width:"200px",
+      //                 height:"150px",
+      //                 textAlign:"center",
+      //                 placeItems:"center",
+      //                 borderRadius:"10px",
+      //                 margin:"0 5px",
+      //                 textDecoration:"none",
+      //                 listStyle:"none",
+      //                 //borderRadius:"30px"
+      //               }}
+      //               >
+      //               <div style={{
+      //                   display:"flex",
+      //                   flexDirection:"column",
+      //                   //width:"175px",
+      //                   height:"150px",
+      //                   padding:"5px",
+      //                   fontSize:"0.9rem",
+      //                   fontFamily:"Poppins-regular",
+      //                   textAlign:"center",
+      //                   margin:" 0 8px",
+      //                 }}>
+      //                   <div style={{display:"flex"}}>
+      //                     <AccountCircle style={{fontSize:"2rem"}}/>
+      //                     <div style={{fontSize:"0.7rem"}}>
+      //                       <p style={{color:"#000000"}}>{item.name}</p>
+      //                       <span>{item.date}</span>
+      //                     </div>
+      //                   </div>
+                        
+      //                   <p style={{color:"grey",fontSize:"0.7rem",overflowWrap:"break-word"}}>{item.content}</p>
+      //               </div>
+      //             </ul>
+      //           </div>
+      //         )
+      //       })}
+      //     </div>
+      //   </div>

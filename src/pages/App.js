@@ -10,34 +10,43 @@ import Header from '../components/Header';
 import PostListing from './PostListing'
 import WishList from './WishList';
 import ProductView from './ProductView'
-import ApolloClient from 'apollo-boost'
-import {ApolloProvider } from 'react-apollo'
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from '@apollo/client';
 
 const client = new ApolloClient({
-  uri:'http://localhost:5000/graphql'
-})
+  uri:'http://localhost:5000/graphql',
+  cache: new InMemoryCache()
+});
 
 function App() {
 
+
   return (
-    <div >
-    <ApolloProvider client={client}>
-      <Router>
-        <Header/>
-        <Routes>
-          <Route path='/' element={<Index />}/>
-          <Route path='/home'  element = {<Home />}/>
-          <Route path='/explore'  element = {<Explore />}/>
-          <Route path='/property'  element = {<PropertyView />}/>
-          <Route path='/login'  element = {<LoginPage />}/>
-          <Route path='/wishlist'  element = {<WishList />}/>
-          <Route path='/listwithUs'  element = {<ListingLogin />}/>
-          <Route path='/postlisting'  element = {<PostListing />}/>
-          <Route path='/productview'  element = {<ProductView />}/>
-        </Routes>
-      </Router>
-    </ApolloProvider>
-    </div>
+    
+      <div >
+      <ApolloProvider client={client}>
+        <Router>
+          <Header/>
+          <Routes>
+            <Route path='/' element={<Index />}/>
+            <Route path='/home'  element = {<Home />}/>
+            <Route path='/explore'  element = {<Explore />}/>
+            <Route path='/property'  element = {<PropertyView />}/>
+            <Route path='/login'  element = {<LoginPage />}/>
+            <Route path='/wishlist'  element = {<WishList />}/>
+            <Route path='/listwithUs'  element = {<ListingLogin />}/>
+            <Route path='/postlisting'  element = {<PostListing />}/>
+            <Route path='/productview'  element = {<ProductView />}/>
+          </Routes>
+        </Router>
+        </ApolloProvider>
+      </div>
+    
   );
 }
 

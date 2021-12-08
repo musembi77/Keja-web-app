@@ -1,20 +1,27 @@
-import React  from 'react'
+import React,{useEffect,useState} from 'react'
 import Property from '../components/Property'
 import { SearchFilter } from '../components/Search';
-import {propertydata} from '../components/dummydata.js'
-import {gql} from 'apollo-boost'
-import {graphql} from 'react-apollo'
+//import {propertydata} from '../components/dummydata.js'
+import {
+  useQuery,
+  gql,
+  
+} from '@apollo/client';
+import {get_AllProperties} from '../GraphQl/Queries.js'
 
-const getPropertiesQuery = gql`
-    {
-        properties{
-            name
-        }
-    }
-`
 
 function Explore() {
-    console.log(getPropertiesQuery)
+
+    const { loading, error, data } = useQuery(get_AllProperties);
+    const [propertydata,setPropertydata]=useState([]);
+    
+    useEffect(()=>{
+        console.log(data)
+        if(data){
+            setPropertydata(data.getallproperties)
+        }
+    },[data]);
+
     return (
         <div style={{width:"100%"}}>
             <div style={{position:"relative"}}>
@@ -27,15 +34,16 @@ function Explore() {
                         color:"#000000",
                         padding:"10px",
                                                                
-                    }} >
+                    }} >price
                         <div style={{display:"flex",
                         flexWrap:"wrap",justifyContent:"space-around"   }}>
                           {propertydata.map((property) => (
                             <div>
-                              <Property
+                                <Property
                                 property={property}
-                                //key={property.id}
+                                key={property.id}
                                 />
+                                
                             </div>
                           ))}
                         </div>
@@ -46,4 +54,4 @@ function Explore() {
     )
 }
 
-export default graphql(getPropertiesQuery)(Explore);
+export default Explore;
