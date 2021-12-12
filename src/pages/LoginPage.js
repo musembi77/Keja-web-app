@@ -1,9 +1,15 @@
 import { Button, makeStyles, withStyles } from "@material-ui/core";
 import React, 
   {useState } from "react";
-
+import {GoogleLogin} from "react-google-login"
+import {GoogleLogout} from "react-google-login"
+import { GraphQLClient } from 'graphql-request'
+import { useStateValue } from "../components/StateProvider"
+import {GET_USER_QUERY} from "../GraphQl/Queries.js"
+import {BASE_URL} from '../Client.js'
 
 function LoginPage(){
+    const [{ currentUser }, dispatch] = useStateValue();
     const useStyles = makeStyles((theme) => ({
         root: {
           "& > *": {
@@ -22,85 +28,75 @@ function LoginPage(){
       }))(Button);
       const classes = useStyles();
     
-      //const navigate = useNavigate();
-      const [email, setEmail] = useState("");
-      const [password, setPassword] = useState("");
-      const [username, setUsername] = useState("");
-      //const [user, setUser] = useState(null);
+      
+      const onSuccess = async googleUser =>{
+        try{
+          const idToken = googleUser.getAuthResponse().id_token;
+          //console.log({idToken})
+          const client = new GraphQLClient(BASE_URL,{
+            headers:{authorization: idToken}
+          })
+          const { get_User } = await client.request(GET_USER_QUERY)
+          console.log({get_User})
+          dispatch({
+            type:"LOGIN_USER",
+            payload:get_User
+          })
+          dispatch({
+            type:"IS_LOGGEDIN",
+            payload:googleUser.isSignedIn()
+          })
+        }catch(err){
+          onFailure(err)
+        }
+      }
+        
+      const onFailure = err =>{
+        console.log("Error Logging in", err)
+      }
+      //signout
+      const onSignOut = () =>{
+        dispatch({
+          type:"SIGNOUT_USER",
+        })
+        console.log("user signed out")
+      }
     return(
         <div>
-        <img src="./room6.jpg" style={{width:"100vw",height:"100vh",objectFit:"cover",position:"relative"}} alt="logo"/>
-        <div style={{
-          width:"300px",
-          margin:"10% auto",
-          backgroundColor:"#eee",
-          padding:"10px",
-          borderRadius:"10px",
-          position:"absolute",
-          top:"10px",
-          //left:"10%"
-          marginLeft:"10%"
-        }}>
-          <form className={classes.root} noValidate autoComplete="on" >
-                  <h5>Email: *</h5>
-                  <input
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    style={{
-                      fontFamily: "Poppins-Regular",
-                      fontSize: "14px",
-                      color: "#1b1b1b",
-                      border: "none",
-                      height: "100%",
-                      padding: "5px 10px",
-                      margin: "11px",
-                      outline: "none",
-                      overflowWrap: "break-word",
-                    }}
-                  />
-                  <h5>Username: *</h5>
-                  <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    style={{
-                      fontFamily: "Poppins-Regular",
-                      fontSize: "14px",
-                      color: "#1b1b1b",
-                      border: "none",
-                      height: "100%",
-                      padding: "5px 10px",
-                      margin: "11px",
-                      outline: "none",
-                      overflowWrap: "break-word",
-                    }}
-                  />
-                  <h5>Password: *</h5>
-                  <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    style={{
-                      fontFamily: "Poppins-Regular",
-                      fontSize: "14px",
-                      color: "#1b1b1b",
-                      border: "none",
-                      height: "100%",
-                      padding: "5px 10px",
-                      margin: "11px",
-                      outline: "none",
-                      overflowWrap: "break-word",
-                    }}
-                  />
-                  <ColorButton
-                    className="login_submit"
-                    //type="submit"
-                    //onClick={SignIn}
-                  >
-                    SIGN IN
-                  </ColorButton>
-                  <p
+          <img src="./room6.jpg" style={{width:"100vw",height:"100vh",objectFit:"cover",position:"relative"}} alt="logo"/>
+          <div style={{
+            width:"300px",
+            margin:"10% auto",
+            backgroundColor:"#eee",
+            padding:"10px",
+            borderRadius:"10px",
+            position:"absolute",
+            top:"10px",
+            //left:"10%"
+            marginLeft:"10%"
+          }}>
+            <div style={{margin:"0 15%"}}>
+              {currentUser ? 
+                <GoogleLogout
+                // clientId={GOOGLE_CLIENT_ID}
+                buttonText="Sign Out of Keja"
+                onLogoutSuccess={onSignOut}
+                onLogoutFailure={onFailure}
+              />:
+              <GoogleLogin
+                clientId="307243827987-1lku0js5p3rs6alhdh1i84pcb3if7rn3.apps.googleusercontent.com"
+                buttonText="Sign In with Google"
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                cookiePolicy={'single_host_origin'}
+                isSigned={true}
+                theme="dark"
+                style={{flex:1}}
+              />
+              }
+            </div>
+            <div>
+            <p
                     style={{
                       fontSize: "12px",
                       padding: "10px 0",
@@ -129,11 +125,6 @@ function LoginPage(){
                     >
                       New to Keja?
                     </p>
-                    <ColorButton className="login_submit" 
-                    //onClick={Register}
-                    >
-                      Create New Account
-                    </ColorButton>
                     <p
                       style={{
                         fontSize: "12px",
@@ -145,8 +136,8 @@ function LoginPage(){
                       apartment,shows,Trending and be updated on special  and exciting offers.
                     </p>
                   </div>
-                </form>
-        </div>
+            </div>
+          </div>
         </div>
     )
 }

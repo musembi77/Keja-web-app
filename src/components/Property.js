@@ -12,7 +12,7 @@ function Property({property}){
         product: {
           id:property.id,
           coverimg:property.coverimg,
-          name:property.name,
+          propertyname:property.propertyname,
           price:property.price,
           location:property.location,
           stats:property.stats,
@@ -51,7 +51,7 @@ function Property({property}){
             />
           <div style={{padding:"5px"}}>
             <h3 style={{fontFamily:"Poppins-Bold"}}>Ksh.{property.price}<span style={{color:"#eeeeee"}}>/month</span></h3>
-            <p>{property.name}</p>
+            <p>{property.propertyname}</p>
             <p style={{fontSize:"0.6rem",color:"grey"}}>{property.location}</p>
           </div>
       </Link>

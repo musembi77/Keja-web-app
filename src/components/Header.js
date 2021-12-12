@@ -9,9 +9,12 @@ import {
 } 
     from '@mui/icons-material';
 import '../index.css'
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {useStateValue} from "./StateProvider"
 
 function Header() {
+    const [{currentUser}]=useStateValue();
+    console.log(currentUser)
     const [showmenu, setShowmenu]=useState('');
 
     const HandleMenu=()=>{
@@ -41,8 +44,15 @@ function Header() {
                 justifyContent:"center",
                 }} 
             >
-            <Link to='/wishlist' style={{textDecoration:"none",color:"#000000",paddingTop:"5px"}}><FavoriteBorder style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
-            <Link style={{fontSize:'1.4 rem',margin:'0 8px',textDecoration:"none",color:"#000000"}} to='/login'>Sign in</Link>
+            <Link to='/wishlist' style={{textDecoration:"none",color:"#000000",paddingTop:"7px"}}><FavoriteBorder style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
+            <Link style={{display:"flex",alignItems:"center",textDecoration:"none"}} to='/login'>
+                  
+                {currentUser ? 
+                    <img src={currentUser.picture} alt='pp' style={{width:"20px",height:"20px",borderRadius:"2px"}}/>
+                    :
+                    <p style={{fontSize:'1.2 rem',margin:'0 8px',textDecoration:"none",color:"#000000"}} >{currentUser ? 'SignOut':'SignIn'}</p>
+                }
+            </Link>
             <div style={{alignItems:"center"}}>
             {showmenu ?
                 <div >
@@ -61,6 +71,7 @@ function Header() {
 export default Header
 
 export const Menubar = () =>{
+    console.log()
     return(
         <div
             style={{
@@ -71,7 +82,7 @@ export const Menubar = () =>{
                 fontFamily:'Poppins-Regular',
                 fontSize:'1rem',
                 position:"absolute",
-                top:"32px",
+                top:"42px",
                 width:"200px",
                 backgroundColor:"#ffffff",
                 height:"100vh",
@@ -80,6 +91,7 @@ export const Menubar = () =>{
                 zIndex:"999"
             }}
             >
+            
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/' >Index</Link>

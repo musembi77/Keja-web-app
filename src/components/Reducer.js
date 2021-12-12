@@ -1,8 +1,8 @@
 export const initialState = {
     product: [],
-    
+    currentUser: null,
+    isAuth:null,
     propertywishlist: [],
-    user: null,
 };
 
 function reducer(state, action) {
@@ -14,7 +14,23 @@ function reducer(state, action) {
                 ...state,
                 product: [action.product],
             };
+        case "LOGIN_USER":
+            return {
+                ...state,
+                currentUser: action.payload
+            }
         
+        case "IS_LOGGEDIN":
+            return {
+                ...state,
+                isAuth: action.payload
+            }
+        case "SIGNOUT_USER":
+            return {
+                ...state,
+                currentUser: null,
+                isAuth: false
+            }
         // case "ADD_TO_WATCHLIST":
         //     // lOGIC TO ADD ITEMS TO moviewatchlist
         //     return {

@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import Property from '../components/Property'
 import { SearchFilter } from '../components/Search';
-//import {propertydata} from '../components/dummydata.js'
+import {propertydata} from '../components/dummydata.js'
 import {
   useQuery,
   gql,

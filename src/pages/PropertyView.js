@@ -30,7 +30,7 @@ function PropertyView(){
                 key={property.id}
                 id={property.id}
                 coverimg={property.coverimg}
-                name={property.name}
+                propertyname={property.propertyname}
                 price={property.price}
                 location={property.location}
                 stats={property.stats}
@@ -56,7 +56,7 @@ export default PropertyView;
 
 const ViewDetails=({
             coverimg,
-            name,
+            propertyname,
             price,
             location,
             stats,
@@ -75,7 +75,7 @@ const ViewDetails=({
           }
             
 )=>{
-  console.log(name)
+  console.log(propertyname)
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText("#ffa31a"),
     backgroundColor: "#ffa31a",
@@ -111,7 +111,7 @@ const ViewDetails=({
       //Information
     }
     <div style={{padding:"8px",fontSize:"0.99rem",color:"#000000"}}>
-      <h3 style={{fontFamily:"Poppins-Bold",fontSize:"1.6rem"}}>{name}</h3>
+      <h3 style={{fontFamily:"Poppins-Bold",fontSize:"1.6rem"}}>{propertyname}</h3>
       <h4 style={{fontFamily:"Poppins-Bold",}}> {price} <span style={{color:"grey"}}>/ Month</span></h4>
       <div style={{display:'flex',color:"grey",}}>
         <Room style={{fontSize:"1.4rem",color:"#ffa31a"}}/>
@@ -278,3 +278,6 @@ const ViewDetails=({
       //       })}
       //     </div>
       //   </div>
+
+
+   
