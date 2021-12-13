@@ -29,7 +29,7 @@ function PropertyView(){
             <ViewDetails
                 key={property.id}
                 id={property.id}
-                coverimg={property.coverimg}
+                mainimage={property.mainimage}
                 propertyname={property.propertyname}
                 price={property.price}
                 location={property.location}
@@ -55,7 +55,7 @@ function PropertyView(){
 export default PropertyView;
 
 const ViewDetails=({
-            coverimg,
+            mainimage,
             propertyname,
             price,
             location,
@@ -99,7 +99,7 @@ const ViewDetails=({
       //Image
     }
     <div style={{position:"  relative",cursor:"pointer"}}>
-      <img src={coverimg} alt="logo" style={{width:"100%",height:"50vh",objectFit:"cover"}}/>
+      <img src={mainimage} alt="logo" style={{width:"100%",height:"50vh",objectFit:"cover"}}/>
       <div onClick={HandleLike} style={{width:"30px",height:"30px",backgroundColor:"#e5e5e5",borderRadius:"100px",textAlign:"center",position:"absolute",top:"10px",right:"10px"}}>
       {like ? 
         <Favorite style={{fontSize:"1.2rem",margin:"6px auto",color:"#ffa31a"}}/>

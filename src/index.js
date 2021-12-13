@@ -5,19 +5,27 @@ import App from './pages/App';
 import reportWebVitals from './reportWebVitals';
 import {StateProvider} from './components/StateProvider'
 import reducer, { initialState } from './components/Reducer';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+} from '@apollo/client';
 
-
+const client = new ApolloClient({
+  uri:'http://localhost:4000/graphql',
+  cache: new InMemoryCache()
+});
 
 
 ReactDOM.render(
   <React.StrictMode>
-    
+    <ApolloProvider client={client}>
       <StateProvider initialState={initialState} reducer={reducer}>
         
           <App />
         
       </StateProvider>
-    
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

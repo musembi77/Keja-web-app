@@ -78,6 +78,7 @@ const handleImageUpload = async () =>{
   try{
     const data = new FormData()
       data.append("file", mainimage);
+      data.append("file", overviewimage);
       data.append('upload_preset', 'keja-web-app');
       data.append("cloud_name","musembi77")
       const res = await axios.post("https://api.cloudinary.com/v1_1/musembi77/image/upload",
@@ -103,6 +104,7 @@ const handleSubmit = async (e) =>{
         description,
         amenities,
         mainimage:url,
+        overviewimage:url,
         area,
         vacancy,
         contact
@@ -319,42 +321,41 @@ const handleSubmit = async (e) =>{
               color: "#1b1b1b",
               border: "none",
               height: "100%",
-              padding: "5px 10px",
+              padding: "5px 0",
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
               flex:0.7
             }}
-            
+            accept="images*"
             onChange={(e)=>{
               setMainimage(e.target.files[0])
             }}
           />
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Images</p>
-          <input
-            type="file"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              flex:0.7
-            }}
+        <div style={{display:"flex",alignItems:"",justifyContent:"space-around",flexDirection:"column",padding:"20px"}}>
+          <p style={{width:""}}>Images</p>
+          <div style={{width:""}}>
+            <input
+              type="file"
+              style={{
+                fontFamily: "Poppins-Regular",
+                fontSize: "14px",
+                color: "#1b1b1b",
+                border: "none",
+                padding: "5px 0",
+                margin: "11px 0",
+                outline: "none",
+                overflowWrap: "break-word",
+              }}
 
-            accept="image/png, image/jpeg,image/jpg"
-            onChange={(e)=>{
-              setOverviewimage(e.target.files[0])
-            }}
+              accept="image/png, image/jpeg,image/jpg"
+              onChange={(e)=>{
+                setOverviewimage(e.target.files[0])
+              }}
+            />
             
-            multiple
-          />
+            </div>
         </div>
         <div style={{display:"flex",justifyContent:"center"}}>
           <ColorButton

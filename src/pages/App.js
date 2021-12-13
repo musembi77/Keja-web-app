@@ -10,26 +10,14 @@ import Header from '../components/Header';
 import PostListing from './PostListing'
 import WishList from './WishList';
 import ProductView from './ProductView'
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  useQuery,
-  gql
-} from '@apollo/client';
 
-const client = new ApolloClient({
-  uri:'http://localhost/4000',
-  cache: new InMemoryCache()
-});
+
 
 function App() {
-
-
   return (
     
       <div >
-      <ApolloProvider client={client}>
+      
         <Router>
           <Header/>
           <Routes>
@@ -44,7 +32,7 @@ function App() {
             <Route path='/productview'  element = {<ProductView />}/>
           </Routes>
         </Router>
-        </ApolloProvider>
+        
       </div>
     
   );

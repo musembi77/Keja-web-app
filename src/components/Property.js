@@ -11,7 +11,7 @@ function Property({property}){
         type: "VIEW_PROPERTY",
         product: {
           id:property.id,
-          coverimg:property.coverimg,
+          mainimage:property.mainimage,
           propertyname:property.propertyname,
           price:property.price,
           location:property.location,
@@ -45,7 +45,7 @@ function Property({property}){
       to='/property'
       >
           <img 
-            src={property.coverimg}  
+            src={property.mainimage}  
             alt="logo" style={{width:"100%",height:"150px",objectFit:"cover",borderRadius:"10px"}}
             
             />

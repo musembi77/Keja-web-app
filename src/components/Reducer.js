@@ -31,6 +31,12 @@ function reducer(state, action) {
                 currentUser: null,
                 isAuth: false
             }
+        case "GET_PROPERTY":
+            return{
+                ...state,
+                product: action.payload
+
+            }
         // case "ADD_TO_WATCHLIST":
         //     // lOGIC TO ADD ITEMS TO moviewatchlist
         //     return {

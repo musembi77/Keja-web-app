@@ -1,20 +1,38 @@
-import { gql } from '@apollo/client';
 
+import { gql,useQuery } from '@apollo/client';
 
-export const get_AllProperties = gql`
+export const GET_PROPERTY_QUERY = gql`
     query{
-        getallproperties{
+        get_Properties{
+            _id
             landlordname
             propertyname
             price
+            mainimage
+            overviewimage
             location
             description
             amenities
             vacancy
             contact
-
+            createdAt
+            author{
+                _id
+                name
+                email
+                picture
+            }
+            reviews{
+                
+                createdAt
+                author{
+                    _id
+                    name
+                    email
+                }
+            }
         }
-    }   
+    }
 `
 export const GET_USER_QUERY=`
       {
@@ -26,4 +44,4 @@ export const GET_USER_QUERY=`
               }
       }
               
-      `
+`
