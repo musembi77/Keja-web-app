@@ -1,17 +1,11 @@
 import React,{useState} from 'react';
 import { Button, withStyles } from "@material-ui/core";
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
-import CloseIcon from '@mui/icons-material/Close';
 import {CREATE_PROPERTY_MUTATION} from '../GraphQl/Mutations.js'
-import {useMutation} from '@apollo/client';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios'
-import { GraphQLClient } from 'graphql-request'
 import {useStateValue} from '../components/StateProvider'
 import {useClient} from '../Client.js'
-import Login from './Login'
 
 function PostListing (){
   const ColorButton = withStyles((theme) => ({
@@ -20,48 +14,22 @@ function PostListing (){
       backgroundColor: "#ffa31a",
     },
   }))(Button);
-  const [{ currentUser }, dispatch] = useStateValue();
-  const [showform,setShowForm]=useState();
-  const [auth,setAuth]=useState();
-  const handleShowForm=()=>{
-      if (currentUser){
-        setShowForm(!showform);
-      }else{
-        setAuth(!auth)
-        console.log("You need to SignIn First")
-      }
-  }
-  const closeError = () =>{
-    setAuth(false)
+  const [{ currentUser }] = useStateValue();
+  const HandleLogin = () =>{
+    window.location.href="/login"
   }
 
   return(
     <div>
-    {showform?
-      (
-        <div>
-          <p>Post Listing</p>
-          <Form />
-        </div>
-      ):
-      ( 
-        <div style={{backgroundColor:"",position:"relative"}}>
-        <Login />
-        {auth? (
-            <div style={{display:"flex",margin:"",width:"200px",position:"absolute",bottom:"300px",left:"25%",color:"#000000",backgroundColor:"#e5e5e5",borderRadius:"10px",padding:"10px",textAlign:"center"}}>
-              <ErrorOutlineIcon style={{color:"red"}}/><p>You have to be logged in First</p>< CloseIcon onClick={closeError}/>
-            </div>
-          ):
-          <ColorButton
-          onClick={handleShowForm}
-          style={{margin:"",width:"200px",position:"absolute",bottom:"300px",left:"25%",color:"#ffffff"}}
-        >
-          Get Started<ArrowRightAltIcon />
-        </ColorButton>
-        }
-        
+     {currentUser?
+      <Form />
+      :
+      <div>
+      <h2>You need to be logged In</h2>
+      <ColorButton onClick={HandleLogin}>You need to be logged in</ColorButton>
       </div>
-      )}
+      }
+      
     </div>
   )
 }
@@ -87,9 +55,7 @@ const Form=()=>{
   const [contact, setContact]=useState('');
   const [mainimage, setMainimage]=useState('')
   const [overviewimage, setOverviewimage]=useState('')
-  const [url,setUrl]=useState('');
-
-  const [submitting, setSubmitting]=useState(false)
+  //const [url,setUrl]=useState('');
 
 const handleImageUpload = async () =>{
   console.log(mainimage)
@@ -112,7 +78,6 @@ const handleImageUpload = async () =>{
 const handleSubmit = async (e) =>{
   try{
     e.preventDefault();
-    setSubmitting(true)
     const url = await handleImageUpload();
     const variables ={
         landlordname,

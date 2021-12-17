@@ -1,5 +1,4 @@
-
-import { gql,useQuery } from '@apollo/client';
+import { gql } from '@apollo/client';
 
 export const GET_PROPERTY_QUERY = gql`
     query{

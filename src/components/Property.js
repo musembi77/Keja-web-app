@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { useStateValue } from "./StateProvider"
 
 function Property({property}){
-    const [{ product }, dispatch] = useStateValue();
+    const [ dispatch] = useStateValue();
     const ViewProperty=()=>{
       console.log("dispatch fired");
       // console.log({product});

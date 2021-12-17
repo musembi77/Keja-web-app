@@ -1,6 +1,4 @@
-import { Button, makeStyles, withStyles } from "@material-ui/core";
-import React, 
-  {useState,useEffect } from "react";
+import React from "react";
 import {GoogleLogin} from "react-google-login"
 import {GoogleLogout} from "react-google-login"
 import { GraphQLClient } from 'graphql-request'
@@ -10,24 +8,6 @@ import {BASE_URL} from '../Client.js'
 
 function Login(){
     const [{ currentUser }, dispatch] = useStateValue();
-    const useStyles = makeStyles((theme) => ({
-        root: {
-          "& > *": {
-            margin: "0px",
-            width: "90%",
-            marginLeft: "5%",
-            marginRight: "5%",
-          },
-        },
-      }));
-      const ColorButton = withStyles((theme) => ({
-        root: {
-          color: theme.palette.getContrastText("#ffa31a"),
-          backgroundColor: "#ffa31a",
-        },
-      }))(Button);
-      const classes = useStyles();
-      
       const onSuccess = async googleUser =>{
         try{
           const idToken = googleUser.getAuthResponse().id_token;
@@ -62,18 +42,15 @@ function Login(){
       }
     return(
         <div>
-          <img src="./room6.jpg" style={{width:"100vw",height:"100vh",objectFit:"cover",position:"relative"}} alt="logo"/>
           <div style={{
             width:"300px",
-            margin:"10% auto",
+            margin:"10% 50px",
             backgroundColor:"#eee",
             padding:"10px",
             borderRadius:"10px",
             position:"absolute",
             top:"10px",
-            //left:"10%"
-            marginLeft:"10%"
-          }}>
+            }}>
             <div style={{margin:"0 15%"}}>
               {currentUser ? 
                 <GoogleLogout

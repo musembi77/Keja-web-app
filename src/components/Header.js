@@ -3,13 +3,12 @@ import {Link } from "react-router-dom"
 import {useState} from 'react';
 import {
     Room ,
-    FavoriteBorder,
     Menu,
     Close,
+    Home
 } 
     from '@mui/icons-material';
 import '../index.css'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import {useStateValue} from "./StateProvider"
 
@@ -45,8 +44,8 @@ function Header() {
                 justifyContent:"center",
                 }} 
             >
-            <Link to='/wishlist' style={{textDecoration:"none",color:"#000000",paddingTop:"7px"}}><FavoriteBorder style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
-            <Link to='/wishlist' style={{textDecoration:"none",color:"#000000",paddingTop:"7px",margin:"0 4px"}}><TravelExploreIcon style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
+            <Link to='/home' style={{textDecoration:"none",color:"#000000",paddingTop:"7px"}}><Home style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
+            <Link to='/explore' style={{textDecoration:"none",color:"#000000",paddingTop:"7px",margin:"0 4px"}}><TravelExploreIcon style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
             <Link style={{display:"flex",alignItems:"center",textDecoration:"none"}} to='/login'>
                   
                 {currentUser ? 
@@ -98,7 +97,6 @@ export const Menubar = () =>{
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/' >Index</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>Login</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/property'>PropertyView</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/listwithUs'>List with Us</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/postlisting'>Post an Apartment</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/wishlist'>WishList</Link>

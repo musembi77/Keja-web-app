@@ -2,7 +2,6 @@ import React from 'react'
 import './skeleton.css'
 
 function Skeleton ({type}){
-	const COUNTER = 8;
 	const FeedSkeleton=()=>(
 		<div className="p_Sk">
 	    	<div className="p_imgSk"/>

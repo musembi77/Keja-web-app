@@ -1,28 +1,17 @@
-import React,{useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import SearchIcon from "@mui/icons-material/Search"
 import RoomIcon from "@mui/icons-material/Room"
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-import {useStateValue} from '../components/StateProvider'
 
 function Index(){
-  const [search,setSearch]=useState('');
-  const [{searchdata}, dispatch]=useStateValue('')
-  const handleSubmit=(e)=>{
-    dispatch({
-      type:"SEARCH_DATA",
-      payload:searchdata
-    })
-    e.preventDefault();
-    window.location = "/explore"
-  }
   return(
     <div >
       <div style={{display:"flex",flexDirection:"column",width:"100vw"}}>
       </div>
       <div style={{position:"relative"}}>
         <img src="/index1.jpg" alt="logo" style={{width:"100%",height:"450px",objectFit:"cover",}}/>
-        <form 
+        <div 
             style={{
                 display:"flex",
                 position:"absolute",
@@ -31,7 +20,9 @@ function Index(){
                 margin:"0 auto",
                 width:"50%",
                 height:"40px",
-                backgroundColor:"grey"}} >
+                backgroundColor:"grey",
+                textDecoration:"none"
+              }} >
             <input placeholder="Search Apartment, property, stalls" 
                 style={{
                     flex:"1",
@@ -41,13 +32,13 @@ function Index(){
                     color:"#000000",
                     padding:"5px",
                 }}
-                onChange={(e)=>setSearch(e.target.value)}
+                
             />
-            <button
-                style={{border:"none",padding:"10px 10px",display:"flex",justifyContent:"center",backgroundColor:"#ffa31a"}}
-                onClick={handleSubmit}
-            ><SearchIcon />search</button>
-        </form>
+            <Link
+                style={{border:"none",color:"#000000",textDecoration:"none",padding:"10px 10px",display:"flex",justifyContent:"center",backgroundColor:"#ffa31a"}}
+                to="/explore"
+            ><SearchIcon />Search</Link>
+        </div>
       </div>
 
       <div style={{backgroundColor:"#ffffff",justifyContent:'center',color:"#000000",textAlign:"center",width:"100%",height:"300px",fontSize:"1.8rem",fontWeight:"bold",padding:"20px"}}>

@@ -1,8 +1,6 @@
 import React from 'react'
 import SearchIcon from '@mui/icons-material/Search';
-import Button from '@mui/material/Button';
 import {useState} from 'react'
-import { styled } from '@mui/material/styles';
 import AlignHorizontalLeftIcon from '@mui/icons-material/AlignHorizontalLeft';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
@@ -13,7 +11,7 @@ export const SearchInput = ()=>{
 
     return(
         <div 
-                style={{
+            style={{
                     display: 'flex',
                     borderRadius:'999px',
                     //border:'1px solid grey',
@@ -23,8 +21,8 @@ export const SearchInput = ()=>{
                     width:"85vw",
                     height:"30px",
                     marginLeft:"10px"
-                }}>
-                <SearchIcon />
+            }}>
+            <SearchIcon />
                 <input 
                     placeholder='Search Apartment'
                     
