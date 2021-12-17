@@ -47,7 +47,6 @@ function Property({property}){
           <img 
             src={property.mainimage}  
             alt="logo" style={{width:"100%",height:"150px",objectFit:"cover",borderRadius:"10px"}}
-            
             />
           <div style={{padding:"5px"}}>
             <h3 style={{fontFamily:"Poppins-Bold"}}>Ksh.{property.price}<span style={{color:"#eeeeee"}}>/month</span></h3>

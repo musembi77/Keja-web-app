@@ -1,6 +1,6 @@
 import { Button, makeStyles, withStyles } from "@material-ui/core";
 import React, 
-  {useState } from "react";
+  {useState,useEffect } from "react";
 import {GoogleLogin} from "react-google-login"
 import {GoogleLogout} from "react-google-login"
 import { GraphQLClient } from 'graphql-request'
@@ -8,7 +8,7 @@ import { useStateValue } from "../components/StateProvider"
 import {GET_USER_QUERY} from "../GraphQl/Queries.js"
 import {BASE_URL} from '../Client.js'
 
-function LoginPage(){
+function Login(){
     const [{ currentUser }, dispatch] = useStateValue();
     const useStyles = makeStyles((theme) => ({
         root: {
@@ -27,7 +27,6 @@ function LoginPage(){
         },
       }))(Button);
       const classes = useStyles();
-    
       
       const onSuccess = async googleUser =>{
         try{
@@ -50,7 +49,7 @@ function LoginPage(){
           onFailure(err)
         }
       }
-        
+
       const onFailure = err =>{
         console.log("Error Logging in", err)
       }
@@ -142,4 +141,4 @@ function LoginPage(){
     )
 }
 
-export default LoginPage;
+export default Login;

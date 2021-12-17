@@ -10,6 +10,7 @@ import {
     from '@mui/icons-material';
 import '../index.css'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import {useStateValue} from "./StateProvider"
 
 function Header() {
@@ -45,6 +46,7 @@ function Header() {
                 }} 
             >
             <Link to='/wishlist' style={{textDecoration:"none",color:"#000000",paddingTop:"7px"}}><FavoriteBorder style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
+            <Link to='/wishlist' style={{textDecoration:"none",color:"#000000",paddingTop:"7px",margin:"0 4px"}}><TravelExploreIcon style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
             <Link style={{display:"flex",alignItems:"center",textDecoration:"none"}} to='/login'>
                   
                 {currentUser ? 
@@ -101,6 +103,7 @@ export const Menubar = () =>{
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/postlisting'>Post an Apartment</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/wishlist'>WishList</Link>
             <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/productview'>ProductView</Link>
+            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/About/Contact'>About/Contact Us</Link>
         </div>
         )
 }

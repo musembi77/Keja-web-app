@@ -1,4 +1,5 @@
 import React from 'react'
+import Skeleton from '../components/Skeleton.js'
 
 function ProductView(){
 	return(
@@ -28,7 +29,7 @@ const Product=()=>{
 				<p style={{fontSize:"0.8rem"}}>0759233322</p>
 				<a href="https://keja.netlify.app/" style={{fontSize:"0.8rem",color:"grey"}}>website</a>
 			</div>
-			
+			<Skeleton />
 
 		</div>
 	)

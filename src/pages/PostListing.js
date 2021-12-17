@@ -1,6 +1,8 @@
 import React,{useState} from 'react';
 import { Button, withStyles } from "@material-ui/core";
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import CloseIcon from '@mui/icons-material/Close';
 import {CREATE_PROPERTY_MUTATION} from '../GraphQl/Mutations.js'
 import {useMutation} from '@apollo/client';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -9,6 +11,7 @@ import axios from 'axios'
 import { GraphQLClient } from 'graphql-request'
 import {useStateValue} from '../components/StateProvider'
 import {useClient} from '../Client.js'
+import Login from './Login'
 
 function PostListing (){
   const ColorButton = withStyles((theme) => ({
@@ -17,11 +20,20 @@ function PostListing (){
       backgroundColor: "#ffa31a",
     },
   }))(Button);
+  const [{ currentUser }, dispatch] = useStateValue();
   const [showform,setShowForm]=useState();
+  const [auth,setAuth]=useState();
   const handleShowForm=()=>{
-    setShowForm(!showform);
+      if (currentUser){
+        setShowForm(!showform);
+      }else{
+        setAuth(!auth)
+        console.log("You need to SignIn First")
+      }
   }
-
+  const closeError = () =>{
+    setAuth(false)
+  }
 
   return(
     <div>
@@ -31,17 +43,23 @@ function PostListing (){
           <p>Post Listing</p>
           <Form />
         </div>
-      
       ):
       ( 
-        <div style={{backgroundColor:"#000000"}}>
-        <img src="./Keja (3).png" style={{width:"100%",height:"100%",objectFit:"contain",position:"relative"}}/>
-        <ColorButton
+        <div style={{backgroundColor:"",position:"relative"}}>
+        <Login />
+        {auth? (
+            <div style={{display:"flex",margin:"",width:"200px",position:"absolute",bottom:"300px",left:"25%",color:"#000000",backgroundColor:"#e5e5e5",borderRadius:"10px",padding:"10px",textAlign:"center"}}>
+              <ErrorOutlineIcon style={{color:"red"}}/><p>You have to be logged in First</p>< CloseIcon onClick={closeError}/>
+            </div>
+          ):
+          <ColorButton
           onClick={handleShowForm}
-          style={{margin:"",width:"200px",position:"",bottom:"",right:"",color:"#ffffff"}}
+          style={{margin:"",width:"200px",position:"absolute",bottom:"300px",left:"25%",color:"#ffffff"}}
         >
           Get Started<ArrowRightAltIcon />
         </ColorButton>
+        }
+        
       </div>
       )}
     </div>

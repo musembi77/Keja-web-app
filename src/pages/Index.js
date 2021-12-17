@@ -1,12 +1,20 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Link} from 'react-router-dom';
 import SearchIcon from "@mui/icons-material/Search"
 import RoomIcon from "@mui/icons-material/Room"
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+import {useStateValue} from '../components/StateProvider'
 
 function Index(){
+  const [search,setSearch]=useState('');
+  const [{searchdata}, dispatch]=useStateValue('')
   const handleSubmit=(e)=>{
+    dispatch({
+      type:"SEARCH_DATA",
+      payload:searchdata
+    })
     e.preventDefault();
+    window.location = "/explore"
   }
   return(
     <div >
@@ -33,6 +41,7 @@ function Index(){
                     color:"#000000",
                     padding:"5px",
                 }}
+                onChange={(e)=>setSearch(e.target.value)}
             />
             <button
                 style={{border:"none",padding:"10px 10px",display:"flex",justifyContent:"center",backgroundColor:"#ffa31a"}}

@@ -160,10 +160,12 @@ const ViewDetails=({
         <h4 style={{color:"#000000"}}>Amenities</h4>
         <p>{amenities}</p>
       </div>
-      
-
-        
-
+      <div style={{display:"flex",flexWrap:"wrap"}}>
+        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"0 10px"}}/>
+        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"0 10px"}}/>
+        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"0 10px"}}/>
+        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"0 10px"}}/>
+      </div>
         {
           //Contacts
         }

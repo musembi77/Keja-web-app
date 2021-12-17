@@ -19,7 +19,11 @@ function reducer(state, action) {
                 ...state,
                 currentUser: action.payload
             }
-        
+        case "SET_USER":
+            return {
+                ...state,
+                currentUser: action.payload
+            }
         case "IS_LOGGEDIN":
             return {
                 ...state,
@@ -35,6 +39,12 @@ function reducer(state, action) {
             return{
                 ...state,
                 product: action.payload
+
+            }
+        case "SEARCH_DATA":
+            return{
+                ...state,
+                searchdata: action.payload
 
             }
         // case "ADD_TO_WATCHLIST":
