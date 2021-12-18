@@ -12,7 +12,7 @@ import {
 } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri:'https://kejaapp.herokuapp.com',
+  uri:'http://localhost:4000/graphql',
   cache: new InMemoryCache()
 });
 
@@ -21,9 +21,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
       <StateProvider initialState={initialState} reducer={reducer}>
-        
-          <App />
-        
+        <App />
       </StateProvider>
     </ApolloProvider>
   </React.StrictMode>,
