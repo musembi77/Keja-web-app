@@ -16,7 +16,7 @@ function Login(){
             headers:{authorization: idToken}
           })
           const { get_User } = await client.request(GET_USER_QUERY)
-          console.log({get_User})
+          //console.log({get_User})
           dispatch({
             type:"LOGIN_USER",
             payload:get_User
@@ -38,7 +38,7 @@ function Login(){
         dispatch({
           type:"SIGNOUT_USER",
         })
-        console.log("user signed out")
+        //console.log("user signed out")
       }
     return(
         <div>

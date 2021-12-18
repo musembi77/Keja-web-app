@@ -6,7 +6,7 @@ export const initialState = {
 };
 
 function reducer(state, action) {
-    console.log(action);
+    //console.log(action);
     switch (action.type) {
         case "VIEW_PROPERTY":
             // lOGIC TO VIEW PRODUCT

@@ -58,7 +58,7 @@ const Form=()=>{
   //const [url,setUrl]=useState('');
 
 const handleImageUpload = async () =>{
-  console.log(mainimage)
+  //console.log(mainimage)
   try{
     const data = new FormData()
       data.append("file", mainimage);
@@ -93,7 +93,7 @@ const handleSubmit = async (e) =>{
         contact
       }
     const {CreateProperty} = await client.request(CREATE_PROPERTY_MUTATION,variables);
-    console.log('Property Created',{CreateProperty})
+    //console.log('Property Created',{CreateProperty})
   }catch(error){
     console.error(error)
   }

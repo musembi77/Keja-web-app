@@ -14,7 +14,7 @@ import {useStateValue} from "./StateProvider"
 
 function Header() {
     const [{currentUser}]=useStateValue();
-    console.log(currentUser)
+    //console.log(currentUser)
     const [showmenu, setShowmenu]=useState('');
 
     const HandleMenu=()=>{

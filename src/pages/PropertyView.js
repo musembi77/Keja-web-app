@@ -17,8 +17,7 @@ import { useStateValue } from "../components/StateProvider";
 
 function PropertyView(){
   const [{ product,}] = useStateValue([]);
-  console.log(product)
-
+  //console.log(product)
   return(
     <div>
       {product.map((property)=>{

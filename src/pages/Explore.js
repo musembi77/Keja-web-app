@@ -13,7 +13,7 @@ function Explore() {
     const { data } = useQuery(GET_PROPERTY_QUERY);
     
     useEffect(()=>{
-        console.log(data)
+        //console.log(data)
         if(data){
             setIsLoading(!isloading)
         }
