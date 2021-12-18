@@ -56,6 +56,7 @@ const Form=()=>{
   const [mainimage, setMainimage]=useState('')
   const [overviewimage, setOverviewimage]=useState('')
   //const [url,setUrl]=useState('');
+  const [submission,setSubmission]=useState('')
 
 const handleImageUpload = async () =>{
   //console.log(mainimage)
@@ -93,13 +94,17 @@ const handleSubmit = async (e) =>{
         contact
       }
     const {CreateProperty} = await client.request(CREATE_PROPERTY_MUTATION,variables);
-    //console.log('Property Created',{CreateProperty})
+    console.log('Property Created',{CreateProperty})
+    setSubmission(CreateProperty)
   }catch(error){
     console.error(error)
   }
 }
+  
+  
   return(
     <form style={{backgroundColor:"#e5e5e5",fontSize:"0.9rem",paddingTop:"10px"}} className='form_handle'>
+        {submission? <p>Submission success</p>:<p>Post Listing</p>}
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
           <p style={{width:"20%"}}>LandlordName:</p>
           <input
