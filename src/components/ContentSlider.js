@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import { useStateValue } from "../components/StateProvider"
 
 function ContentSlider({property}){
-	const [{ product }, dispatch] = useStateValue();
+	const [dispatch] = useStateValue();
 
     const ViewProperty=()=>{
       // console.log("dispatch fired");
