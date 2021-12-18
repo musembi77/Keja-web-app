@@ -95,7 +95,7 @@ const handleSubmit = async (e) =>{
       }
     const {CreateProperty} = await client.request(CREATE_PROPERTY_MUTATION,variables);
     console.log('Property Created',{CreateProperty})
-    setSubmission(CreateProperty)
+    setSubmission({CreateProperty})
   }catch(error){
     console.error(error)
   }
