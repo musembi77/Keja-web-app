@@ -54,13 +54,12 @@ function Login(){
             <div style={{margin:"0 15%"}}>
               {currentUser ? 
                 <GoogleLogout
-                // clientId={GOOGLE_CLIENT_ID}
                 buttonText="Sign Out of Keja"
                 onLogoutSuccess={onSignOut}
                 onLogoutFailure={onFailure}
               />:
               <GoogleLogin
-                clientId="307243827987-1lku0js5p3rs6alhdh1i84pcb3if7rn3.apps.googleusercontent.com"
+                clientId="307243827987-qrlek1ihj0v5k6pmm3shscq4ec4tgfqb.apps.googleusercontent.com"
                 buttonText="Sign In with Google"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
