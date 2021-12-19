@@ -14,6 +14,7 @@ import LinkIcon from '@mui/icons-material/Link';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { useStateValue } from "../components/StateProvider";
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function PropertyView(){
   const [{ product,}] = useStateValue([]);
@@ -157,10 +158,10 @@ const ViewDetails=({
         <p>{amenities}</p>
       </div>
       <div style={{display:"flex",flexWrap:"wrap"}}>
-        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"0 10px"}}/>
-        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"0 10px"}}/>
-        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"0 10px"}}/>
-        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"0 10px"}}/>
+        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
       </div>
         {
           //Contacts
@@ -170,14 +171,27 @@ const ViewDetails=({
           <h4>Contacts</h4>
           <div style={{display:"flex",flexDirection:"column",margin:"10px 0",borderRadius:"10px",padding:"10px",backgroundColor:"#eeeeee"}}>
                 <div style={{display:"flex"}}>
-                  <AccountCircle style={{fontSize:"2rem"}}/>
-                  <div style={{lineHeight:"12px"}}>
-                    <h5>{contact1name}</h5>
-                  </div>
+                  <img src='./Keja.jpg' style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
+                  <p style={{fontSize:"0.9rem"}}>Keja Agent</p>
                 </div>
-                <div style={{display:"flex",margin:"0 5px",alignItems:"center",fontSize:"13px"}}>
-                    <Call style={{fontSize:"1rem"}}/>
-                    <p>{contact1}</p>
+                <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:"column"}}>
+                    <div style={{alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
+                      <Call style={{fontSize:"1rem"}}/>
+                      <a href = "https://wa.link/nv8tti" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                      0771712005</a>
+                    </div>
+                    <div style={{alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px"}}>
+                      <WhatsAppIcon style={{fontSize:"1rem",margin:"0 5px"}} />
+                      <a href = "https://wa.link/nv8tti" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                      0771712005</a>
+                    </div>
+                    
                 </div>
               </div>
         </div>
