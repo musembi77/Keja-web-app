@@ -11,12 +11,12 @@ function Explore() {
     const [query, setQuery]=useState('');
     
     const { data } = useQuery(GET_PROPERTY_QUERY);
-    
+    if(data){
+        setIsLoading(!isloading)
+    }
     useEffect(()=>{
         //console.log(data)
-        if(data){
-            setIsLoading(!isloading)
-        }
+        
     },[data]);
     
     return (

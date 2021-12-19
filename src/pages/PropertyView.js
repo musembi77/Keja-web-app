@@ -2,7 +2,6 @@ import React,{useState} from 'react'
 import {Link } from "react-router-dom"
 import {Room,
         Star,
-        AccountCircle,
         Call,
         Facebook,
         Instagram,
@@ -171,7 +170,7 @@ const ViewDetails=({
           <h4>Contacts</h4>
           <div style={{display:"flex",flexDirection:"column",margin:"10px 0",borderRadius:"10px",padding:"10px",backgroundColor:"#eeeeee"}}>
                 <div style={{display:"flex"}}>
-                  <img src='./Keja.jpg' style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
+                  <img src='./Keja.jpg' alt="logo" style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
                   <p style={{fontSize:"0.9rem"}}>Keja Agent</p>
                 </div>
                 <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:"column"}}>
