@@ -10,14 +10,13 @@ function Explore() {
     const [isloading, setIsLoading]=useState([]);
     const [query, setQuery]=useState('');
     
-    const { data } = useQuery(GET_PROPERTY_QUERY);
-    if(data){
-        setIsLoading(!isloading)
-    }
+    const { loading, data } = useQuery(GET_PROPERTY_QUERY);
+    
     useEffect(()=>{
-        //console.log(data)
-        
-    },[data]);
+        if(loading){
+            setIsLoading(isloading)
+        }
+    },[isloading,loading,data]);
     
     return (
         <div style={{width:"100%"}}>
