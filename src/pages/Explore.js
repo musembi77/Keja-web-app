@@ -17,7 +17,7 @@ function Explore() {
         if(data){
             setIsLoading(!isloading)
         }
-    },[isloading, data]);
+    },[data]);
     
     return (
         <div style={{width:"100%"}}>
