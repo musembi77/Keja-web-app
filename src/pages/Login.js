@@ -41,9 +41,9 @@ function Login(){
         //console.log("user signed out")
       }
     return(
-        <div>
+        <div style={{width:"100vw",height:"80vh"}}>
           <div style={{
-            width:"300px",
+            // width:"250px",
             margin:"10% 50px",
             backgroundColor:"#eee",
             padding:"10px",
@@ -78,8 +78,10 @@ function Login(){
                       textAlign: "center",
                     }}
                   >
-                    By continuing you agree to our Terms & Conditions. See our
-                    Privacy Notice.
+                    By continuing you agree to our Terms & Conditions. See our 
+                    <a href="https://www.privacypolicygenerator.info/live.php?token=KHzPleRJifcjjGtdr7kophQ59Ao9hbHC" target="_blank"
+                        rel="noopener noreferrer" 
+                        > Privacy Notice</a>.
                   </p>
 
                   <div
@@ -107,8 +109,8 @@ function Login(){
                         textAlign: "center",
                       }}
                     >
-                      Create an account to recieve newletters on new
-                      apartment,shows,Trending and be updated on special  and exciting offers.
+                      Create an account to get more access to new
+                      apartment,services, and be updated on special  and exciting offers.
                     </p>
                   </div>
             </div>

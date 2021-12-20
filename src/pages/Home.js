@@ -1,49 +1,13 @@
 import React from 'react';
-import {SearchFilter} from '../components/Search';
 import {Link } from "react-router-dom"
-import DryCleaningIcon from '@mui/icons-material/DryCleaning';
-import CreditScoreIcon from '@mui/icons-material/CreditScore';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import WeekendIcon from '@mui/icons-material/Weekend';
-import WifiIcon from '@mui/icons-material/Wifi';
 import {newproperty} from '../components/dummydata.js'
 import {Location} from '../components/dummydata.js'
-//import {Services} from '../components/dummydata.js'
-
 import ContentSlider from '../components/ContentSlider.js';
 
-
 function Home({property}){
-const Services=[
-  {
-  icon:<CreditScoreIcon />,
-  color:'#e5e5e5',
-  title:"Pay Rent",
-  },
-  {
-    icon:<LocalShippingIcon/>,
-    image:"./movers.svg",
-    title:"Movers",
-  },
-  {
-    icon:<WeekendIcon />,
-    image:"./furniture.svg",
-    title:"Furniture",
-  },
-  {
-    icon:<DryCleaningIcon />,
-    image:"./laundry.png",
-    title:"Laundry",
-  },
-  {
-    icon:<WifiIcon />,
-    image:"./wifi.png",
-    title:"Wi-fi",
-  },
-]
   return(
     <div>
-      <SearchFilter />
+      
       <div style={{padding:"5px"}}>
       {
         //Communities
@@ -57,26 +21,29 @@ const Services=[
             textAlign:"center",
             overflow:"auto",
             whiteSpace:"nowrap",
-            width:"100%"
+            width:"100%",
+
           }} className="scrollbar">
             {Location.map((item)=>{
               return(
                 <div> 
                   <ul style={{
-                    //backgroundColor:"#f79d00",
-                    width:"100%",
+                    backgroundColor:"#eeeeee",
+                    width:"100px",
+                    marginRight:"5px",
                     textDecoration:"none",
-                    listStyle:"none"
+                    listStyle:"none",
+                    
                   }}>
-                    <li>
+                    <li >
                       <Link style={{                      
                         fontSize:"0.9rem",
                         fontFamily:"Poppins-Regular",
                         textDecoration:"none",
-                        margin:"0 20px",
-                        color:"#000000"
+                        color:"#000000",
+                        backgroundColor:"",
                       }} to='/explore'>
-                        {item.title}
+                      {item.title}
                       </Link>
                     </li>
                   </ul>
@@ -130,49 +97,7 @@ const Services=[
       {
         //Services
       } 
-      <div>
-        <p>Services</p>
-        <div style={{
-          display:"flex",
-          alignItems:"center",
-          textAlign:"center",
-          overflow:"auto",
-          whiteSpace:"nowrap",
-          width:"100%",
-        }} className="scrollbar">
-          {Services.map((item)=>{
-            return(
-              <ul style={{
-                  backgroundColor:"#f79d00",
-                  width:"120px",
-                  height:"120px",
-                  textAlign:"center",
-                  placeItems:"center",
-                  position:"relative",              
-                  margin:"0 5px",
-                  textDecoration:"none",
-                  listStyle:"none",
-                  borderRadius:"5px",
-
-                }}>
-                  <li style={{width:"120px"}}>
-                    <Link style={{
-                      color:"#000000",
-                      fontSize:"0.9rem",
-                      fontFamily:"Poppins-Bold",
-                      textDecoration:"none",
-                      padding:"10px",
-
-                    }} to='/productview'>
-                      <div style={{fontSize:"20px"}}>{item.icon}</div>
-                      <p>{item.title}</p>
-                    </Link>
-                  </li>
-                </ul>
-            )
-          })}
-        </div>
-      </div>
+      
       {
         //NewBuildings
       }
@@ -215,7 +140,6 @@ const Services=[
         </div>
       </div>            
       </div>
-      <p>Home</p>
     </div>
   )
 }

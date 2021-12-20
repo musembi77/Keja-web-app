@@ -41,7 +41,7 @@ function Index(){
         </div>
       </div>
 
-      <div style={{backgroundColor:"#ffffff",justifyContent:'center',color:"#000000",textAlign:"center",width:"100%",height:"300px",fontSize:"1.8rem",fontWeight:"bold",padding:"20px"}}>
+      <div style={{backgroundColor:"#ffffff",justifyContent:'center',color:"#000000",textAlign:"center",width:"100%",height:"300px",fontSize:"1.8rem",fontWeight:"bold",padding:"10px"}}>
           <p>Every Apartment Near You, In One Place</p>
           <span style={{fontSize:"0.9rem",margin:"0 5%",width:"50%",color:"#000000"}}>Browse 1000+ apartments and find the perfect place for you</span>
           <Link className="btn_1" to="./explore">
@@ -92,7 +92,7 @@ function Index(){
           
         }} to="./listwithUs">List an Apartment </Link>
       </div>
-      <div style={{display:"flex",justifyContent:"space-between",backgroundColor:"#08CCCC",height:"100%",color:"white",fontFamily:"Poppins-Bold",padding:"10px"}}>
+      <div style={{display:"flex",justifyContent:"space-between",backgroundColor:"grey",height:"100%",color:"white",fontFamily:"Poppins-Bold",padding:"10px"}}>
         <div >
           <p style={{fontSize:"1.5rem"}}>100+ </p>
           <span>verified flats listed</span>

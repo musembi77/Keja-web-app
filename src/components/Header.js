@@ -78,6 +78,7 @@ export const Menubar = () =>{
             style={{
                 display: 'flex',
                 flexDirection: 'column',
+                justifyContent:"space-between",
                 lineHeight:'60px',
                 alignItems:'center',
                 fontFamily:'Poppins-Regular',
@@ -86,22 +87,32 @@ export const Menubar = () =>{
                 top:"42px",
                 width:"200px",
                 backgroundColor:"#ffffff",
-                height:"100vh",
+                height:"90vh",
                 float:"right",
                 right: "-10px" ,
                 zIndex:"999"
             }}
             >
-            
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/' >Index</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>Login</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/listwithUs'>List with Us</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/postlisting'>Post an Apartment</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/wishlist'>WishList</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/productview'>ProductView</Link>
-            <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/About/Contact'>About/Contact Us</Link>
+            <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                lineHeight:'60px',
+                alignItems:'center',
+                fontFamily:'Poppins-Regular',
+                fontSize:'1rem',
+               
+            }}>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/' >Index</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>Login</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/listwithUs'>List with Us</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/Services'>Services</Link>
+                
+            </div>
+            <div>
+                <p>Support</p>
+            </div>
         </div>
         )
 }

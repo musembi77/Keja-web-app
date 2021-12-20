@@ -9,9 +9,10 @@ import Login from './Login';
 import Header from '../components/Header';
 import PostListing from './PostListing'
 import WishList from './WishList';
-import ProductView from './ProductView'
-
+import Services from './Services'
+import Footer from '../components/Footer'
 function App() {
+  
   return (
     
       <div >
@@ -27,9 +28,10 @@ function App() {
             <Route path='/wishlist'  element = {<WishList />}/>
             <Route path='/listwithUs'  element = {<ListingIndex />}/>
             <Route path='/postlisting'  element = {<PostListing />}/>
-            <Route path='/productview'  element = {<ProductView />}/>
+            <Route path='/Services'  element = {<Services />}/>
             
           </Routes>
+          <Footer />
         </Router>
         
       </div>
