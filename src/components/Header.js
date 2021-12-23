@@ -122,7 +122,7 @@ export const Menubar = () =>{
                     <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/support'>Support</Link>
                 </div>
                 
-                <div style={{marginTop:"",borderTop:"1px solid #ffa31a",width:"100px"}}>
+                <div style={{marginTop:"",borderTop:"1px solid #ffa31a",width:"100px",display:"flex"}}>
                     <a href='https://www.instagram.com/keja_app/' target="_blank" rel="noopener noreferrer" style={{color:'#000000'}}><Instagram style={{marginRight:"10px",fontSize:"1.2rem",}}/></a>
                     <p style={{color:'#000000'}}><Facebook style={{marginRight:"10px",fontSize:"1.2rem"}}/></p>
                     <p style={{color:'#000000'}}><Twitter style={{marginRight:"5px",fontSize:"1.2rem",}}/></p>

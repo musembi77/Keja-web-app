@@ -21,7 +21,7 @@ function Footer(){
 	                			<p style={{color:"#ffa31a"}}>Contact Us</p>
 	                			<div style={{fontSize:"0.7rem",alignItems:"center"}}>
 		                			<p>0771712005</p>
-		                			<a href='mailto:keja.app@outlook.com'>keja.app@outlook.com</a>
+		                			<a href='mailto:keja.app@outlook.com' target="_blank" rel="noopener noreferrer" style={{color:"#0080FF",textDecoration:"none"}}>keja.app@outlook.com</a>
 	                			</div>
 	                			
 	                		</div>
