@@ -18,8 +18,7 @@ function Explore() {
     },[isloading,loading,data]);
     
     return (
-        <div style={{width:"100%",position:"relative"}}>
-            <div style={{position:"relative"}}>
+        <div style={{width:"100%",position:"relative",}}>
             <div style={{display:"flex",justifyContent:"center",margin:"0 10%",alignItems:"center"}}>
             <input 
                 placeholder='Search Apartment'
@@ -41,11 +40,10 @@ function Explore() {
                     <div style={{
                         width:'100vw',
                         backgroundColor:'#ffffff',
-                        height:'100vh',
                         textDecoration:"none",
                         color:"#000000",
                         padding:"10px",
-                                                               
+                        position:"static"                          
                     }} >
                         <div style={{display:"flex",
                         flexWrap:"wrap",justifyContent:"space-around"   }}>
@@ -67,7 +65,6 @@ function Explore() {
                         </div>
                         
                     </div>
-                </div>
         </div>
     )
 }
