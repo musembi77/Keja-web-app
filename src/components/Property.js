@@ -18,12 +18,8 @@ function Property({property}){
           stats:property.stats,
           description:property.description,
           amenities:property.amenities,
-          overview:property.overview,
+          overviewimage:property.overviewimage,
           review:property.review,
-          contact1:property.contact1,
-          contact1name:property.contact1name,
-          contact2:property.contact2,
-          contact2name:property.contact2name,
           vacancy:property.vacancy
         },
       });

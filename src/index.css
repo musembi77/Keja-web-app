@@ -68,4 +68,15 @@
     width: 99%;
     margin: 0 auto;
   }
+  .Login{
+    width: 300px;
+    margin: auto;
+    background-color: #ffffff;
+  }
+  
+}
+@media screen and (min-width:600px){
+  .Login{
+    width: 300px;
+  }
 }

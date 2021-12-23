@@ -9,6 +9,7 @@ export const CREATE_PROPERTY_MUTATION =`
 		$vacancy:String!,
 		$contact:String!,
 		$mainimage:String!,
+		$overviewimage:String!,
 	){
 		createProperty(input:{
 			landlordname:$landlordname
@@ -20,12 +21,21 @@ export const CREATE_PROPERTY_MUTATION =`
 			vacancy:$vacancy
 			contact:$contact
 			mainimage:$mainimage
+			overviewimage:$overviewimage
 		}){
 			_id
 			createdAt
 			landlordname
 			propertyname
 			price
+		}
+	}
+`
+
+export const DELETE_PROPERTY_MUTATION =`
+	mutation($propertyId: ID!){
+		deleteProperty(propertyId:$propertyId){
+			_id
 		}
 	}
 `

@@ -41,16 +41,8 @@ function Login(){
         //console.log("user signed out")
       }
     return(
-        <div style={{width:"100vw",height:"80vh"}}>
-          <div style={{
-            // width:"250px",
-            margin:"10% 50px",
-            backgroundColor:"#eee",
-            padding:"10px",
-            borderRadius:"10px",
-            position:"absolute",
-            top:"10px",
-            }}>
+        <div style={{width:"100vw",height:"80vh",display:"flex"}}>
+          <div className="Login" >
             <div style={{margin:"0 15%"}}>
               {currentUser ? 
                 <GoogleLogout
@@ -78,7 +70,7 @@ function Login(){
                       textAlign: "center",
                     }}
                   >
-                    By continuing you agree to our Terms & Conditions. See our 
+                    By continuing you agree to our <a href="https://www.termsandconditionsgenerator.com/live.php?token=BiNDn4Sa6jHgN92mCrbof7VzVUEdm563" target="_blank" rel="noopener noreferrer" >Terms&Conditions</a>. See our 
                     <a href="https://www.privacypolicygenerator.info/live.php?token=KHzPleRJifcjjGtdr7kophQ59Ao9hbHC" target="_blank"
                         rel="noopener noreferrer" 
                         > Privacy Notice</a>.
@@ -115,6 +107,7 @@ function Login(){
                   </div>
             </div>
           </div>
+          
         </div>
     )
 }

@@ -160,4 +160,4 @@ const [{product},dispatch]=useStateValue([])
                         <Link to="https://www.privacypolicygenerator.info/live.php?token=KHzPleRJifcjjGtdr7kophQ59Ao9hbHC">Terms&Conditions</Link>
                         <Link to="https://www.privacypolicygenerator.info/live.php?token=KHzPleRJifcjjGtdr7kophQ59Ao9hbHC">Events</Link>
             
-            
+            776611

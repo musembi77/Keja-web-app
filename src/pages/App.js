@@ -11,13 +11,13 @@ import PostListing from './PostListing'
 import WishList from './WishList';
 import Services from './Services'
 import Footer from '../components/Footer'
+import About from './About'
+import Support from './Support'
+//admin
 function App() {
-  
   return (
-    
-      <div >
-      
-        <Router>
+      <div style={{position:"relative"}}>
+      <Router>
           <Header/>
           <Routes>
             <Route path='/' element={<Index />}/>
@@ -29,11 +29,13 @@ function App() {
             <Route path='/listwithUs'  element = {<ListingIndex />}/>
             <Route path='/postlisting'  element = {<PostListing />}/>
             <Route path='/Services'  element = {<Services />}/>
-            
+            <Route path='/about'  element = {<About />}/>
+            <Route path='/support'  element = {<Support />}/>
           </Routes>
-          <Footer />
+          <div style={{position:"static",bottom:"0"}}>
+            <Footer />
+          </div>
         </Router>
-        
       </div>
     
   );

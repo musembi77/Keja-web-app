@@ -1,44 +1,107 @@
-import React from 'react';
+import React,{useState}from 'react';
 import {Link} from 'react-router-dom';
 import SearchIcon from "@mui/icons-material/Search"
 import RoomIcon from "@mui/icons-material/Room"
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+// import {useStateValue} from "../components/StateProvider"
 
 function Index(){
+  const [location,setLocation]=useState('')
+  const [area,setArea]=useState('')
+  const [type,setType]=useState('')
+
+  const HandleFilter=(e)=>{
+    e.preventDefault()
+    setType(type)
+     setArea(area)   
+    setLocation(location)
+    console.log(location)
+  }
+
+
   return(
     <div >
       <div style={{display:"flex",flexDirection:"column",width:"100vw"}}>
       </div>
-      <div style={{position:"relative"}}>
-        <img src="/index1.jpg" alt="logo" style={{width:"100%",height:"450px",objectFit:"cover",}}/>
-        <div 
+      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",position:"relative"}}>
+        <form 
             style={{
                 display:"flex",
-                position:"absolute",
-                top:"50%",
-                left:"20%",
-                margin:"0 auto",
-                width:"50%",
+                margin:"0",
                 height:"40px",
                 backgroundColor:"grey",
-                textDecoration:"none"
+                textDecoration:"none",
+                position:"absolute",
+                top:"40%",
+                zIndex:"99"
               }} >
-            <input placeholder="Search Apartment, property, stalls" 
-                style={{
-                    flex:"1",
-                    width:"200px",
-                    outline:"none",
-                    border:"none",
-                    color:"#000000",
-                    padding:"5px",
-                }}
-                
-            />
-            <Link
+              <select 
+              style={{
+                fontFamily: "Poppins-Regular",
+                fontSize: "14px",
+                color: "#1b1b1b",
+                border: "none",
+                height: "100%",
+                padding: "5px 10px",
+                outline: "none",
+                overflowWrap: "break-word",
+                flex:0.7
+              }}
+              onChange={(e)=>{
+              setLocation(e.target.value)
+              }}
+              >
+              <option value="Juja">Juja</option>
+            </select>
+            <select 
+              style={{
+                fontFamily: "Poppins-Regular",
+                fontSize: "14px",
+                color: "#1b1b1b",
+                border: "none",
+                height: "100%",
+                padding: "5px 10px",
+                outline: "none",
+                overflowWrap: "break-word",
+                flex:0.7
+              }}
+              onChange={(e)=>{
+              setArea(e.target.value)
+              }}
+              >
+              <option value="Gate A">Gate A</option>
+              <option value="Gate B">Gate B</option>
+              <option value="Gate C">Gate C</option>
+              <option value="Gate D">Gate D</option>
+            </select>
+            <select 
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              outline: "none",
+              overflowWrap: "break-word",
+              flex:0.7
+            }}
+            onChange={(e)=>{
+              setType(e.target.value)
+            }}
+            >
+            <option value="BedSitter">BedSitter</option>
+            <option value="OneBedroom">OneBedroom</option>
+            <option value="TwoBedroom">TwoBedroom</option>
+            <option value="ThreeBedroom">ThreeBedroom</option>
+          </select>
+            <button
                 style={{border:"none",color:"#000000",textDecoration:"none",padding:"10px 10px",display:"flex",justifyContent:"center",backgroundColor:"#ffa31a"}}
-                to="/explore"
-            ><SearchIcon />Search</Link>
-        </div>
+                type="submit"
+                onClick={HandleFilter}
+            ><SearchIcon /></button>
+        </form>
+        <img src="/index1.jpg" alt="logo" style={{width:"100%",height:"450px",objectFit:"cover",}}/>
       </div>
 
       <div style={{backgroundColor:"#ffffff",justifyContent:'center',color:"#000000",textAlign:"center",width:"100%",height:"300px",fontSize:"1.8rem",fontWeight:"bold",padding:"10px"}}>

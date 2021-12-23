@@ -26,6 +26,7 @@ function PropertyView(){
                 key={property.id}
                 id={property.id}
                 mainimage={property.mainimage}
+                overviewimage={property.overviewimage}
                 propertyname={property.propertyname}
                 price={property.price}
                 location={property.location}
@@ -59,11 +60,7 @@ const ViewDetails=({
             description,
             amenities,
             overview,
-            overviewimg1,
-            contact1,
-            contact1name,
-            contact2name,
-            contact2,
+            overviewimage,
             reviewname,
             reviewdate,
             review,
@@ -157,10 +154,10 @@ const ViewDetails=({
         <p>{amenities}</p>
       </div>
       <div style={{display:"flex",flexWrap:"wrap"}}>
-        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
-        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
-        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
-        <img src={mainimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
       </div>
         {
           //Contacts

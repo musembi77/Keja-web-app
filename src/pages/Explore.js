@@ -5,7 +5,6 @@ import {GET_PROPERTY_QUERY} from '../GraphQl/Queries.js'
 import Skeleton from '../components/Skeleton'
 import SearchIcon from '@mui/icons-material/Search';
 
-
 function Explore() {
     const [isloading, setIsLoading]=useState([]);
     const [query, setQuery]=useState('');
@@ -19,7 +18,7 @@ function Explore() {
     },[isloading,loading,data]);
     
     return (
-        <div style={{width:"100%"}}>
+        <div style={{width:"100%",position:"relative"}}>
             <div style={{position:"relative"}}>
             <div style={{display:"flex",justifyContent:"center",margin:"0 10%",alignItems:"center"}}>
             <input 
@@ -39,7 +38,7 @@ function Explore() {
                 onChange={(e)=>setQuery(e.target.value)}
             />
             <SearchIcon />
-            </div>    
+            </div >    
                     <div style={{
                         width:'100vw',
                         backgroundColor:'#ffffff',
@@ -58,7 +57,7 @@ function Explore() {
                                     <div>
                                         <Property
                                             property={property}
-                                            //key={property.id}
+                                            key={property.id}
                                         />
                                     </div>
                                 )
