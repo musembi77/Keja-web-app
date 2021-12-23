@@ -30,7 +30,6 @@ function Explore() {
                     border:'none',
                     borderRadius:"999px",
                     height:'100%',
-                    
                     width:'80%',
                     overflowWrap:'break-word',
                     backgroundColor:"#e5e5e5"

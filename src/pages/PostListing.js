@@ -63,6 +63,20 @@ const handleImageUpload = async () =>{
   try{
     const data = new FormData()
       data.append("file", mainimage);
+      data.append('upload_preset', 'keja-web-app');
+      data.append("cloud_name","musembi77")
+      const res = await axios.post("https://api.cloudinary.com/v1_1/musembi77/image/upload",
+        data)
+      return res.data.url
+  }catch(error){
+    console.error(error)
+  }
+  
+}
+const handleImageUpload1 = async () =>{
+  //console.log(mainimage)
+  try{
+    const data = new FormData()
       data.append("file", overviewimage);
       data.append('upload_preset', 'keja-web-app');
       data.append("cloud_name","musembi77")
@@ -75,11 +89,14 @@ const handleImageUpload = async () =>{
   
 }
 
-
 const handleSubmit = async (e) =>{
   try{
     e.preventDefault();
     const url = await handleImageUpload();
+    const url1 = await handleImageUpload1();
+    console.log(url)
+    console.log(url1)
+
     const variables ={
         landlordname,
         propertyname,
@@ -88,7 +105,7 @@ const handleSubmit = async (e) =>{
         description,
         amenities,
         mainimage:url,
-        overviewimage:url,
+        overviewimage:url1,
         area,
         vacancy,
         contact
@@ -336,7 +353,7 @@ const handleSubmit = async (e) =>{
                 overflowWrap: "break-word",
               }}
 
-              accept="image/png, image/jpeg,image/jpg"
+              accept="images*"
               onChange={(e)=>{
                 setOverviewimage(e.target.files[0])
               }}

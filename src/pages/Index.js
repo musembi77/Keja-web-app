@@ -29,7 +29,7 @@ function Index(){
                 display:"flex",
                 margin:"0",
                 height:"40px",
-                backgroundColor:"grey",
+                backgroundColor:"",
                 textDecoration:"none",
                 position:"absolute",
                 top:"40%",

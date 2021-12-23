@@ -59,7 +59,6 @@ const ViewDetails=({
             stats,
             description,
             amenities,
-            overview,
             overviewimage,
             reviewname,
             reviewdate,
