@@ -152,7 +152,7 @@ const ViewDetails=({
         <h4 style={{color:"#000000"}}>Amenities</h4>
         <p>{amenities}</p>
       </div>
-      <div style={{display:"flex",flexWrap:"wrap"}}>
+      <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-around"}}>
         <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
         <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
         <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
