@@ -1,5 +1,6 @@
 export const initialState = {
     product: [],
+    showreviews:[],
     currentUser: null,
     isAuth:null,
     propertywishlist: [],
@@ -13,6 +14,12 @@ function reducer(state, action) {
             return {
                 ...state,
                 product: [action.product],
+            };
+        case "SHOW_ALL_REVIEWS":
+            // lOGIC TO VIEW PRODUCT
+            return {
+               ...state,
+                showreviews: action.showreviews,
             };
         case "LOGIN_USER":
             return {
@@ -47,37 +54,6 @@ function reducer(state, action) {
                 searchdata: action.payload
 
             }
-        // case "ADD_TO_WATCHLIST":
-        //     // lOGIC TO ADD ITEMS TO moviewatchlist
-        //     return {
-        //         ...state,
-        //         moviewatchlist: [...state.moviewatchlist, action.movie],
-        //     };
-        // case "REMOVE_FROM_MOVIEWATCHLIST":
-        //     // lOGIC TO REMOVE ITEMS from MOVIEWATCHLIST
-
-        //     let newmoviewatchlist = [...state.moviewatchlist];
-
-        //     const index = state.moviewatchlist.findIndex(
-        //         (moviewatchlistItem) => moviewatchlistItem.id === action.id
-        //     );
-
-        //     if (index >= 0) {
-        //         // item exists in MOVIEWATCHLIST, remove it...
-        //         newmoviewatchlist.splice(index, 1);
-        //     } else {
-        //         console.warn("Cant remove MOVIE");
-        //     }
-        //     return {
-        //         ...state,
-        //         moviewatchlist: newmoviewatchlist,
-        //     };
-        // case "SET_USER":
-        //     return{
-        //         ...state,
-        //         user:action.user,
-        //         displayName:action.displayName
-        //     }
         default:
             return state;
     }

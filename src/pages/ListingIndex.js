@@ -33,7 +33,7 @@ function ListingIndex() {
           <p style={{width:"200px",color:"#545454",margin:"5px 0",fontSize:"0.9rem"}}>Laundry, Moving services , Sell your furniture, Wi-fi packages, cleaning Services and many more</p>
           <Link
             style={{border:"none",color:"#000000",textDecoration:"none",padding:"5px",margin:"10px 0",backgroundColor:"#ffa31a"}}
-            to={currentUser ? '/postlisting' : '/login'}
+            to={currentUser ? '/servicelisting' : '/login'}
           >
             List Your Service
         </Link>

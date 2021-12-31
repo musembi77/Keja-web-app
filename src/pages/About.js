@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function About(){
 	return(
@@ -15,8 +16,7 @@ function About(){
 					We ,Keja, help them find an apartment that truly connect with them at the comfort of their homes.We redefine 
 					house hunting from miserable and overwhelming to providing an easy and enjoyable experience.We Provide Listing advertisements
 					of available vacancies in rentals, flats and homes.We connect house hunters to landlords, homeOwners, services through our platform.
-					Click here to have an in-depth walkthrough of the House-Hunting process.
-					List Your Property.
+					Click <Link to='/support'>here</Link> to have an in-depth walkthrough of the House-Hunting process.
 					</p>
 				</div>
 				<p style={{fontFamily:"Poppins-Bold",fontSize:"1.2rem",}}>Our Vision</p>

@@ -162,4 +162,30 @@ const [{product},dispatch]=useStateValue([])
             
             776611
 
+            const pageCount = Math.ceil(pageNumber/propertyPerPage)
+const [pageNumber, setPageNumber]=useState(0);
+             const getNumber = async()=>{ 
+            const pageNumber = await data.get_Properties.length
+            console.log(pageNumber)
+            }
+        getNumber();
             
+        console.log(data.get_Properties)
+
+        const number = async()=>{ const pageNumber = await } 
+        setPageNumber(pageNumber)
+        number()
+        <ReactPaginate 
+                breakLabel="..."
+                nextLabel=">"
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={5}
+                pageCount={Math.ceil(data.get_Properties.length/propertyPerPage)}
+                previousLabel="<"
+                renderOnZeroPageCount={null}
+                containerClassName={"paginationBtn"}
+                previousLinkClassName={"previousBtn"}
+                nextLinkClassName={"nextBtn"}
+                disabledClassName={"previousBtn"}
+                activeClassName={"previousBtn"}
+            />

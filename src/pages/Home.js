@@ -1,10 +1,17 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {Link } from "react-router-dom"
 import {newproperty} from '../components/dummydata.js'
 import {Location} from '../components/dummydata.js'
 import ContentSlider from '../components/ContentSlider.js';
+import MapIcon from '@mui/icons-material/Map';
+import Map from '../components/Map.js'
+import CloseIcon from '@mui/icons-material/Close';
 
 function Home({property}){
+  const [showmap,setShowMap]=useState('')
+  const HandleMap=()=>{
+    setShowMap(!showmap)
+  }
   return(
     <div>
       
@@ -53,6 +60,22 @@ function Home({property}){
             })}
           </div>
       </div>
+      <div style={{width:"100vw",objectFit:"contain"}}>
+        
+        {showmap?
+          <> 
+          <CloseIcon onClick={HandleMap}/>
+          <Map />
+          </>:
+          <div style={{height:"",backgroundColor:"#eee",display:"flex",margin:"10px 0"}}>
+          <p style={{fontSize:"0.8rem"}}>Click Map to Find apartments near you</p>
+          <MapIcon onClick={HandleMap}/>
+          </div>
+        }
+        
+        
+      </div>
+      
       {
         //Featured / Recommended
       } 

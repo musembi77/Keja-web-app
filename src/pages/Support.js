@@ -31,7 +31,7 @@ function Support (){
                         rel="noopener noreferrer"><WhatsAppIcon style={{fontSize:"0.8rem"}}/>0771712005</a>
 			</div>
 			
-			<p>How Keja Works</p>
+			<p>How to Get an Aprtment</p>
 			<img src='./howitworks.jpg' alt='logo' style={{width:"100vw",height:""}}/>
 			<div style={{display:"flex",textAlign:"center",justifyContent:"center",margin:"10px 0"}}>
 				<FlagIcon/>

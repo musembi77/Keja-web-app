@@ -70,9 +70,10 @@ function Index(){
               }}
               >
               <option value="Gate A">Gate A</option>
-              <option value="Gate B">Gate B</option>
-              <option value="Gate C">Gate C</option>
-              <option value="Gate D">Gate D</option>
+            <option value="Gate B">Gate B</option>
+            <option value="Gachororo">Gachororo</option>
+            <option value="Gate C">Gate C</option>
+            <option value="Gate D">Gate D</option>
             </select>
             <select 
             style={{
@@ -91,6 +92,7 @@ function Index(){
             }}
             >
             <option value="BedSitter">BedSitter</option>
+            <option value="Hostel">Hostel</option>
             <option value="OneBedroom">OneBedroom</option>
             <option value="TwoBedroom">TwoBedroom</option>
             <option value="ThreeBedroom">ThreeBedroom</option>

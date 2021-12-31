@@ -8,16 +8,19 @@ import {Room,
         WhatsApp,
         FavoriteBorder,
         Favorite,
+        Create,
+        NavigateNext
 } from '@mui/icons-material'
 import LinkIcon from '@mui/icons-material/Link';
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { useStateValue } from "../components/StateProvider";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import Review from '../components/Review.js'
 
 function PropertyView(){
-  const [{ product,}] = useStateValue([]);
-  //console.log(product)
+  const [{ product,}] = useStateValue('');
+  
   return(
     <div>
       {product.map((property)=>{
@@ -34,13 +37,7 @@ function PropertyView(){
                 description={property.description}
                 amenities={property.amenities}
                 overview={property.overview}
-                review={property.review}
-                contact1={property.contact1}
-                contact1name={property.contact1name}
-                contact2={property.contact2}
-                contact2name={property.contact2name}
-                reviewdate={property.reviewdate}
-                reviewname={property.reviewname}
+                reviews={property.reviews}
                 vacancy={property.vacancy}
           />
           )
@@ -52,6 +49,7 @@ function PropertyView(){
 export default PropertyView;
 
 const ViewDetails=({
+            id,
             mainimage,
             propertyname,
             price,
@@ -60,14 +58,13 @@ const ViewDetails=({
             description,
             amenities,
             overviewimage,
-            reviewname,
-            reviewdate,
-            review,
             vacancy,
+            reviews,
           }
             
 )=>{
-  console.log(propertyname)
+  //console.log(reviews)
+  const [{currentUser}]=useStateValue();
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText("#ffa31a"),
     backgroundColor: "#ffa31a",
@@ -75,15 +72,29 @@ const ViewDetails=({
       backgroundColor: "#ffa31a",
     },
   }));
+  const [dispatch] = useStateValue('')
+  
   const [showcontact,setShowContact]=useState();
-
   const HandleContact = () =>{
     setShowContact(true)
   }
-  const[like,setLike]=useState();
 
+  const[like,setLike]=useState();
   const HandleLike=()=>{
     setLike(!like);
+  }
+  
+  const HandleShowAllReview=()=>{
+    // console.log("show all reviews")
+    // console.log("dispatch fired");
+    // console.log(showreviews);
+    dispatch({
+        type: "SHOW_ALL_REVIEWS",
+        showreviews: {
+          id:id,
+          reviews:reviews,
+        },
+      });
   }
   return(
     <div style={{position:"relative"}}>
@@ -126,18 +137,6 @@ const ViewDetails=({
         //Ratings
       }
       <div >
-        <div style={{display:"flex",justifyContent:""}}>
-          <p style={{color:"#000000"}}>Stats:</p>
-          <div style={{fontSize:"1rem",display:"flex"}}>
-              <Star style={{color:"#ffa31a",fontSize:"1.2rem"}}/>
-              <p style={{
-                width:"55px",
-                padding:"2.5px",
-                fontSize:"0.85rem",
-                fontFamily:"Poppins-bold"
-              }}>{stats}</p>
-          </div>
-        </div>
       {
         //Description
       }
@@ -152,12 +151,50 @@ const ViewDetails=({
         <h4 style={{color:"#000000"}}>Amenities</h4>
         <p>{amenities}</p>
       </div>
+      {
+        //Policies
+      }
+      <div style={{color:"grey"}}>
+        <h4 style={{color:"#000000"}}>Policies</h4>
+        <p>{amenities}</p>
+      </div>
       <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-around"}}>
         <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
         <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
         <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
         <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
       </div>
+        {
+          //Review
+        }
+        <div style={{backgroundColor:"#e5e5e5",padding:"5px",borderRadius:"5px"}}>
+            <div style={{display:"flex",justifyContent:"space-between"}}>
+              <h4 style={{color:"#000000"}}>Reviews</h4>
+              {
+                currentUser?(<Link to="/reviews" style={{margin:"0px 10px",fontSize:"13px",color:"#000000",textDecoration:"none"}} onClick={HandleShowAllReview}>Show All <NavigateNext style={{fontSize:"0.9rem",paddingTop:"2px"}}/></Link>)
+                :
+                (<p style={{fontSize:"0.8rem"}}><Link to="/login">Log in</Link> to see all reviews</p>)
+              }
+              
+            </div>
+            <div style={{display:"flex",justifyContent:"space-between"}}>
+              <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <Star style={{color:"#ffa31a",fontSize:"1.2rem"}}/>
+                <p style={{fontFamily:""}}>4.0</p>
+                <p style={{fontSize:"0.6rem",color:"grey",margin:"auto 10px"}}>reviews</p>
+              </div>
+              <Link to="/reviews" style={{display:"flex",margin:"0",alignItems:"center",fontSize:"13px",textDecoration:"none",color:"#ffa31a"}} >      
+                  Write a review<Create style={{fontSize:"0.8rem",color:"#000000"}}/>
+              </Link>
+            </div>        
+          </div>
+          {reviews.map((item)=>{
+          return(
+            <div>
+              <Review item={item}/>
+            </div>
+          )
+          })}
         {
           //Contacts
         }
@@ -203,88 +240,3 @@ const ViewDetails=({
   </div>
   )
 }
-
-//
-      //overview
-      // <div style={{color:"grey"}}>
-      //   <h4 style={{color:"#000000"}}>Overview</h4>
-      //   <div style={{display:"flex",flexWrap:"wrap"}}>
-      //     {overview.map((item)=>{
-      //       return(
-      //         <div>
-      //           <img 
-      //           src={item.overviewimg} 
-      //           alt='roomview'
-      //           style={{width:"150px",
-      //             height:"100px",
-      //             margin:"2.5px 5px", 
-      //             objectFit:"cover",
-      //             borderRadius:"10px"}}
-      //           />
-      //         </div>
-      //         )
-      //     })}
-      //   </div>
-      // </div>
-      // {
-      //     //Reviews
-      //   }
-      //   <div style={{color:""}}>
-      //   <h3 style={{}}>Reviews</h3>
-      //     <div style={{
-      //       display:"flex",
-      //       //justifyContent:"space-between",
-      //       alignItems:"center",
-      //       textAlign:"center",
-      //       overflow:"auto",
-      //       //whiteSpace:"nowrap",
-      //       width:"95%",
-      //       margin:"10px 0",
-      //     }} className="scrollbar">
-      //       {review.map((item)=>{
-      //         return(
-      //           <div> 
-      //             <ul 
-      //               style={{
-      //                 //backgroundColor:"#f79d00",
-      //                 width:"200px",
-      //                 height:"150px",
-      //                 textAlign:"center",
-      //                 placeItems:"center",
-      //                 borderRadius:"10px",
-      //                 margin:"0 5px",
-      //                 textDecoration:"none",
-      //                 listStyle:"none",
-      //                 //borderRadius:"30px"
-      //               }}
-      //               >
-      //               <div style={{
-      //                   display:"flex",
-      //                   flexDirection:"column",
-      //                   //width:"175px",
-      //                   height:"150px",
-      //                   padding:"5px",
-      //                   fontSize:"0.9rem",
-      //                   fontFamily:"Poppins-regular",
-      //                   textAlign:"center",
-      //                   margin:" 0 8px",
-      //                 }}>
-      //                   <div style={{display:"flex"}}>
-      //                     <AccountCircle style={{fontSize:"2rem"}}/>
-      //                     <div style={{fontSize:"0.7rem"}}>
-      //                       <p style={{color:"#000000"}}>{item.name}</p>
-      //                       <span>{item.date}</span>
-      //                     </div>
-      //                   </div>
-                        
-      //                   <p style={{color:"grey",fontSize:"0.7rem",overflowWrap:"break-word"}}>{item.content}</p>
-      //               </div>
-      //             </ul>
-      //           </div>
-      //         )
-      //       })}
-      //     </div>
-      //   </div>
-
-
-   

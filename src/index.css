@@ -40,26 +40,49 @@
 .btn_1{
   display:flex;
   justify-content: space-around;
+  text-decoration: none;
+  color: white;
+  border-radius: 10px;
   background: linear-gradient(to right, #ffb75e, #ed8f03);
   width:120px;
   margin: 10px auto;
   padding: 10px;
   text-align: center;
   font-size: 18px;
-  text-decoration:none;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  border-radius: 10px;
   outline:"none"
 }
 .form_handle{
   width: 400px;
 }
+.paginationbtns{
+  width: 200px;
+  text-decoration:none;
+  transition: 0.5s;
+  color: #000000;
+  list-style: none;
+  display: flex;
+  justify-content:center;
+  
+  font-size: 0.8rem;
+  cursor: pointer;
+  padding: 5px;
+  margin:5px auto;
+  border-radius: 10px;
+}
+.paginationbtns a{
+  padding: 5px;
+  margin:10px 5px;
+  text-decoration: none;
+}
+.paginationActive a{
+  color:#ffffff;
+  background-color: #ffa31a;
+  border-radius: 50px;
+}
 @media screen and (max-width:600px){
     
   .scrollbar::-webkit-scrollbar{
-    display: none;
+    display: none; 
   }
   .side_1{
     flex-direction: column;
@@ -73,10 +96,22 @@
     margin: auto;
     background-color: #ffffff;
   }
-  
+  .Review{
+    width: 100%;
+    margin: auto;
+    background-color: #ffffff;
+    
+    margin: 10px 0;
+  }
 }
 @media screen and (min-width:600px){
   .Login{
     width: 300px;
+  }
+  .Review{
+    width: 300px;
+    
+    margin: 15px 0;
+
   }
 }

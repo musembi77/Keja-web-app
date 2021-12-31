@@ -5,9 +5,11 @@ import { GraphQLClient } from 'graphql-request'
 import { useStateValue } from "../components/StateProvider"
 import {GET_USER_QUERY} from "../GraphQl/Queries.js"
 import {BASE_URL} from '../Client.js'
+import { useNavigate } from 'react-router-dom';
 
 function Login(){
     const [{ currentUser }, dispatch] = useStateValue();
+    const navigate = useNavigate();
       const onSuccess = async googleUser =>{
         try{
           const idToken = googleUser.getAuthResponse().id_token;
@@ -25,9 +27,10 @@ function Login(){
             type:"IS_LOGGEDIN",
             payload:googleUser.isSignedIn()
           })
-        }catch(err){
-          onFailure(err)
-        }
+          navigate('/home');
+          }catch(err){
+            onFailure(err)
+          }
       }
 
       const onFailure = err =>{

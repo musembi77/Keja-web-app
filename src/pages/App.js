@@ -8,11 +8,14 @@ import ListingIndex from './ListingIndex';
 import Login from './Login';
 import Header from '../components/Header';
 import PostListing from './PostListing'
+import ServiceListing from './ServiceListing'
 import WishList from './WishList';
 import Services from './Services'
 import Footer from '../components/Footer'
 import About from './About'
 import Support from './Support'
+
+import Reviewpage from './Reviewpage'
 //admin
 function App() {
   return (
@@ -28,9 +31,12 @@ function App() {
             <Route path='/wishlist'  element = {<WishList />}/>
             <Route path='/listwithUs'  element = {<ListingIndex />}/>
             <Route path='/postlisting'  element = {<PostListing />}/>
+            <Route path='/servicelisting'  element = {<ServiceListing />}/>
             <Route path='/Services'  element = {<Services />}/>
             <Route path='/about'  element = {<About />}/>
             <Route path='/support'  element = {<Support />}/>
+
+            <Route path='/reviews'  element = {<Reviewpage />}/>
           </Routes>
           <div style={{position:"static",bottom:"0"}}>
             <Footer />

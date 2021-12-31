@@ -1,13 +1,28 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 // import Skeleton from '../components/Skeleton.js'
 import DryCleaningIcon from '@mui/icons-material/DryCleaning';
-
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import WeekendIcon from '@mui/icons-material/Weekend';
 import WifiIcon from '@mui/icons-material/Wifi';
 import SearchIcon from '@mui/icons-material/Search';
 import {Link } from "react-router-dom"
+
+import {useQuery,} from '@apollo/client';
+import {GET_SERVICE_QUERY} from '../GraphQl/Queries.js'
+import Skeleton from '../components/Skeleton'
+
 function Services(){
+  const [isloading, setIsLoading]=useState([]);
+    const { loading, data } = useQuery(GET_SERVICE_QUERY);
+    useEffect(()=>{
+        if(loading){
+            setIsLoading(isloading)
+        }
+        if(data){
+            console.log(data.get_Properties)
+            
+        }
+    },[data,isloading,loading]);
 	const Services=[
   // {
   // icon:<CreditScoreIcon />,
@@ -98,10 +113,19 @@ function Services(){
         </div>
       </div>
       		<div style={{display:"flex",flexWrap:"Wrap"}}>
-      		<Product />
-      		<Product />
-      		<Product />
-      		<Product />
+      		{isloading && !data? 
+              <Skeleton /> :
+                data.get_Services.map((service)=>{
+                    return(
+                      <div>
+                        <Product
+                          service={service}
+                          key={service.id}
+                        />
+                      </div>
+                    )
+                  })
+                }
       		</div>
 			
 		</div>
@@ -109,7 +133,7 @@ function Services(){
 }
 export default Services;
 
-const Product=()=>{
+const Product=({service})=>{
 	return(
 		<div  style={{
       lineHeight:"14px",
@@ -126,7 +150,7 @@ const Product=()=>{
       to='/product'
       >
           <img 
-            src='./Keja (3).png'  
+            src={service.mainimage} 
             alt="logo" style={{width:"100%",height:"150px",objectFit:"cover",borderRadius:"10px"}}
             />
           <div style={{padding:"5px"}}>

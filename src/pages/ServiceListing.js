@@ -1,13 +1,13 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import { Button, withStyles } from "@material-ui/core";
-import {CREATE_PROPERTY_MUTATION} from '../GraphQl/Mutations.js'
 import DeleteIcon from '@mui/icons-material/Delete';
+import {CREATE_SERVICE_MUTATION} from '../GraphQl/Mutations.js'
 import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios'
 import {useStateValue} from '../components/StateProvider'
 import {useClient} from '../Client.js'
 
-function PostListing (){
+function ServiceListing (){
   const ColorButton = withStyles((theme) => ({
     root: {
       color: theme.palette.getContrastText("#ffa31a"),
@@ -34,7 +34,7 @@ function PostListing (){
   )
 }
 
-export default PostListing;
+export default ServiceListing;
 
 const Form=()=>{
   const client = useClient()
@@ -44,23 +44,17 @@ const Form=()=>{
       backgroundColor: "#ffa31a",
     },
   }))(Button);
-  const [landlordname, setLandlordname]=useState('');
-  const [propertyname, setPropertyname]=useState('');
-  const [price, setPrice]=useState('');
+  const [ownername, setOwnerName]=useState('');
+  const [servicename, setServicename]=useState('');
   const [type,setType]=useState('')
-  const [longitude, setLongitude]=useState('')
-  const [latitude, setLatitude]=useState('')
   const [location, setLocation]=useState('');
   const [area, setArea]=useState('');
   const [description, setDescription]=useState('');
-  const [amenities, setAmenities]=useState('');
-  const [policy, setPolicy]=useState('');
-  const [vacancy, setVacancy]=useState('');
+  const [packages, setPackages]=useState('');
   const [contact, setContact]=useState('');
-  //const [payment, setPayment]=useState('');
+  const [policy, setPolicy]=useState('');
   const [mainimage, setMainimage]=useState('')
   const [overviewimage, setOverviewimage]=useState('')
-  //const [url,setUrl]=useState('');
   const [submission,setSubmission]=useState('')
 
 const handleImageUpload = async () =>{
@@ -93,30 +87,7 @@ const handleImageUpload1 = async () =>{
   }
   
 }
-const INITIAL_VIEWPORT ={
-      width:375,
-      height:200,
-      latitude: -1.0969,
-        longitude: 37.0154,
-        zoom: 14
-  }
-  const [viewport, setViewport] = useState(INITIAL_VIEWPORT);
-  const [propertyPosition, setPropertyPosition] = useState([])
 
-  useEffect(()=>{
-    getPropertyPosition()
-    console.log(propertyPosition.longitude)
-  })
-
-  const getPropertyPosition=()=>{
-    if("geolocation" in navigator){
-      navigator.geolocation.getCurrentPosition(position=>{
-        const{latitude,longitude}=position.coords
-          setViewport({...viewport, latitude,longitude})
-          setPropertyPosition({latitude,longitude})
-      })
-    }
-  }
 const handleSubmit = async (e) =>{
   try{
     e.preventDefault();
@@ -126,25 +97,21 @@ const handleSubmit = async (e) =>{
     console.log(url1)
 
     const variables ={
-        landlordname,
-        propertyname,
-        price,
+        ownername,
+        servicename,
         type,
-        longitude,
-        latitude,
         location,
         area,
         description,
-        amenities,
+        packages,
         policy,
         mainimage:url,
         overviewimage:url1,
-        vacancy,
         contact
       }
-    const {CreateProperty} = await client.request(CREATE_PROPERTY_MUTATION,variables);
-    console.log('Property Created',{CreateProperty})
-    setSubmission({CreateProperty})
+    const {CreateService} = await client.request(CREATE_SERVICE_MUTATION,variables);
+    console.log('Property Created',{CreateService})
+    setSubmission({CreateService})
   }catch(error){
     console.error(error)
   }
@@ -154,26 +121,8 @@ const handleSubmit = async (e) =>{
   return(
     <form style={{backgroundColor:"#e5e5e5",fontSize:"0.9rem",paddingTop:"10px"}} className='form_handle'>
         {submission? <p>Submission success</p>:<p>Post Listing</p>}
-        <div style={{fontSize:"0.6rem",padding:"10px"}}>
-            <p >We will use your location to help make your apartment visible on maps</p>
-            {propertyPosition?
-              <div>
-                <p>Your Location Is</p>
-                <p>longitude: <span style={{color:"#ffa31a"}}>{propertyPosition.longitude}</span></p>
-                <p>latitude : <span style={{color:"#ffa31a"}}>{propertyPosition.latitude}</span></p>
-              </div>:
-              <div>
-                <p>longitude</p>
-                <p>latitude </p>
-              </div>
-              
-              
-            }
-            
-          </div>
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          
-          <p style={{width:"20%"}}>LandlordName:</p>
+          <p style={{width:"20%"}}>Name:</p>
           <input
             type="text"
             style={{
@@ -189,35 +138,12 @@ const handleSubmit = async (e) =>{
               flex:0.7
             }}
             onChange={(e)=>{
-              setLandlordname(e.target.value)
+              setOwnerName(e.target.value)
             }}
           />
         </div>
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>PropertyName:</p>
-          <input
-            type="text"
-            
-            //onChange={(e) => setEmail(e.target.value)}
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              flex:0.7
-            }}
-             onChange={(e)=>{
-              setPropertyname(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Price/month:</p>
+          <p style={{width:"20%"}}>Service name:</p>
           <input
             type="text"
             style={{
@@ -233,7 +159,7 @@ const handleSubmit = async (e) =>{
               flex:0.7
             }}
              onChange={(e)=>{
-              setPrice(e.target.value)
+              setServicename(e.target.value)
             }}
           />
         </div>
@@ -256,12 +182,11 @@ const handleSubmit = async (e) =>{
               setType(e.target.value)
             }}
             >
-            <option value="BedSitter">BedSitter</option>
-            <option value="Hostel">Hostel</option>
-            <option value="OneBedroom">OneBedroom</option>
-            <option value="TwoBedroom">TwoBedroom</option>
-            <option value="ThreeBedroom">ThreeBedroom</option>
-            <option value="BedSitter&OneBedroom">BedSitter&OneBedroom</option>
+            <option value="BedSitter">Laundry</option>
+            <option value="Movers">Movers</option>
+            <option value="Gas Refill">Gas Refill</option>
+            <option value="Water refill">Water refill</option>
+            <option value="Wifi">Wifi</option>
           </select>
         </div>
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
@@ -282,48 +207,6 @@ const handleSubmit = async (e) =>{
             }}
              onChange={(e)=>{
               setLocation(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Latitude:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              flex:0.7
-            }}
-             onChange={(e)=>{
-              setLatitude(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Longitude:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              flex:0.7
-            }}
-             onChange={(e)=>{
-              setLongitude(e.target.value)
             }}
           />
         </div>
@@ -374,7 +257,7 @@ const handleSubmit = async (e) =>{
             />
         </div>
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Amenities:</p>
+          <p style={{width:"20%"}}>Description:</p>
           <textarea 
             style={{
               fontFamily: "Poppins-Regular",
@@ -389,51 +272,10 @@ const handleSubmit = async (e) =>{
               flex:0.7
             }}
              onChange={(e)=>{
-              setAmenities(e.target.value)
+              setPackages(e.target.value)
             }}
             />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Policies:</p>
-          <textarea 
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              flex:0.7
-            }}
-             onChange={(e)=>{
-              setPolicy(e.target.value)
-            }}
-            />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Vacancy:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              flex:0.7
-            }}
-             onChange={(e)=>{
-              setVacancy(e.target.value)
-            }}
-          />
-        </div>
+        </div>        
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
           <p style={{width:"20%"}}>Contact:</p>
           <input
@@ -455,29 +297,27 @@ const handleSubmit = async (e) =>{
             }}
           />
         </div>
-        {
-          // <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-        //   <p style={{width:"20%"}}>Mpesa ref code:</p>
-        //   <input
-        //     type="text"
-        //     style={{
-        //       fontFamily: "Poppins-Regular",
-        //       fontSize: "14px",
-        //       color: "#1b1b1b",
-        //       border: "none",
-        //       height: "100%",
-        //       padding: "5px 10px",
-        //       margin: "11px",
-        //       outline: "none",
-        //       overflowWrap: "break-word",
-        //       flex:0.7
-        //     }}
-        //      onChange={(e)=>{
-        //       setPayment(e.target.value)
-        //     }}
-        //   />
-        // </div>
-      }
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Mpesa ref code:</p>
+          <input
+            type="text"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              flex:0.7
+            }}
+             onChange={(e)=>{
+              setPolicy(e.target.value)
+            }}
+          />
+        </div>
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
           <p style={{width:"20%"}}>CoverImage:</p>
           <input
@@ -535,9 +375,7 @@ const handleSubmit = async (e) =>{
             type="submit"
             style={{margin:"20px 10px",width:"40%"}}
             endIcon={<SendIcon />}
-            disabled={
-              !propertyname.trim() || !price.trim()
-            }
+            
             onClick={handleSubmit}
           >
             submit

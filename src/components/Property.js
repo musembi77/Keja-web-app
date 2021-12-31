@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom';
 import { useStateValue } from "./StateProvider"
 
 function Property({property}){
-    const [{product}, dispatch] = useStateValue();
+    const [ dispatch] = useStateValue();
     const ViewProperty=()=>{
-      console.log("dispatch fired");
-      console.log(product);
+      // console.log("dispatch fired");
+     
       dispatch({
         type: "VIEW_PROPERTY",
         product: {
-          id:property.id,
+          id:property._id,
           mainimage:property.mainimage,
           propertyname:property.propertyname,
           price:property.price,
@@ -19,7 +19,7 @@ function Property({property}){
           description:property.description,
           amenities:property.amenities,
           overviewimage:property.overviewimage,
-          review:property.review,
+          reviews:property.reviews,
           vacancy:property.vacancy
         },
       });

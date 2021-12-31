@@ -13,7 +13,7 @@ import {
 
 const client = new ApolloClient({
   uri:'https://kejaapp.herokuapp.com',
-  cache: new InMemoryCache()
+  cache: new InMemoryCache(),
 });
 
 

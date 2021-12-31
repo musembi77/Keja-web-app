@@ -3,9 +3,14 @@ export const CREATE_PROPERTY_MUTATION =`
 		$landlordname:String!,
 		$propertyname:String!,
 		$price:String!,
+		$type:String!
 		$description:String!,
+		$latitude:String!,
+		$longitude:String!,
 		$location:String!,
+		$area:String!,
 		$amenities:String!,
+		$policy:String!
 		$vacancy:String!,
 		$contact:String!,
 		$mainimage:String!,
@@ -15,9 +20,14 @@ export const CREATE_PROPERTY_MUTATION =`
 			landlordname:$landlordname
 			propertyname:$propertyname
 			price:$price
+			type:$type
 			description:$description
+			latitude:$latitude
+			longitude:$longitude
 			location:$location
+			area:$area
 			amenities:$amenities
+			policy:$policy
 			vacancy:$vacancy
 			contact:$contact
 			mainimage:$mainimage
@@ -38,4 +48,51 @@ export const DELETE_PROPERTY_MUTATION =`
 			_id
 		}
 	}
+`
+
+export const CREATE_SERVICE_MUTATION=`
+	mutation(
+		$ownername:String!,
+		$servicename:String!,
+		$type:String!
+		$location:String!,
+		$area:String!,
+		$description:String!,
+		$packages:String!,
+		$policy:String!
+		$contact:String!,
+		$mainimage:String!,
+		$overviewimage:String!,
+	){
+		createService(input:{
+			ownername:$ownername
+			servicename:$servicename
+			type:$type
+			description:$description
+			location:$location
+			area:$area
+			packages:$packages
+			policy:$policy
+			contact:$contact
+			mainimage:$mainimage
+			overviewimage:$overviewimage
+		}){
+			_id
+			createdAt
+			servicename
+		}
+	}
+`
+export const CREATE_REVIEW_MUTATION = `
+	mutation(
+		$propertyId:ID!,
+		$review:String!,
+	){
+		createReview(
+				propertyId:$propertyId
+				review:$review
+			){
+				_id
+				propertyname
+		}}
 `
