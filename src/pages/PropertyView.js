@@ -19,7 +19,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Review from '../components/Review.js'
 
 function PropertyView(){
-  const [{ product,}] = useStateValue('');
+  const [{ product,}] = useStateValue();
   
   return(
     <div>

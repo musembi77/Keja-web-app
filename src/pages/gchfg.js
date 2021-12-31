@@ -189,3 +189,51 @@ const [pageNumber, setPageNumber]=useState(0);
                 disabledClassName={"previousBtn"}
                 activeClassName={"previousBtn"}
             />
+
+
+            {showreview ?
+          <form style={{margin:"0 5px"}} className="Review">
+          <p style={{fontSize:"small"}}>Highlight Your Experience</p>
+          <textarea 
+                style={{
+                  fontFamily: "Poppins-Regular",
+                  fontSize: "14px",
+                  color: "#1b1b1b",
+                  border: "",
+                  width:" 100%",
+                  height: "100px",
+                  padding: "5px 10px",
+                  margin: "0",
+                  overflowWrap: "break-word",
+                  flex:0.7
+                }}
+                type="text"
+                maxLength="200"
+                onChange={e=>setReview(e.target.value)}
+                value={review}
+            />
+      <ColorButton style={{display:"flex",margin:"0",alignItems:"center",fontSize:"13px",width:"",}} onClick={HandleSubmitReview}>      
+        <p>Submit</p>
+      </ColorButton>
+    </form>
+          :
+          <div style={{display:"flex",alignItems:"center",justifyContent:""}} className="Review">
+                  <ColorButton style={{display:"flex",margin:"0 5px",alignItems:"center",fontSize:"13px",width:"150px",}} onClick={HandleReview}>      
+              <p>Write a review<CreateIcon style={{fontSize:"0.9rem"}}/></p>
+            </ColorButton>
+            <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+                <StarIcon style={{color:"#ffa31a",fontSize:"1.2rem"}}/>
+                <p style={{fontFamily:""}}>4.0</p>
+                <p style={{fontSize:"0.6rem",color:"grey",margin:"auto 10px"}}>20reviews</p>
+              </div>
+          </div>
+      }
+
+      // {reviews.map((item)=>{
+        //   return(
+        //     <div>
+        //     <Review item={item}/>
+        //     </div>
+        //   )
+          
+        // })}

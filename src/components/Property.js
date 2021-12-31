@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 import { useStateValue } from "./StateProvider"
 
 function Property({property}){
-    const [ dispatch] = useStateValue();
+    // eslint-disable-next-line no-unused-vars
+    const [ {product},dispatch] = useStateValue();
     const ViewProperty=()=>{
       // console.log("dispatch fired");
      
