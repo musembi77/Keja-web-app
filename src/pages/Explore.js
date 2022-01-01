@@ -7,6 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ReactPaginate from 'react-paginate';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+
 function Explore() {
     const [isloading, setIsLoading]=useState([]);
     const [query, setQuery]=useState('');

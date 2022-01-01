@@ -4,12 +4,16 @@ import Pin from './pin.js'
 import {useQuery,} from '@apollo/client';
 import {GET_PROPERTY_QUERY} from '../GraphQl/Queries.js'
 import MarkProp from './MarkProp'
+import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+mapboxgl.workerClass = MapboxWorker;
 
 function Map(){
 	const { data } = useQuery(GET_PROPERTY_QUERY);
 	const INITIAL_VIEWPORT ={
-			width:400,
-			height:200,
+			width:390,
+			height:400,
 			latitude: -1.0969,
 		    longitude: 37.0154,
 		    zoom: 14

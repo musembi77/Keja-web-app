@@ -27,7 +27,7 @@ function Login(){
             type:"IS_LOGGEDIN",
             payload:googleUser.isSignedIn()
           })
-          navigate('/home');
+          navigate('/');
           }catch(err){
             onFailure(err)
           }

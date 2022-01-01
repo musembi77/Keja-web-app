@@ -25,17 +25,17 @@ function Support (){
 			<div style={{backgroundColor:"#e5e5e5",fontSize:"0.7rem",height:"150px",lineHeight:"30px"}}>
 				<p style={{fontSize:"1.2rem"}}>Are you Looking for an Agent?</p>
 				<p>Use Our Agent to help you find the perfect house for you</p>
-				<p><span style={{color:"red"}}>Note:</span> You will incur a fee when using this service</p>
-				<a href = "https://wa.link/nv8tti" 
-                        target="_blank"
-                        rel="noopener noreferrer"><WhatsAppIcon style={{fontSize:"0.8rem"}}/>0771712005</a>
+				<p><span style={{color:"red"}}>Note:</span> You will not incur a fee when using this service</p>
+				<p>Contact us</p>
 			</div>
 			
 			<p>How to Get an Aprtment</p>
 			<img src='./howitworks.jpg' alt='logo' style={{width:"100vw",height:""}}/>
 			<div style={{display:"flex",textAlign:"center",justifyContent:"center",margin:"10px 0"}}>
 				<FlagIcon/>
-				<p>Report</p>
+				<a href = "https://wa.link/nv8tti" 
+                        target="_blank"
+                        rel="noopener noreferrer">Report</a>
 			</div>
 		</div>
 	)	

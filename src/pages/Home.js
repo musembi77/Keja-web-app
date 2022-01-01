@@ -1,19 +1,36 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import {Link } from "react-router-dom"
-import {newproperty} from '../components/dummydata.js'
 import {Location} from '../components/dummydata.js'
 import ContentSlider from '../components/ContentSlider.js';
 import MapIcon from '@mui/icons-material/Map';
 import Map from '../components/Map.js'
 import CloseIcon from '@mui/icons-material/Close';
+import Skeleton from '../components/Skeleton'
+import {useQuery,} from '@apollo/client';
+import {GET_PROPERTY_QUERY,GET_SERVICE_QUERY} from '../GraphQl/Queries.js'
 
 function Home({property}){
   const [showmap,setShowMap]=useState('')
   const HandleMap=()=>{
     setShowMap(!showmap)
   }
+  const [isloading, setIsLoading]=useState([]);
+  const { loading, data } = useQuery(GET_PROPERTY_QUERY,GET_SERVICE_QUERY);
+
+  const [pageNumber, setPageNumber]=useState(0)
+    const propertyPerPage= 4;
+    const pagesVisted = pageNumber * propertyPerPage;
+    useEffect(()=>{
+        if(loading){
+            setIsLoading(isloading)
+        }
+        if(data){
+            console.log(data.get_Services)
+            setPageNumber('')
+        }
+    },[data,isloading,loading]);
   return(
-    <div>
+    <div style={{backgroundColor:"#eeeeee"}}>
       
       <div style={{padding:"5px"}}>
       {
@@ -35,7 +52,7 @@ function Home({property}){
               return(
                 <div> 
                   <ul style={{
-                    backgroundColor:"#eeeeee",
+                    backgroundColor:"#fff",
                     width:"100px",
                     marginRight:"5px",
                     textDecoration:"none",
@@ -67,9 +84,13 @@ function Home({property}){
           <CloseIcon onClick={HandleMap}/>
           <Map />
           </>:
-          <div style={{height:"",backgroundColor:"#eee",display:"flex",margin:"10px 0"}}>
-          <p style={{fontSize:"0.8rem"}}>Click Map to Find apartments near you</p>
-          <MapIcon onClick={HandleMap}/>
+          <div style={{height:"",backgroundColor:"#eee",display:"flex",margin:"10px 5px",alignItems:"center"}}>
+            <MapIcon onClick={HandleMap} style={{backgroundColor:"#ffa31a",borderRadius:"99px",padding:"3px",margin:"0 5px"}}/>
+            <div style={{backgroundColor:""}}>
+              <p style={{fontSize:"0.8rem",fontFamily:"Poppins-Bold"}}>Show Map</p>
+              <p style={{fontSize:"0.6rem"}}><span style={{color:"#ffa31a",fontSize:"0.7rem"}}>! </span>This feature will require your current location</p>
+            </div>
+            
           </div>
         }
         
@@ -79,6 +100,38 @@ function Home({property}){
       {
         //Featured / Recommended
       } 
+      <div>
+        <p>Homes</p>
+        <div style={{
+          display:"flex",
+          //justifyContent:"space-between",
+          alignItems:"center",
+          textAlign:"center",
+          overflow:"auto",
+          whiteSpace:"nowrap",
+          width:"100%",
+          margin:"5px",
+          //padding:"10px",
+        }} className="scrollbar">
+          {isloading && !data? 
+                            <Skeleton /> :
+                                data.get_Properties
+                                .slice(pagesVisted, pagesVisted + propertyPerPage)
+                                .map((property)=>{
+                                    return(
+                                        <div>
+                                            <ContentSlider
+                    property={property}
+                    />
+                                        </div>
+                                    )
+                                })
+                        }
+        </div>
+      </div>      
+      {
+        //NewBuildings
+      }
       <div>
         <p>Featured</p>
         <div style={{
@@ -92,76 +145,23 @@ function Home({property}){
           margin:"5px",
           //padding:"10px",
         }} className="scrollbar">
-          {newproperty.map((property)=>{
-            return(
-                <ul style={{
-                  //backgroundColor:"#f79d00",
-                  width:"150px",
-                  height:"100%",
-                  textAlign:"center",
-                  placeItems:"center",
-                  position:"relative",
-                  borderRadius:"10px",
-                  //margin:"0 10px",
-                  textDecoration:"none",
-                  listStyle:"none",
-                  //borderRadius:"30px"
-                }}>
-                  <li >
-                    <ContentSlider
+          {isloading && !data? 
+                            <Skeleton /> :
+                                data.get_Properties
+                                .slice(pagesVisted, pagesVisted + propertyPerPage)
+                                .reverse()
+                                .map((property)=>{
+                                    return(
+                                        <div>
+                                            <ContentSlider
                     property={property}
                     />
-                  </li>
-                </ul>
-                )
-          })}
+                                        </div>
+                                    )
+                                })
+                        }
         </div>
-      </div>
-      {
-        //Services
-      } 
-      
-      {
-        //NewBuildings
-      }
-      <div>
-        <p>NewBuildings</p>
-        <div style={{
-          display:"flex",
-          //justifyContent:"space-between",
-          alignItems:"center",
-          textAlign:"center",
-          overflow:"auto",
-          whiteSpace:"nowrap",
-          width:"100%",
-          margin:"5px",
-          //padding:"10px",
-        }} className="scrollbar">
-          {newproperty.map((property)=>{
-            return(
-                <ul style={{
-                  //backgroundColor:"#f79d00",
-                  width:"150px",
-                  height:"100%",
-                  textAlign:"center",
-                  placeItems:"center",
-                  position:"relative",
-                  borderRadius:"10px",
-                  //margin:"0 10px",
-                  textDecoration:"none",
-                  listStyle:"none",
-                  //borderRadius:"30px"
-                }}>
-                  <li >
-                    <ContentSlider
-                    property={property}
-                    />
-                  </li>
-                </ul>
-                )
-          })}
-        </div>
-      </div>            
+      </div>           
       </div>
     </div>
   )

@@ -21,9 +21,7 @@ function Index(){
 
   return(
     <div >
-      <div style={{display:"flex",flexDirection:"column",width:"100vw"}}>
-      </div>
-      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",position:"relative"}}>
+      <div style={{display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center",position:"relative",backgroundColor:"#ffffff"}}>
         <form 
             style={{
                 display:"flex",

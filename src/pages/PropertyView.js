@@ -17,6 +17,7 @@ import { styled } from '@mui/material/styles';
 import { useStateValue } from "../components/StateProvider";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Review from '../components/Review.js'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 function PropertyView(){
   const [{ product,}] = useStateValue();
@@ -39,6 +40,7 @@ function PropertyView(){
                 overview={property.overview}
                 reviews={property.reviews}
                 vacancy={property.vacancy}
+                contact={property.contact}
           />
           )
       })}
@@ -60,6 +62,7 @@ const ViewDetails=({
             overviewimage,
             vacancy,
             reviews,
+            contact
           }
             
 )=>{
@@ -72,7 +75,8 @@ const ViewDetails=({
       backgroundColor: "#ffa31a",
     },
   }));
-  const [dispatch] = useStateValue('')
+  // eslint-disable-next-line no-unused-vars
+  const [{showreviews},dispatch] = useStateValue('')
   
   const [showcontact,setShowContact]=useState();
   const HandleContact = () =>{
@@ -183,18 +187,25 @@ const ViewDetails=({
                 <p style={{fontFamily:""}}>4.0</p>
                 <p style={{fontSize:"0.6rem",color:"grey",margin:"auto 10px"}}>reviews</p>
               </div>
-              <Link to="/reviews" style={{display:"flex",margin:"0",alignItems:"center",fontSize:"13px",textDecoration:"none",color:"#ffa31a"}} >      
+              <Link to={currentUser?"/reviews":'/login'} style={{display:"flex",margin:"0",alignItems:"center",fontSize:"13px",textDecoration:"none",color:"#ffa31a"}} >      
                   Write a review<Create style={{fontSize:"0.8rem",color:"#000000"}}/>
               </Link>
-            </div>        
-          </div>
-          {reviews.map((item)=>{
+            </div>  
+            {reviews.length === 0  ?(
+        <p style={{fontSize:"0.8rem"}}>We have no Reviews For this apartment yet</p>
+      ):(
+          reviews.map((item)=>{
           return(
             <div>
               <Review item={item}/>
             </div>
           )
-          })}
+          
+        }) 
+      )}      
+          </div>
+          
+          
         {
           //Contacts
         }
@@ -202,28 +213,46 @@ const ViewDetails=({
           <div style={{display:"flex",flexDirection:"column"}}>
           <h4>Contacts</h4>
           <div style={{display:"flex",flexDirection:"column",margin:"10px 0",borderRadius:"10px",padding:"10px",backgroundColor:"#eeeeee"}}>
-                <div style={{display:"flex"}}>
-                  <img src='./Keja.jpg' alt="logo" style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
-                  <p style={{fontSize:"0.9rem"}}>Keja Agent</p>
+                <div>
+                  <div style={{display:"flex"}}>
+                    <img src='./Keja.jpg' alt="logo" style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
+                    <p style={{fontSize:"0.9rem"}}>Keja Agent</p>
+                  </div>
+                  <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:""}}>
+                      <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
+                        <Call style={{fontSize:"1rem",marginRight:"5px"}}/>
+                        <p href = "https://wa.link/nv8tti" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                        0771712005</p>
+                      </div>
+                      <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px"}}>
+                        <WhatsAppIcon style={{fontSize:"1rem",margin:"0 5px"}} />
+                        <a href = "https://wa.link/nv8tti" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                        0771712005</a>
+                      </div>
+                      
+                  </div>
                 </div>
-                <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:"column"}}>
-                    <div style={{alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
-                      <Call style={{fontSize:"1rem"}}/>
-                      <a href = "https://wa.link/nv8tti" 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                      0771712005</a>
-                    </div>
-                    <div style={{alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px"}}>
-                      <WhatsAppIcon style={{fontSize:"1rem",margin:"0 5px"}} />
-                      <a href = "https://wa.link/nv8tti" 
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                      0771712005</a>
-                    </div>
-                    
+                <div>
+                  <div style={{display:"flex"}}>
+                    <AccountCircleIcon  style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
+                    <p style={{fontSize:"0.9rem"}}>{propertyname}'s contact</p>
+                  </div>
+                  <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:""}}>
+                      <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
+                        <Call style={{fontSize:"1rem",marginRight:"5px"}}/>
+                        <p href = "https://wa.link/nv8tti" 
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                        {contact}</p>
+                      </div>                      
+                  </div>
                 </div>
               </div>
         </div>

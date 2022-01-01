@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom'
 import { useStateValue } from "../components/StateProvider"
 
 function ContentSlider({property}){
-	const [dispatch] = useStateValue();
+  // eslint-disable-next-line
+	const [ {product},dispatch] = useStateValue();
 
     const ViewProperty=()=>{
       // console.log("dispatch fired");
@@ -11,36 +12,39 @@ function ContentSlider({property}){
       dispatch({
       type: "VIEW_PROPERTY",
       product: {
-        id:property.id,
-        coverimg:property.coverimg,
-        name:property.name,
-        price:property.price,
-        location:property.location,
-        stats:property.stats,
-        description:property.description,
-        amenities:property.amenities,
-        overview:property.overview,
-        review:property.review,
-        contact1:property.contact1,
-        contact1name:property.contact1name,
-        contact2:property.contact2,
-        contact2name:property.contact2name,
-      },
+          id:property._id,
+          mainimage:property.mainimage,
+          propertyname:property.propertyname,
+          price:property.price,
+          location:property.location,
+          stats:property.stats,
+          description:property.description,
+          amenities:property.amenities,
+          overviewimage:property.overviewimage,
+          reviews:property.reviews,
+          vacancy:property.vacancy,
+          contact:property.contact
+        },
     });
   }
 	return(
-		<div>
+		<div style={{width:"200px",height:"",margin:"0px 5px",backgroundColor:"#fff"}}>
 			<Link
 		      style={{fontFamily:"Poppins-Bold",textDecoration:"none",color:"#000000"}}
 		      to='/property'
 		    >
-				<img src={property.coverimg} 
+				<img src={property.mainimage} 
           alt="logo"
-					style={{ width:"150px",height:"110px",objectFit:"cover",borderRadius:"5px"}}
+					style={{ width:"100%",height:"130px",objectFit:"cover",borderRadius:"5px"}}
 				onClick={ViewProperty}
 				/>
-				<p style={{backgroundColor:"",marginTop:"-5px",fontSize:"0.9rem"}}>{property.name}</p>
-			</Link>
+        <div style={{display:"flex",flexDirection:"column",textAlign:"left",padding:"0 5px"}}>
+        <p style={{backgroundColor:"",marginTop:"",fontSize:"0.6rem",color:"#ffa31a"}}>{property.type}</p>
+				<p style={{color:"#000",marginTop:"",fontSize:"0.9rem",fontFamily:"Poppins-Bold"}}>{property.price}<span style={{color:"grey"}}>/month</span></p>
+        <p style={{backgroundColor:"",marginTop:"",fontSize:"0.7rem",color:"grey"}}>{property.location}</p>
+			  
+       </div>
+      </Link>
 		</div>
 	)
 }

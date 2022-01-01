@@ -21,7 +21,8 @@ function Property({property}){
           amenities:property.amenities,
           overviewimage:property.overviewimage,
           reviews:property.reviews,
-          vacancy:property.vacancy
+          vacancy:property.vacancy,
+          contact:property.contact
         },
       });
     }

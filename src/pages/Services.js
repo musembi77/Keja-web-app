@@ -19,7 +19,7 @@ function Services(){
             setIsLoading(isloading)
         }
         if(data){
-            console.log(data.get_Properties)
+            console.log(data.Services)
             
         }
     },[data,isloading,loading]);
@@ -133,7 +133,7 @@ function Services(){
 }
 export default Services;
 
-const Product=({service})=>{
+export const Product=({service})=>{
 	return(
 		<div  style={{
       lineHeight:"14px",

@@ -28,7 +28,8 @@ export default MarkProp
 const PopUp=({
 	propertyname,
 	mainimage,property})=>{
-		const [ dispatch] = useStateValue();
+		// eslint-disable-next-line
+		const [{product}, dispatch] = useStateValue();
 	const ViewProperty=()=>{
 	      // console.log("dispatch fired");
 	      // console.log(product);
@@ -44,7 +45,7 @@ const PopUp=({
 	          description:property.description,
 	          amenities:property.amenities,
 	          overviewimage:property.overviewimage,
-	          review:property.review,
+	          reviews:property.reviews,
 	          vacancy:property.vacancy
 	        },
 	      });

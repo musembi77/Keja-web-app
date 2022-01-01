@@ -9,7 +9,8 @@ import Review from '../components/Review.js'
 function Reviewpage(){
   const client = useClient()
 
-  const [{ showreviews},] = useStateValue('');
+  const [{ showreviews},] = useStateValue();
+  console.log(showreviews.reviews)
   const[propertyId,setPropertyId]=useState('')
    const [review,setReview]=useState('')
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -29,7 +30,7 @@ function Reviewpage(){
     console.log('Property Created',{createReview})
   }
 	return(
-		<div style={{height:"60vh"}}>
+		<div style={{height:""}}>
     <form style={{margin:"0 0px"}} className="Review">
               <p style={{fontSize:"small"}}>Highlight Your Experience</p>
               <textarea 
@@ -54,7 +55,7 @@ function Reviewpage(){
             <p>Submit</p>
           </ColorButton>
         </form>
-    {showreviews.reviews.length === 0 ?(
+    {showreviews.reviews.length === 0  ?(
         <p style={{fontSize:"0.8rem"}}>We have no Reviews For this apartment yet</p>
       ):(
           showreviews.reviews.map((item)=>{
