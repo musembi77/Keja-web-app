@@ -237,3 +237,8 @@ const [pageNumber, setPageNumber]=useState(0);
         //   )
           
         // })}
+
+        import mapboxgl from 'mapbox-gl/dist/mapbox-gl-csp';
+// eslint-disable-next-line import/no-webpack-loader-syntax
+import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+mapboxgl.workerClass = MapboxWorker;
