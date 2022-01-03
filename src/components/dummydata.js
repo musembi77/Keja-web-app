@@ -8,24 +8,20 @@ import Review from '../components/Review.js'
 
 export const Location=[
     {
-      image:"",
-      title:"Gate A",
-      link:"./explore",
+      value:"propertyname",
+      title:"Name",
     },
     {
-      image:"",
-      title:"Gate B",
-      link:"./explore",
+      value:"price",
+      title:"Price",
     },
     {
-      image:"",
-      title:"Gate C",
-      link:"./explore",
+      value:"area",
+      title:"Area",
     },
     {
-      image:"",
-      title:"Gate D",
-      link:"./explore",
+      value:"type",
+      title:"Property type",
 
     },
     

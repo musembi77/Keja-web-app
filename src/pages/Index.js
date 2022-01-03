@@ -73,28 +73,7 @@ function Index(){
             <option value="Gate C">Gate C</option>
             <option value="Gate D">Gate D</option>
             </select>
-            <select 
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              outline: "none",
-              overflowWrap: "break-word",
-              flex:0.7
-            }}
-            onChange={(e)=>{
-              setType(e.target.value)
-            }}
-            >
-            <option value="BedSitter">BedSitter</option>
-            <option value="Hostel">Hostel</option>
-            <option value="OneBedroom">OneBedroom</option>
-            <option value="TwoBedroom">TwoBedroom</option>
-            <option value="ThreeBedroom">ThreeBedroom</option>
-          </select>
+            
             <button
                 style={{border:"none",color:"#000000",textDecoration:"none",padding:"10px 10px",display:"flex",justifyContent:"center",backgroundColor:"#ffa31a"}}
                 type="submit"

@@ -142,7 +142,7 @@ export const Product=({service})=>{
       width:"10rem",
       borderRadius:"10px",
       height:"210px",
-      margin:"5px auto"
+      margin:"5px"
     }}
     >
     <Link

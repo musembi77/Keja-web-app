@@ -7,6 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ReactPaginate from 'react-paginate';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import {Location} from '../components/dummydata.js'
 
 function Explore() {
     const [isloading, setIsLoading]=useState([]);
@@ -35,12 +36,63 @@ function Explore() {
     const handlePageClick = ({selected})=>{
         setPageNumber(selected)
     }
+    
+const [searchoption, setSearchOption]=useState('')
 
+console.log(searchoption)
     return (
         <div style={{width:"100%",position:"relative",height:"100vh"}}>
+            <div style={{display:'flex',}}>
+                <p style={{width:"25%",fontSize:"0.7rem"}}>Select option to search by:</p>
+                
+          <div style={{
+            display:"flex",
+            //justifyContent:"space-between",
+            alignItems:"center",
+            textAlign:"center",
+            overflow:"auto",
+            whiteSpace:"nowrap",
+            width:"100%",
+
+          }} className="scrollbar">
+            {Location.map((item)=>{
+              return(
+                <div> 
+                  <ul style={{
+                    backgroundColor:"#e5e5e5",
+                    width:"100px",
+                    margin:"0 10px",
+                    textDecoration:"none",
+                    listStyle:"none",
+                    
+                  }}>
+                    <li >
+                      <div style={{                      
+                        fontSize:"0.9rem",
+                        fontFamily:"Poppins-Regular",
+                        textDecoration:"none",
+                        color:"#000000",
+                        backgroundColor:"",
+                      }}
+                      value={item.value}
+                      onClick={(e)=>{
+                          setSearchOption(e.target.value)
+                        }}
+                      >
+                      {item.title}
+                      </div>
+                    </li>
+                  </ul>
+                  
+                </div>
+              )
+            })}
+          </div>
+            
+            </div>
             <div style={{display:"flex",justifyContent:"center",margin:"0 10%",alignItems:"center"}}>
                 <input 
-                    placeholder='Search Apartment'
+                    placeholder='Search {}'
                     style={{
                         fontSize:'0.9rem',
                         outline:'none',
@@ -69,7 +121,7 @@ function Explore() {
                     {isloading && !data? 
                             <Skeleton /> :
                                 data.get_Properties
-                                .filter(property => (property.area.toString().toLowerCase().includes(query.toLowerCase())))
+                                .filter(property => (property.propertyname.toString().toLowerCase().includes(query.toLowerCase())))
                                 .slice(pagesVisted, pagesVisted + propertyPerPage)
                                 .map((property)=>{
                                     return(

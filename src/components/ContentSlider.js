@@ -41,7 +41,7 @@ function ContentSlider({property}){
         <div style={{display:"flex",flexDirection:"column",textAlign:"left",padding:"0 5px"}}>
         <p style={{backgroundColor:"",marginTop:"",fontSize:"0.6rem",color:"#ffa31a"}}>{property.type}</p>
 				<p style={{color:"#000",marginTop:"",fontSize:"0.9rem",fontFamily:"Poppins-Bold"}}>{property.price}<span style={{color:"grey"}}>/month</span></p>
-        <p style={{backgroundColor:"",marginTop:"",fontSize:"0.7rem",color:"grey"}}>{property.location}</p>
+        <p style={{backgroundColor:"",marginTop:"",fontSize:"0.7rem",color:"grey"}}>{property.area}</p>
 			  
        </div>
       </Link>

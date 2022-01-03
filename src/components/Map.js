@@ -44,7 +44,7 @@ function Map(){
 	return(
 		<ReactMapGL
 			mapStyle="mapbox://styles/mapbox/outdoors-v11"
-			mapboxApiAccessToken="pk.eyJ1IjoibXVzZW1iaSIsImEiOiJja3hqc2NlMmI0bGp2MnBvNXQ5NW00anV3In0.AvrW6jEWWhCoUMCaZZ5M8A"
+			mapboxApiAccessToken={"pk.eyJ1IjoibXVzZW1iaSIsImEiOiJja3hqc2NlMmI0bGp2MnBvNXQ5NW00anV3In0.AvrW6jEWWhCoUMCaZZ5M8A"}
 		    {...viewport}
 		      onViewportChange={nextViewport => setViewport(nextViewport)}
 	    >
