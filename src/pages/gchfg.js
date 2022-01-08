@@ -242,3 +242,66 @@ const [pageNumber, setPageNumber]=useState(0);
 // eslint-disable-next-line import/no-webpack-loader-syntax
 import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
 mapboxgl.workerClass = MapboxWorker;
+
+
+<form 
+            style={{
+                display:"flex",
+                margin:"0",
+                height:"40px",
+                backgroundColor:"",
+                textDecoration:"none",
+                position:"absolute",
+                top:"40%",
+                zIndex:"99"
+              }} >
+              <select 
+              style={{
+                fontFamily: "Poppins-Regular",
+                fontSize: "14px",
+                color: "#1b1b1b",
+                border: "none",
+                height: "100%",
+                padding: "5px 10px",
+                outline: "none",
+                overflowWrap: "break-word",
+                flex:0.7
+              }}
+              onChange={(e)=>{
+              setLocation(e.target.value)
+              }}
+              >
+              <option value="Juja">Juja</option>
+            </select>
+            <select 
+              style={{
+                fontFamily: "Poppins-Regular",
+                fontSize: "14px",
+                color: "#1b1b1b",
+                border: "none",
+                height: "100%",
+                padding: "5px 10px",
+                outline: "none",
+                overflowWrap: "break-word",
+                flex:0.7
+              }}
+              onChange={(e)=>{
+              setArea(e.target.value)
+              }}
+              >
+              <option value="Gate A">Gate A</option>
+            <option value="Gate B">Gate B</option>
+            <option value="Gachororo">Gachororo</option>
+            <option value="Gate C">Gate C</option>
+            <option value="Gate D">Gate D</option>
+            </select>
+            
+            <button
+                style={{border:"none",color:"#000000",textDecoration:"none",padding:"10px 10px",display:"flex",justifyContent:"center",backgroundColor:"#ffa31a"}}
+                type="submit"
+                onClick={HandleFilter}
+            >
+            //<SearchIcon />
+            Get Started
+            </button>
+        </form>

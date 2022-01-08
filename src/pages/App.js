@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import Home from './Home'
 import Explore from './Explore';
@@ -11,18 +11,27 @@ import PostListing from './PostListing'
 import ServiceListing from './ServiceListing'
 import WishList from './WishList';
 import Services from './Services'
-import Footer from '../components/Footer'
 import About from './About'
 import Support from './Support'
 
+import ServicesView from './ServicesView'
 import Reviewpage from './Reviewpage'
-//admin
+
 function App() {
+   const [showmenu, setShowmenu]=useState('');
+    
+    const HandleMenu=()=>{
+        setShowmenu(!showmenu);
+    }
+
   return (
-      <div style={{position:"relative"}}>
+      <div style={{position:"relative"}} >
       <Router>
-          <Header/>
-          <Routes>
+          <Header onClick={HandleMenu} showmenu={showmenu}/>
+          <div onClick={()=>{
+             setShowmenu(false)
+            }}>
+          <Routes >
             <Route path='/' element={<Index />}/>
             <Route path='/home'  element = {<Home />}/>
             <Route path='/explore'  element = {<Explore />}/>
@@ -32,14 +41,13 @@ function App() {
             <Route path='/listwithUs'  element = {<ListingIndex />}/>
             <Route path='/postlisting'  element = {<PostListing />}/>
             <Route path='/servicelisting'  element = {<ServiceListing />}/>
-            <Route path='/Services'  element = {<Services />}/>
+            <Route path='/exploreservices'  element = {<Services />}/>
+            <Route path='/services'  element = {<ServicesView />}/>
             <Route path='/about'  element = {<About />}/>
             <Route path='/support'  element = {<Support />}/>
 
             <Route path='/reviews'  element = {<Reviewpage />}/>
           </Routes>
-          <div style={{position:"static",bottom:"0"}}>
-            <Footer />
           </div>
         </Router>
       </div>

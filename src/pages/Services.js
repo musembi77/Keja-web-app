@@ -10,6 +10,8 @@ import {Link } from "react-router-dom"
 import {useQuery,} from '@apollo/client';
 import {GET_SERVICE_QUERY} from '../GraphQl/Queries.js'
 import Skeleton from '../components/Skeleton'
+import Footer from '../components/Footer'
+import { useStateValue } from "../components/StateProvider";
 
 function Services(){
   const [isloading, setIsLoading]=useState([]);
@@ -19,7 +21,7 @@ function Services(){
             setIsLoading(isloading)
         }
         if(data){
-            console.log(data.Services)
+            //console.log(data.Services)
             
         }
     },[data,isloading,loading]);
@@ -127,13 +129,37 @@ function Services(){
                   })
                 }
       		</div>
-			
+			<Footer />
 		</div>
 	)
 }
 export default Services;
 
 export const Product=({service})=>{
+  // eslint-disable-next-line no-unused-vars
+    const [ {services},dispatch] = useStateValue();
+    const ViewService=()=>{
+      console.log("dispatch fired");
+      console.log(services)
+      dispatch({
+        type: "VIEW_SERVICE",
+        services: {
+          id:service._id,
+          mainimage:service.mainimage,
+          servicename:service.servicename,
+          price:service.price,
+          location:service.location,
+          stats:service.stats,
+          description:service.description,
+          amenities:service.amenities,
+          overviewimage:service.overviewimage,
+          reviews:service.reviews,
+          vacancy:service.vacancy,
+          contact:service.contact,
+          area:service.area
+        },
+      });
+    }
 	return(
 		<div  style={{
       lineHeight:"14px",
@@ -144,10 +170,11 @@ export const Product=({service})=>{
       height:"210px",
       margin:"5px"
     }}
+    onClick={ViewService}
     >
     <Link
       style={{fontFamily:"Poppins-Bold",textDecoration:"none",color:"#000000"}}
-      to='/product'
+      to='/services'
       >
           <img 
             src={service.mainimage} 

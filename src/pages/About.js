@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Footer from '../components/Footer'
 
 function About(){
 	return(
@@ -40,6 +41,7 @@ function About(){
 				</div>
 				<img src="./keja.jpg" alt="logo" style={{width:"100%"}}/>
 			</div>
+			<Footer />
 		</div>
 	)
 }

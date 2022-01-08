@@ -3,7 +3,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import CallIcon from '@mui/icons-material/Call';
 import FlagIcon from '@mui/icons-material/Flag';
-
+import Footer from '../components/Footer'
 function Support (){
 	return(
 		<div style={{textAlign:"center"}}>
@@ -37,6 +37,7 @@ function Support (){
                         target="_blank"
                         rel="noopener noreferrer">Report</a>
 			</div>
+			<Footer />
 		</div>
 	)	
 }

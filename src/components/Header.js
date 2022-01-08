@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link } from "react-router-dom"
-import {useState} from 'react';
 import {
     Room ,
     Menu,
@@ -16,14 +15,14 @@ import '../index.css'
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import {useStateValue} from "./StateProvider"
 
-function Header() {
+function Header({onClick,showmenu}) {
     const [{currentUser}]=useStateValue();
     //console.log(currentUser)
-    const [showmenu, setShowmenu]=useState('');
+    // const [showmenu, setShowmenu]=useState('');
 
-    const HandleMenu=()=>{
-        setShowmenu(!showmenu);
-    }
+    // const HandleMenu=()=>{
+    //     setShowmenu(!showmenu);
+    // }
     return (
         <div
             style={{ 
@@ -49,23 +48,26 @@ function Header() {
                 }} 
             >
             <Link to='/home' style={{textDecoration:"none",color:"#000000",paddingTop:"7px"}}><Home style={{fontSize:'1.2rem',margin:'5px'}}/></Link>
-            <Link to='/explore' style={{textDecoration:"none",color:"#000000",paddingTop:"7px",margin:"0 4px"}}><TravelExploreIcon style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
+            <Link to='/explore' style={{textDecoration:"none",color:"#000000",paddingTop:"7px",margin:"0 5px"}}><TravelExploreIcon style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
             <Link style={{display:"flex",alignItems:"center",textDecoration:"none"}} to='/login'>
                   
                 {currentUser ? 
+                    <div style={{display:"flex",alignItems:"center"}}>
                     <img src={currentUser.picture} alt='pp' style={{width:"20px",height:"20px",borderRadius:"2px"}}/>
+                    <p style={{fontSize:"0.6rem",margin:"0 5px"}}>{currentUser.name}</p>
+                    </div>
                     :
                     <p style={{fontSize:'1.2 rem',margin:'0 8px',textDecoration:"none",color:"#000000"}} >{currentUser ? 'SignOut':'SignIn'}</p>
                 }
             </Link>
             <div style={{alignItems:"center"}}>
             {showmenu ?
-                <div >
-                    <Close onClick={HandleMenu} style={{marginTop:'10px'}}/>
+                <div onClick={onClick}>
+                    <Close onClick={onClick} style={{marginTop:'10px'}}/>
                     <Menubar />
                 </div>
                 :
-                <Menu style={{marginTop:'10px'}} onClick={HandleMenu}/>
+                <Menu style={{marginTop:'10px'}} onClick={onClick} currentUser={currentUser}/>
             }
             </div>
             </div>
@@ -75,7 +77,7 @@ function Header() {
 
 export default Header
 
-export const Menubar = () =>{
+export const Menubar = ({currentUser}) =>{
     console.log()
     return(
         <div
@@ -108,10 +110,10 @@ export const Menubar = () =>{
             }}>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
-                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/' >Index</Link>
-                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>SignIn</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/exploreservices'>Services</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>SignIn/SignOut</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/listwithUs'>List with Us</Link>
-                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/Services'>Services</Link>
+                
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/about'>About</Link>
 
                 

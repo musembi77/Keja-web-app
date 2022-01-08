@@ -1,6 +1,4 @@
 import React,{useState,useEffect} from 'react';
-import {Link } from "react-router-dom"
-import {Location} from '../components/dummydata.js'
 import ContentSlider from '../components/ContentSlider.js';
 import MapIcon from '@mui/icons-material/Map';
 import Map from '../components/Map.js'
@@ -8,6 +6,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import Skeleton from '../components/Skeleton'
 import {useQuery,} from '@apollo/client';
 import {GET_PROPERTY_QUERY,GET_SERVICE_QUERY} from '../GraphQl/Queries.js'
+import Footer from '../components/Footer'
+import {Link } from "react-router-dom"
 
 function Home({property}){
   const [showmap,setShowMap]=useState('')
@@ -25,7 +25,7 @@ function Home({property}){
             setIsLoading(isloading)
         }
         if(data){
-            console.log(data.get_Services)
+            //console.log(data.get_Services)
             setPageNumber('')
         }
     },[data,isloading,loading]);
@@ -35,48 +35,7 @@ function Home({property}){
       <div style={{padding:"5px"}}>
       {
         //Communities
-      } 
-      <div >
-        <p>Communities</p>
-          <div style={{
-            display:"flex",
-            //justifyContent:"space-between",
-            alignItems:"center",
-            textAlign:"center",
-            overflow:"auto",
-            whiteSpace:"nowrap",
-            width:"100%",
-
-          }} className="scrollbar">
-            {Location.map((item)=>{
-              return(
-                <div> 
-                  <ul style={{
-                    backgroundColor:"#fff",
-                    width:"100px",
-                    marginRight:"5px",
-                    textDecoration:"none",
-                    listStyle:"none",
-                    
-                  }}>
-                    <li >
-                      <Link style={{                      
-                        fontSize:"0.9rem",
-                        fontFamily:"Poppins-Regular",
-                        textDecoration:"none",
-                        color:"#000000",
-                        backgroundColor:"",
-                      }} to='/explore'>
-                      {item.title}
-                      </Link>
-                    </li>
-                  </ul>
-                  
-                </div>
-              )
-            })}
-          </div>
-      </div>
+      }
       <div style={{width:"100vw",objectFit:"contain"}}>
         
         {showmap?
@@ -101,7 +60,10 @@ function Home({property}){
         //Featured / Recommended
       } 
       <div>
-        <p>Homes</p>
+      <div style={{display:"flex",justifyContent:"space-between",padding:'0 5px'}}>
+      <p>Homes</p>
+      <Link to='/explore' style={{textDecoration:"none",color:"#ffa31a"}}>See all</Link>
+      </div>
         <div style={{
           display:"flex",
           //justifyContent:"space-between",
@@ -133,7 +95,11 @@ function Home({property}){
         //NewBuildings
       }
       <div>
-        <p>Featured</p>
+      <div style={{display:"flex",justifyContent:"space-between",padding:'0 5px'}}>
+      <p>Featured</p>
+      <Link to='/explore' style={{textDecoration:"none",color:"#ffa31a"}}>See all</Link>
+      </div>
+        
         <div style={{
           display:"flex",
           //justifyContent:"space-between",
@@ -163,6 +129,7 @@ function Home({property}){
         </div>
       </div>           
       </div>
+      <Footer />
     </div>
   )
 }

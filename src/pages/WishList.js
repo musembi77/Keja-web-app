@@ -2,7 +2,7 @@ import React from 'react';
 import {Link } from 'react-router-dom'
 import { Button, makeStyles, withStyles } from "@material-ui/core";
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-
+import Footer from '../components/Footer'
 function WishList(){
 const ColorButton = withStyles((theme) => ({
     root: {
@@ -33,6 +33,7 @@ const ColorButton = withStyles((theme) => ({
       </Link>
       <p>Explore to Find the Right Apartment for you</p>
      </div>
+     <Footer />
    </div>
   )
 }

@@ -5,6 +5,7 @@ import {CREATE_REVIEW_MUTATION} from '../GraphQl/Mutations.js'
 import {useClient} from '../Client.js'
 import { useStateValue } from "../components/StateProvider";
 import Review from '../components/Review.js'
+import Footer from '../components/Footer'
 
 function Reviewpage(){
   const client = useClient()
@@ -67,7 +68,7 @@ function Reviewpage(){
           
         }) 
       )}
-           
+           <Footer />
 		</div>
 	)
 }

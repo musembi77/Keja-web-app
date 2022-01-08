@@ -1,5 +1,6 @@
 export const initialState = {
     product: [],
+    services: [],
     showreviews:[],
     currentUser: null,
     isAuth:null,
@@ -14,6 +15,12 @@ function reducer(state, action) {
             return {
                 ...state,
                 product: [action.product],
+            };
+        case "VIEW_SERVICE":
+            // lOGIC TO VIEW SERVICE
+            return {
+                ...state,
+                services: [action.services],
             };
         case "SHOW_ALL_REVIEWS":
             // lOGIC TO VIEW PRODUCT

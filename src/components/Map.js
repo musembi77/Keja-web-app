@@ -14,9 +14,9 @@ function Map(){
 	const INITIAL_VIEWPORT ={
 			width:390,
 			height:400,
-			latitude: -1.0969,
-		    longitude: 37.0154,
-		    zoom: 14
+			latitude: -1.0990963,
+		    longitude: 37.01161,
+		    zoom: 13
 	}
 	const [viewport, setViewport] = useState(INITIAL_VIEWPORT);
 	const [propertyPosition, setPropertyPosition] = useState(null)

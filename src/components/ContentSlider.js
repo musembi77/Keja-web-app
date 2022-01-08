@@ -23,7 +23,8 @@ function ContentSlider({property}){
           overviewimage:property.overviewimage,
           reviews:property.reviews,
           vacancy:property.vacancy,
-          contact:property.contact
+          contact:property.contact,
+          area:property.area
         },
     });
   }

@@ -6,6 +6,7 @@ import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios'
 import {useStateValue} from '../components/StateProvider'
 import {useClient} from '../Client.js'
+import Footer from '../components/Footer'
 
 function PostListing (){
   const ColorButton = withStyles((theme) => ({
@@ -105,7 +106,7 @@ const INITIAL_VIEWPORT ={
 
   useEffect(()=>{
     getPropertyPosition()
-    console.log(propertyPosition.longitude)
+    //console.log(propertyPosition.longitude)
   })
 
   const getPropertyPosition=()=>{
@@ -145,6 +146,7 @@ const handleSubmit = async (e) =>{
     const {CreateProperty} = await client.request(CREATE_PROPERTY_MUTATION,variables);
     console.log('Property Created',{CreateProperty})
     setSubmission({CreateProperty})
+    
   }catch(error){
     console.error(error)
   }
@@ -153,7 +155,7 @@ const handleSubmit = async (e) =>{
   
   return(
     <form style={{backgroundColor:"#e5e5e5",fontSize:"0.9rem",paddingTop:"10px"}} className='form_handle'>
-        {submission? <p>Submission success</p>:<p>Post Listing</p>}
+        
         <div style={{fontSize:"0.6rem",padding:"10px"}}>
             <p >We will use your location to help make your apartment visible on maps</p>
             {propertyPosition?
@@ -186,7 +188,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             onChange={(e)=>{
               setLandlordname(e.target.value)
@@ -209,7 +211,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setPropertyname(e.target.value)
@@ -230,7 +232,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setPrice(e.target.value)
@@ -250,7 +252,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             onChange={(e)=>{
               setType(e.target.value)
@@ -278,7 +280,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setLocation(e.target.value)
@@ -299,8 +301,9 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
+            
              onChange={(e)=>{
               setLatitude(e.target.value)
             }}
@@ -320,8 +323,9 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
+            
              onChange={(e)=>{
               setLongitude(e.target.value)
             }}
@@ -340,7 +344,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             onChange={(e)=>{
               setArea(e.target.value)
@@ -366,7 +370,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setDescription(e.target.value)
@@ -386,7 +390,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setAmenities(e.target.value)
@@ -406,7 +410,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setPolicy(e.target.value)
@@ -427,7 +431,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setVacancy(e.target.value)
@@ -448,7 +452,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setContact(e.target.value)
@@ -470,7 +474,7 @@ const handleSubmit = async (e) =>{
         //       margin: "11px",
         //       outline: "none",
         //       overflowWrap: "break-word",
-        //       flex:0.7
+        //       
         //     }}
         //      onChange={(e)=>{
         //       setPayment(e.target.value)
@@ -492,7 +496,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             accept="images*"
             onChange={(e)=>{
@@ -514,7 +518,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             accept="images*"
             onChange={(e)=>{
@@ -522,6 +526,20 @@ const handleSubmit = async (e) =>{
               }}
           />
         </div>
+        {submission? 
+          <div>
+          <p style={{color:"green"}}>Submission success</p>
+          <ColorButton
+            style={{margin:"20px 0",width:"100%"}}
+            endIcon={<DeleteIcon />}
+            
+            type="reset"
+          >
+            New Property
+          </ColorButton>
+          </div>
+        :
+
         <div style={{display:"flex",justifyContent:"center"}}>
           <ColorButton
             style={{margin:"20px 10px",width:"40%"}}
@@ -543,6 +561,9 @@ const handleSubmit = async (e) =>{
             submit
           </ColorButton>
         </div>
+        }
+        
+        <Footer />
     </form>
   )
 }

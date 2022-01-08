@@ -31,7 +31,7 @@ function Footer(){
 		            		<div style={{display:"flex",flexDirection:"column",fontSize:"0.6rem"}}>
 						<Link to="/home"  style={{color:"#ffffff",textDecoration:"none",}}>Home</Link>
 						<Link to="/explore"  style={{color:"#ffffff",textDecoration:"none",}}>Explore</Link>
-						<Link to="/services"  style={{color:"#ffffff",textDecoration:"none",}}>Services</Link>
+						<Link to="/exploreservices"  style={{color:"#ffffff",textDecoration:"none",}}>Services</Link>
 						<Link to="/listwithUs"  style={{color:"#ffffff",textDecoration:"none",}}>List With Us</Link>
 						<Link to="/support"  style={{color:"#ffffff",textDecoration:"none",}}>Hire An Agent</Link>
 		            		</div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStateValue } from "../components/StateProvider"
 import {Link} from 'react-router-dom';
-
+import Footer from '../components/Footer'
 function ListingIndex() {
   const [{ currentUser }, ] = useStateValue();
   
@@ -38,6 +38,7 @@ function ListingIndex() {
             List Your Service
         </Link>
      </div>
+     <Footer />
     </div>
   )}
 

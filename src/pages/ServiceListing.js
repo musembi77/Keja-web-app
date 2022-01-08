@@ -6,6 +6,8 @@ import SendIcon from '@mui/icons-material/Send';
 import axios from 'axios'
 import {useStateValue} from '../components/StateProvider'
 import {useClient} from '../Client.js'
+import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer'
 
 function ServiceListing (){
   const ColorButton = withStyles((theme) => ({
@@ -38,6 +40,8 @@ export default ServiceListing;
 
 const Form=()=>{
   const client = useClient()
+  const navigate = useNavigate();
+
   const ColorButton = withStyles((theme) => ({
     root: {
       color: theme.palette.getContrastText("#ffa31a"),
@@ -112,6 +116,7 @@ const handleSubmit = async (e) =>{
     const {CreateService} = await client.request(CREATE_SERVICE_MUTATION,variables);
     console.log('Property Created',{CreateService})
     setSubmission({CreateService})
+    navigate(-1);
   }catch(error){
     console.error(error)
   }
@@ -120,8 +125,8 @@ const handleSubmit = async (e) =>{
   
   return(
     <form style={{backgroundColor:"#e5e5e5",fontSize:"0.9rem",paddingTop:"10px"}} className='form_handle'>
-        {submission? <p>Submission success</p>:<p>Post Listing</p>}
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>Name:</p>
           <input
             type="text"
@@ -135,14 +140,14 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             onChange={(e)=>{
               setOwnerName(e.target.value)
             }}
           />
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>Service name:</p>
           <input
             type="text"
@@ -156,14 +161,14 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setServicename(e.target.value)
             }}
           />
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>PropertyType:</p>
           <select 
             style={{
@@ -176,7 +181,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             onChange={(e)=>{
               setType(e.target.value)
@@ -189,7 +194,7 @@ const handleSubmit = async (e) =>{
             <option value="Wifi">Wifi</option>
           </select>
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>Location:</p>
           <input
             type="text"
@@ -203,14 +208,14 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setLocation(e.target.value)
             }}
           />
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>Area:</p>
           <select 
             style={{
@@ -223,7 +228,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             onChange={(e)=>{
               setArea(e.target.value)
@@ -236,7 +241,7 @@ const handleSubmit = async (e) =>{
             <option value="Gate D">Gate D</option>
           </select>
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>Description:</p>
           <textarea 
             style={{
@@ -249,15 +254,15 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setDescription(e.target.value)
             }}
             />
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Description:</p>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+          <p style={{width:"20%"}}>Packages:</p>
           <textarea 
             style={{
               fontFamily: "Poppins-Regular",
@@ -269,14 +274,14 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setPackages(e.target.value)
             }}
             />
         </div>        
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>Contact:</p>
           <input
             type="text"
@@ -290,14 +295,14 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setContact(e.target.value)
             }}
           />
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>Mpesa ref code:</p>
           <input
             type="text"
@@ -311,14 +316,14 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
              onChange={(e)=>{
               setPolicy(e.target.value)
             }}
           />
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>CoverImage:</p>
           <input
             type="file"
@@ -332,7 +337,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             accept="images*"
             onChange={(e)=>{
@@ -340,7 +345,7 @@ const handleSubmit = async (e) =>{
             }}
           />
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>Images:</p>
           <input
             type="file"
@@ -354,7 +359,7 @@ const handleSubmit = async (e) =>{
               margin: "11px",
               outline: "none",
               overflowWrap: "break-word",
-              flex:0.7
+              
             }}
             accept="images*"
             onChange={(e)=>{
@@ -362,6 +367,7 @@ const handleSubmit = async (e) =>{
               }}
           />
         </div>
+        {submission? <p style={{color:"green"}}>Submission success</p>:<p>Post your Listing</p>}
         <div style={{display:"flex",justifyContent:"center"}}>
           <ColorButton
             style={{margin:"20px 10px",width:"40%"}}
@@ -381,6 +387,7 @@ const handleSubmit = async (e) =>{
             submit
           </ColorButton>
         </div>
+        <Footer />
     </form>
   )
 }

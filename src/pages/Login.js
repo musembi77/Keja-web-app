@@ -6,6 +6,7 @@ import { useStateValue } from "../components/StateProvider"
 import {GET_USER_QUERY} from "../GraphQl/Queries.js"
 import {BASE_URL} from '../Client.js'
 import { useNavigate } from 'react-router-dom';
+import Footer from '../components/Footer'
 
 function Login(){
     const [{ currentUser }, dispatch] = useStateValue();
@@ -27,7 +28,7 @@ function Login(){
             type:"IS_LOGGEDIN",
             payload:googleUser.isSignedIn()
           })
-          navigate('/');
+          navigate(-1);
           }catch(err){
             onFailure(err)
           }
@@ -44,7 +45,7 @@ function Login(){
         //console.log("user signed out")
       }
     return(
-        <div style={{width:"100vw",height:"80vh",display:"flex"}}>
+        <div style={{width:"100vw",height:"80vh",display:""}}>
           <div className="Login" >
             <div style={{margin:"0 15%"}}>
               {currentUser ? 
@@ -110,7 +111,7 @@ function Login(){
                   </div>
             </div>
           </div>
-          
+         <Footer /> 
         </div>
     )
 }

@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React,{useEffect,useState} from 'react'
 import Property from '../components/Property'
 import {useQuery,} from '@apollo/client';
@@ -7,7 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import ReactPaginate from 'react-paginate';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import {Location} from '../components/dummydata.js'
+import Footer from '../components/Footer'
 
 function Explore() {
     const [isloading, setIsLoading]=useState([]);
@@ -15,7 +16,7 @@ function Explore() {
     const { loading, data } = useQuery(GET_PROPERTY_QUERY);
 
     const [pageNumber, setPageNumber]=useState(0)
-    const propertyPerPage= 6;
+    const propertyPerPage= 10;
     const pagesVisted = pageNumber * propertyPerPage;
 
     
@@ -30,69 +31,45 @@ function Explore() {
             //console.log(...data.get_Properties);
         }
     },[data,isloading,loading]);
-    console.log(number)
+    //console.log(number)
     const pageCount = Math.ceil(number/propertyPerPage)
     //console.log(pageCount)
     const handlePageClick = ({selected})=>{
         setPageNumber(selected)
     }
-    
-const [searchoption, setSearchOption]=useState('')
-
-console.log(searchoption)
+const [searchoption, setSearchOption]=useState('price')
+//const searchoption = 'area'
+//console.log(searchoption)
     return (
-        <div style={{width:"100%",position:"relative",height:"100vh"}}>
-            <div style={{display:'flex',}}>
-                <p style={{width:"25%",fontSize:"0.7rem"}}>Select option to search by:</p>
-                
-          <div style={{
-            display:"flex",
-            //justifyContent:"space-between",
-            alignItems:"center",
-            textAlign:"center",
-            overflow:"auto",
-            whiteSpace:"nowrap",
-            width:"100%",
-
-          }} className="scrollbar">
-            {Location.map((item)=>{
-              return(
-                <div> 
-                  <ul style={{
-                    backgroundColor:"#e5e5e5",
-                    width:"100px",
-                    margin:"0 10px",
-                    textDecoration:"none",
-                    listStyle:"none",
-                    
-                  }}>
-                    <li >
-                      <div style={{                      
-                        fontSize:"0.9rem",
-                        fontFamily:"Poppins-Regular",
-                        textDecoration:"none",
-                        color:"#000000",
-                        backgroundColor:"",
-                      }}
-                      value={item.value}
-                      onClick={(e)=>{
-                          setSearchOption(e.target.value)
-                        }}
-                      >
-                      {item.title}
-                      </div>
-                    </li>
-                  </ul>
-                  
-                </div>
-              )
-            })}
-          </div>
-            
-            </div>
+        <div style={{width:"100%",position:"relative",height:""}}>
+        <div style={{display:"flex",alignItems:"center",backgroundColor:"#eeeeee",margin:"10px 0",justifyContent:"space-between"}}>
+            <p style={{fontSize:"0.7rem",padding:"0 10px"}}>Select option to search by:</p>
+            <select 
+                  style={{
+                    fontFamily: "Poppins-Regular",
+                    fontSize: "14px",
+                    color: "#1b1b1b",
+                    border: "none",
+                    height: "100%",
+                    padding: "5px 10px",
+                    outline: "none",
+                    overflowWrap: "break-word",
+                    flex:0.7
+                  }}
+                  onChange={(e)=>{
+                  setSearchOption(e.target.value)
+                  }}
+                  >
+                    <option value="propertyname">Name</option>
+                    <option value="price">Price</option>
+                    <option value="area">Area</option>
+                    <option value="type">Property type</option>
+                </select>
+        </div>
+        
             <div style={{display:"flex",justifyContent:"center",margin:"0 10%",alignItems:"center"}}>
                 <input 
-                    placeholder='Search {}'
+                    placeholder="Search Apartment by ..."
                     style={{
                         fontSize:'0.9rem',
                         outline:'none',
@@ -114,14 +91,30 @@ console.log(searchoption)
                 textDecoration:"none",
                 color:"#000000",
                 padding:"10px",
-                position:"static"                          
             }} >
                 <div style={{display:"flex",
-                    flexWrap:"wrap",justifyContent:"space-around",height:"100%"   }}>
+                    flexWrap:"wrap",justifyContent:"space-around", height:"80vh",
+                overflow:"auto",
+            whiteSpace:"nowrap",   }} className="scrollbar">
                     {isloading && !data? 
                             <Skeleton /> :
                                 data.get_Properties
-                                .filter(property => (property.propertyname.toString().toLowerCase().includes(query.toLowerCase())))
+                                .filter(property => 
+                                    {
+                                        if(searchoption === 'price')
+                                    { 
+                                        return (property.price.toString().toLowerCase().includes(query.toLowerCase()));
+                                    }
+                                    else if(searchoption === 'propertyname'){
+                                        return (property.propertyname.toString().toLowerCase().includes(query.toLowerCase()));
+                                    }
+                                    else if(searchoption === 'area'){
+                                        return (property.area.toString().toLowerCase().includes(query.toLowerCase()));
+                                    }
+                                    else if(searchoption === "type"){
+                                        return (property.type.toString().toLowerCase().includes(query.toLowerCase()));
+                                    }
+                                })
                                 .slice(pagesVisted, pagesVisted + propertyPerPage)
                                 .map((property)=>{
                                     return(
@@ -133,8 +126,7 @@ console.log(searchoption)
                                         </div>
                                     )
                                 })
-                        }
-                    
+                            }
                         </div>
                     <ReactPaginate 
                         breakLabel="..."
@@ -151,8 +143,8 @@ console.log(searchoption)
                         activeClassName={"paginationActive"}
                     />
                 </div> 
+                <Footer />
         </div>
     )
 }
-
 export default Explore;
