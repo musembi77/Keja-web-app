@@ -1,4 +1,6 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,
+  // useEffect
+} from 'react';
 import { Button, withStyles } from "@material-ui/core";
 import {CREATE_PROPERTY_MUTATION} from '../GraphQl/Mutations.js'
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -104,10 +106,10 @@ const INITIAL_VIEWPORT ={
   const [viewport, setViewport] = useState(INITIAL_VIEWPORT);
   const [propertyPosition, setPropertyPosition] = useState([])
 
-  useEffect(()=>{
-    getPropertyPosition()
-    //console.log(propertyPosition.longitude)
-  })
+  // useEffect(()=>{
+  //   getPropertyPosition()
+  //   //console.log(propertyPosition.longitude)
+  // },[])
 
   const getPropertyPosition=()=>{
     if("geolocation" in navigator){
@@ -118,6 +120,7 @@ const INITIAL_VIEWPORT ={
       })
     }
   }
+  getPropertyPosition()
 const handleSubmit = async (e) =>{
   try{
     e.preventDefault();

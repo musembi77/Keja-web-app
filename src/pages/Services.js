@@ -86,27 +86,30 @@ function Services(){
             return(
               <ul style={{
                   backgroundColor:"#f79d00",
-                  width:"120px",
+                  width:"",
                   textAlign:"center",
                   placeItems:"center",
                   position:"relative",              
                   margin:"0 5px",
                   textDecoration:"none",
                   listStyle:"none",
-                  borderRadius:"5px",
+                  borderRadius:"999px",
 
                 }}>
-                  <li style={{width:"120px"}}>
+
+                  <li style={{width:"80px",height:"80px",borderRadius:"999px"}}>
                     <Link style={{
                       color:"#000000",
                       fontSize:"0.9rem",
                       fontFamily:"Poppins-Bold",
-                      textDecoration:"none",
-                      padding:"10px",
+                      textDecoration:"none",paddingTop:"10px",
+                      display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"
 
                     }} to=''>
-                      <div style={{fontSize:"20px"}}>{item.icon}</div>
-                      <p>{item.title}</p>
+                    {item.icon}
+                      <p style={{fontSize:"1rem"}}>{item.title}</p>
+                      
+                      
                     </Link>
                   </li>
                 </ul>
