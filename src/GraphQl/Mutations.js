@@ -14,7 +14,10 @@ export const CREATE_PROPERTY_MUTATION =`
 		$vacancy:String!,
 		$contact:String!,
 		$mainimage:String!,
-		$overviewimage:String!,
+		$image1:String!,
+		$image2:String!,
+		$image3:String!,
+		$image4:String!,
 	){
 		createProperty(input:{
 			landlordname:$landlordname
@@ -31,7 +34,10 @@ export const CREATE_PROPERTY_MUTATION =`
 			vacancy:$vacancy
 			contact:$contact
 			mainimage:$mainimage
-			overviewimage:$overviewimage
+			image1:$image1
+			image2:$image2
+			image3:$image3
+			image4:$image4
 		}){
 			_id
 			createdAt

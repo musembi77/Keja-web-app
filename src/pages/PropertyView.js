@@ -13,7 +13,8 @@ import { styled } from '@mui/material/styles';
 import { useStateValue } from "../components/StateProvider";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Review from '../components/Review.js'
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import FmdBadIcon from '@mui/icons-material/FmdBad';
+// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Footer from '../components/Footer'
 
 function PropertyView(){
@@ -27,7 +28,10 @@ function PropertyView(){
                 key={property.id}
                 id={property.id}
                 mainimage={property.mainimage}
-                overviewimage={property.overviewimage}
+                image1={property.image1}
+                image2={property.image2}
+                image3={property.image3}
+                image4={property.image4}
                 propertyname={property.propertyname}
                 price={property.price}
                 area={property.area}
@@ -35,6 +39,7 @@ function PropertyView(){
                 stats={property.stats}
                 description={property.description}
                 amenities={property.amenities}
+                policy={property.policy}
                 overview={property.overview}
                 reviews={property.reviews}
                 vacancy={property.vacancy}
@@ -57,7 +62,11 @@ const ViewDetails=({
             stats,
             description,
             amenities,
-            overviewimage,
+            policy,
+            image1,
+            image2,
+            image3,
+            image4,
             vacancy,
             reviews,
             contact,
@@ -127,7 +136,11 @@ const ViewDetails=({
         <p>Vacancy:<span style={{color:"#ffa31a",margin:"0 5px"}}>{vacancy}</span></p>
         
       </div>
-      <p style={{fontSize:"0.9rem"}}>{area}</p>
+      <div style={{display:"flex"}}>
+      <p style={{fontSize:"0.9rem"}}>Area :</p>
+      <p style={{fontSize:"0.9rem",marginLeft:"5px"}}>{area}</p>
+      </div>
+      
       {
         //share
       }
@@ -141,27 +154,27 @@ const ViewDetails=({
       }
       <div>
         <h4 >Description</h4>
-        <p style={{color:"grey"}}>{description}</p>
+        <p style={{color:"grey",whiteSpace:"pre"}}>{description}</p>
       </div>
       {
         //Amenities
       }
       <div style={{color:"grey"}}>
         <h4 style={{color:"#000000"}}>Amenities</h4>
-        <p>{amenities}</p>
+        <p style={{whiteSpace:"pre"}}>{amenities}</p>
       </div>
       {
         //Policies
       }
       <div style={{color:"grey"}}>
         <h4 style={{color:"#000000"}}>Policies</h4>
-        <p>{amenities}</p>
+        <p style={{whiteSpace:"pre"}}>{policy}</p>
       </div>
       <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-around"}}>
-        <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
-        <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
-        <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
-        <img src={overviewimage} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={image1} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={image2} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={image3} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={image4} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
       </div>
         {
           //Review
@@ -210,8 +223,8 @@ const ViewDetails=({
           <div style={{display:"flex",flexDirection:"column",margin:"10px 0",borderRadius:"10px",padding:"10px",backgroundColor:"#eeeeee"}}>
                 <div>
                   <div style={{display:"flex"}}>
-                    <img src='./Keja.jpg' alt="logo" style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
-                    <p style={{fontSize:"0.9rem"}}>Keja Agent</p>
+                    <img src='./mwangiB.png' alt="logo" style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
+                    <p style={{fontSize:"0.9rem"}}>Mwangi Bhagia Consultancy</p>
                   </div>
                   <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:""}}>
                       <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
@@ -220,36 +233,20 @@ const ViewDetails=({
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                        0771712005</p>
+                        0798706699</p>
                       </div>
-                      <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px"}}>
+                      <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"",padding:"5px",borderRadius:"5px",margin:"5px"}}>
                         <WhatsAppIcon style={{fontSize:"1rem",margin:"0 5px"}} />
                         <a href = "https://wa.link/nv8tti" 
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                        0771712005</a>
+                        07987066995</a>
                       </div>
                       
                   </div>
                 </div>
-                <div>
-                  <div style={{display:"flex"}}>
-                    <AccountCircleIcon  style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
-                    <p style={{fontSize:"0.9rem"}}>{propertyname}'s contact</p>
-                  </div>
-                  <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:""}}>
-                      <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
-                        <Call style={{fontSize:"1rem",marginRight:"5px"}}/>
-                        <p href = "https://wa.link/nv8tti" 
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                        {contact}</p>
-                      </div>                      
-                  </div>
-                </div>
-              </div>
+               </div> 
         </div>
         ):
         (
@@ -261,6 +258,8 @@ const ViewDetails=({
         
       </div>
     </div>
+    <p style={{fontSize:"0.7rem",textAlign:"center",padding:"10px 0",backgroundColor:"#e5e5e5"}}>
+      <FmdBadIcon style={{fontSize:"0.9rem"}}/>This information was posted by Mwangi Bhagia Consultancy</p>
     <Footer />
   </div>
   )

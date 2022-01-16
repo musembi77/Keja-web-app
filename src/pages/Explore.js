@@ -121,7 +121,7 @@ const [searchoption, setSearchOption]=useState('price')
                                         <div>
                                             <Property
                                                 property={property}
-                                                key={property.id}
+                                                key={property._id}
                                             />
                                         </div>
                                     )

@@ -62,7 +62,10 @@ const Form=()=>{
   const [contact, setContact]=useState('');
   //const [payment, setPayment]=useState('');
   const [mainimage, setMainimage]=useState('')
-  const [overviewimage, setOverviewimage]=useState('')
+  const [image1, setImage1]=useState('')
+  const [image2, setImage2]=useState('')
+  const [image3, setImage3]=useState('')
+  const [image4, setImage4]=useState('')
   //const [url,setUrl]=useState('');
   const [submission,setSubmission]=useState('')
 
@@ -85,7 +88,52 @@ const handleImageUpload1 = async () =>{
   //console.log(mainimage)
   try{
     const data = new FormData()
-      data.append("file", overviewimage);
+      data.append("file", image1);
+      data.append('upload_preset', 'keja-web-app');
+      data.append("cloud_name","musembi77")
+      const res = await axios.post("https://api.cloudinary.com/v1_1/musembi77/image/upload",
+        data)
+      return res.data.url
+  }catch(error){
+    console.error(error)
+  }
+  
+}
+const handleImageUpload2 = async () =>{
+  //console.log(mainimage)
+  try{
+    const data = new FormData()
+      data.append("file", image2);
+      data.append('upload_preset', 'keja-web-app');
+      data.append("cloud_name","musembi77")
+      const res = await axios.post("https://api.cloudinary.com/v1_1/musembi77/image/upload",
+        data)
+      return res.data.url
+  }catch(error){
+    console.error(error)
+  }
+  
+}
+const handleImageUpload3 = async () =>{
+  //console.log(mainimage)
+  try{
+    const data = new FormData()
+      data.append("file", image3);
+      data.append('upload_preset', 'keja-web-app');
+      data.append("cloud_name","musembi77")
+      const res = await axios.post("https://api.cloudinary.com/v1_1/musembi77/image/upload",
+        data)
+      return res.data.url
+  }catch(error){
+    console.error(error)
+  }
+  
+}
+const handleImageUpload4 = async () =>{
+  //console.log(mainimage)
+  try{
+    const data = new FormData()
+      data.append("file", image4);
       data.append('upload_preset', 'keja-web-app');
       data.append("cloud_name","musembi77")
       const res = await axios.post("https://api.cloudinary.com/v1_1/musembi77/image/upload",
@@ -126,6 +174,9 @@ const handleSubmit = async (e) =>{
     e.preventDefault();
     const url = await handleImageUpload();
     const url1 = await handleImageUpload1();
+    const url2 = await handleImageUpload2();
+    const url3 = await handleImageUpload3();
+    const url4 = await handleImageUpload4();
     console.log(url)
     console.log(url1)
 
@@ -142,7 +193,10 @@ const handleSubmit = async (e) =>{
         amenities,
         policy,
         mainimage:url,
-        overviewimage:url1,
+        image1:url1,
+        image2:url2,
+        image3:url3,
+        image4:url4,
         vacancy,
         contact
       }
@@ -265,8 +319,8 @@ const handleSubmit = async (e) =>{
             <option value="Hostel">Hostel</option>
             <option value="OneBedroom">OneBedroom</option>
             <option value="TwoBedroom">TwoBedroom</option>
-            <option value="ThreeBedroom">ThreeBedroom</option>
-            <option value="BedSitter&OneBedroom">BedSitter&OneBedroom</option>
+            <option value="ThreeBedroom">Three Bedroom</option>
+            <option value="shop">Shop</option>
           </select>
         </div>
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
@@ -508,7 +562,7 @@ const handleSubmit = async (e) =>{
           />
         </div>
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Images:</p>
+          <p style={{width:"20%"}}>Image 1:</p>
           <input
             type="file"
             style={{
@@ -525,7 +579,73 @@ const handleSubmit = async (e) =>{
             }}
             accept="images*"
             onChange={(e)=>{
-                setOverviewimage(e.target.files[0])
+                setImage1(e.target.files[0])
+              }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 2:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage2(e.target.files[0])
+              }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 3:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage3(e.target.files[0])
+              }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 4:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage4(e.target.files[0])
               }}
           />
         </div>
