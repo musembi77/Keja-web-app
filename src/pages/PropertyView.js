@@ -13,7 +13,7 @@ import { styled } from '@mui/material/styles';
 import { useStateValue } from "../components/StateProvider";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Review from '../components/Review.js'
-import FmdBadIcon from '@mui/icons-material/FmdBad';
+// import FmdBadIcon from '@mui/icons-material/FmdBad';
 // import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Footer from '../components/Footer'
 
@@ -223,8 +223,8 @@ const ViewDetails=({
           <div style={{display:"flex",flexDirection:"column",margin:"10px 0",borderRadius:"10px",padding:"10px",backgroundColor:"#eeeeee"}}>
                 <div>
                   <div style={{display:"flex"}}>
-                    <img src='./mwangiB.png' alt="logo" style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
-                    <p style={{fontSize:"0.9rem"}}>Mwangi Bhagia Consultancy</p>
+                    <img src='./Keja.jpg' alt="logo" style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
+                    <p style={{fontSize:"0.9rem"}}>Keja agent</p>
                   </div>
                   <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:""}}>
                       <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
@@ -233,7 +233,7 @@ const ViewDetails=({
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                        0798706699</p>
+                        0771712005</p>
                       </div>
                       <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"",padding:"5px",borderRadius:"5px",margin:"5px"}}>
                         <WhatsAppIcon style={{fontSize:"1rem",margin:"0 5px"}} />
@@ -241,7 +241,7 @@ const ViewDetails=({
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                        07987066995</a>
+                        0771712005</a>
                       </div>
                       
                   </div>
@@ -258,8 +258,6 @@ const ViewDetails=({
         
       </div>
     </div>
-    <p style={{fontSize:"0.7rem",textAlign:"center",padding:"10px 0",backgroundColor:"#e5e5e5"}}>
-      <FmdBadIcon style={{fontSize:"0.9rem"}}/>This information was posted by Mwangi Bhagia Consultancy</p>
     <Footer />
   </div>
   )

@@ -44,7 +44,10 @@ const PopUp=({
 	          stats:property.stats,
 	          description:property.description,
 	          amenities:property.amenities,
-	          overviewimage:property.overviewimage,
+	          image1:property.image1,
+          image2:property.image2,
+          image3:property.image3,
+          image4:property.image4,
 	          reviews:property.reviews,
 	          vacancy:property.vacancy
 	        },

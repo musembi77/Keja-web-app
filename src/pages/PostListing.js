@@ -677,7 +677,7 @@ const handleSubmit = async (e) =>{
             style={{margin:"20px 10px",width:"40%"}}
             endIcon={<SendIcon />}
             disabled={
-              !propertyname.trim() || !price.trim()
+              !propertyname.trim() || !price.trim() 
             }
             onClick={handleSubmit}
           >
