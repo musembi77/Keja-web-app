@@ -16,7 +16,7 @@ function Footer(){
 						<h3 >KEJA</h3>
 		                		<Room style={{color:'#ffa31a',fontSize:'1.1rem'}}/>
 					</div>
-	                		<span style={{fontSize:'0.6rem'}}>Find the Right Aprtment</span>
+	                		<span style={{fontSize:'0.6rem'}}>Find the Right Apartment</span>
 	                		<div style={{width:"",backgroundColor:"",margin:"5px 0"}}>
 	                			<p style={{color:"#ffa31a"}}>Contact Us</p>
 	                			<div style={{fontSize:"0.7rem",alignItems:"center"}}>
@@ -32,6 +32,7 @@ function Footer(){
 						<Link to="/home"  style={{color:"#ffffff",textDecoration:"none",}}>Home</Link>
 						<Link to="/explore"  style={{color:"#ffffff",textDecoration:"none",}}>Explore</Link>
 						<Link to="/exploreservices"  style={{color:"#ffffff",textDecoration:"none",}}>Services</Link>
+						<Link to="/support"  style={{color:"#ffffff",textDecoration:"none",}}>Support</Link>
 						<Link to="/listwithUs"  style={{color:"#ffffff",textDecoration:"none",}}>List With Us</Link>
 						<Link to="/support"  style={{color:"#ffffff",textDecoration:"none",}}>Hire An Agent</Link>
 		            		</div>
@@ -56,8 +57,7 @@ function Footer(){
 			<div style={{display:"flex",justifyContent:"center",borderTop:"1px solid #ffa31a",marginTop:"5px"}}>
 				<div style={{marginTop:"2px",display:"flex"}}>
 					<a href='https://www.instagram.com/keja_app/' target="_blank" rel="noopener noreferrer" style={{color:"#ffffff"}}><Instagram style={{marginRight:"10px",fontSize:"1.2rem",color:""}}/></a>
-		                    	<p style={{color:"#ffffff"}}><Facebook style={{marginRight:"10px",fontSize:"1.2rem"}}/></p>
-		                    	<p style={{color:"#ffffff"}}><Twitter style={{marginRight:"5px",fontSize:"1.2rem",color:""}}/></p>
+		                    	<a href='https://twitter.com/intent/tweet?url=https://twitter.com/Keja_app?t=zgzb5QSgs_tYOu8YGH9uKg&s=08&text=' target="_blank" rel="noopener noreferrer"  style={{color:"#ffffff"}}><Twitter style={{marginRight:"5px",fontSize:"1.2rem",color:""}}/></a>
 				</div>
 			</div>
 			<div style={{display:"flex",justifyContent:"center"}}>

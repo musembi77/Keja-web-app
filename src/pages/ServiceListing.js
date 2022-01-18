@@ -54,11 +54,11 @@ const Form=()=>{
   const [location, setLocation]=useState('');
   const [area, setArea]=useState('');
   const [description, setDescription]=useState('');
-  const [packages, setPackages]=useState('');
+  
   const [contact, setContact]=useState('');
-  const [policy, setPolicy]=useState('');
+  
   const [mainimage, setMainimage]=useState('')
-  const [overviewimage, setOverviewimage]=useState('')
+  
   const [submission,setSubmission]=useState('')
 
 const handleImageUpload = async () =>{
@@ -76,29 +76,13 @@ const handleImageUpload = async () =>{
   }
   
 }
-const handleImageUpload1 = async () =>{
-  //console.log(mainimage)
-  try{
-    const data = new FormData()
-      data.append("file", overviewimage);
-      data.append('upload_preset', 'keja-web-app');
-      data.append("cloud_name","musembi77")
-      const res = await axios.post("https://api.cloudinary.com/v1_1/musembi77/image/upload",
-        data)
-      return res.data.url
-  }catch(error){
-    console.error(error)
-  }
-  
-}
 
 const handleSubmit = async (e) =>{
   try{
     e.preventDefault();
     const url = await handleImageUpload();
-    const url1 = await handleImageUpload1();
+    
     console.log(url)
-    console.log(url1)
 
     const variables ={
         ownername,
@@ -107,10 +91,9 @@ const handleSubmit = async (e) =>{
         location,
         area,
         description,
-        packages,
-        policy,
+        
         mainimage:url,
-        overviewimage:url1,
+        
         contact
       }
     const {CreateService} = await client.request(CREATE_SERVICE_MUTATION,variables);
@@ -187,6 +170,7 @@ const handleSubmit = async (e) =>{
               setType(e.target.value)
             }}
             >
+            <option value="Gate A">select Service Type</option>
             <option value="BedSitter">Laundry</option>
             <option value="Movers">Movers</option>
             <option value="Gas Refill">Gas Refill</option>
@@ -234,6 +218,7 @@ const handleSubmit = async (e) =>{
               setArea(e.target.value)
             }}
             >
+            <option value="Gate A">select Area</option>
             <option value="Gate A">Gate A</option>
             <option value="Gate B">Gate B</option>
             <option value="Gachororo">Gachororo</option>
@@ -260,27 +245,7 @@ const handleSubmit = async (e) =>{
               setDescription(e.target.value)
             }}
             />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-          <p style={{width:"20%"}}>Packages:</p>
-          <textarea 
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
-              setPackages(e.target.value)
-            }}
-            />
-        </div>        
+        </div>       
         <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
           <p style={{width:"20%"}}>Contact:</p>
           <input
@@ -299,27 +264,6 @@ const handleSubmit = async (e) =>{
             }}
              onChange={(e)=>{
               setContact(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-          <p style={{width:"20%"}}>Mpesa ref code:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
-              setPolicy(e.target.value)
             }}
           />
         </div>
@@ -343,28 +287,6 @@ const handleSubmit = async (e) =>{
             onChange={(e)=>{
               setMainimage(e.target.files[0])
             }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}>
-          <p style={{width:"20%"}}>Images:</p>
-          <input
-            type="file"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 0",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-            accept="images*"
-            onChange={(e)=>{
-                setOverviewimage(e.target.files[0])
-              }}
           />
         </div>
         {submission? <p style={{color:"green"}}>Submission success</p>:<p>Post your Listing</p>}

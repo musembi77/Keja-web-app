@@ -64,11 +64,8 @@ export const CREATE_SERVICE_MUTATION=`
 		$location:String!,
 		$area:String!,
 		$description:String!,
-		$packages:String!,
-		$policy:String!
 		$contact:String!,
 		$mainimage:String!,
-		$overviewimage:String!,
 	){
 		createService(input:{
 			ownername:$ownername
@@ -77,11 +74,8 @@ export const CREATE_SERVICE_MUTATION=`
 			description:$description
 			location:$location
 			area:$area
-			packages:$packages
-			policy:$policy
 			contact:$contact
 			mainimage:$mainimage
-			overviewimage:$overviewimage
 		}){
 			_id
 			createdAt

@@ -15,6 +15,7 @@ import { useStateValue } from "../components/StateProvider";
 
 function Services(){
   const [isloading, setIsLoading]=useState([]);
+  const [query, setQuery]=useState('');
     const { loading, data } = useQuery(GET_SERVICE_QUERY);
     useEffect(()=>{
         if(loading){
@@ -25,6 +26,7 @@ function Services(){
             
         }
     },[data,isloading,loading]);
+    const [searchoption, setSearchOption]=useState('servicename')
 	const Services=[
   // {
   // icon:<CreditScoreIcon />,
@@ -54,24 +56,49 @@ function Services(){
 ]
 	return(
 		<div style={{padding:"10px"}}>
-			<div style={{display:"flex",justifyContent:"center",margin:"0 10%",alignItems:"center"}}>
-            <input 
-                placeholder='Search for Service'
-                style={{
-                    fontSize:'0.9rem',
-                    outline:'none',
-                    padding:'7px',
-                    border:'none',
-                    borderRadius:"999px",
-                    height:'100%',
-                    
-                    width:'80%',
-                    overflowWrap:'break-word',
-                    backgroundColor:"#e5e5e5"
-                }}
-            />
-            <SearchIcon />
-            </div>
+			<div style={{display:"flex",alignItems:"center",backgroundColor:"#eeeeee",margin:"10px 0",justifyContent:"space-between"}}>
+            <p style={{fontSize:"0.7rem",padding:"0 10px"}}>Select option to search by:</p>
+            <select 
+                  style={{
+                    fontFamily: "Poppins-Regular",
+                    fontSize: "14px",
+                    color: "#1b1b1b",
+                    border: "none",
+                    height: "100%",
+                    padding: "5px 10px",
+                    outline: "none",
+                    overflowWrap: "break-word",
+                    flex:0.7
+                  }}
+                  onChange={(e)=>{
+                  setSearchOption(e.target.value)
+                  }}
+                  >
+                    <option value="propertyname">Name</option>
+                    <option value="price">Price</option>
+                    <option value="area">Area</option>
+                    <option value="type">Property type</option>
+                </select>
+        </div>
+        
+            <div style={{display:"flex",justifyContent:"center",margin:"0 10%",alignItems:"center"}}>
+                <input 
+                    placeholder="Search Apartment by ..."
+                    style={{
+                        fontSize:'0.9rem',
+                        outline:'none',
+                        padding:'7px',
+                        border:'none',
+                        borderRadius:"999px",
+                        height:'100%',
+                        width:'80%',
+                        overflowWrap:'break-word',
+                        backgroundColor:"#e5e5e5"
+                    }}
+                    onChange={(e)=>setQuery(e.target.value)}
+                />
+                <SearchIcon />
+            </div >
 			<div>
         <p>Services</p>
         <div style={{
@@ -120,7 +147,21 @@ function Services(){
       		<div style={{display:"flex",flexWrap:"Wrap"}}>
       		{isloading && !data? 
               <Skeleton /> :
-                data.get_Services.map((service)=>{
+                data.get_Services
+                .filter(service => 
+                                    {
+                                        if(searchoption === 'servicename')
+                                    { 
+                                        return (service.servicename.toString().toLowerCase().includes(query.toLowerCase()));
+                                    }
+                                    else if(searchoption === 'area'){
+                                        return (service.area.toString().toLowerCase().includes(query.toLowerCase()));
+                                    }
+                                    else if(searchoption === "type"){
+                                        return (service.type.toString().toLowerCase().includes(query.toLowerCase()));
+                                    }
+                                })
+                                        .map((service)=>{
                     return(
                       <div>
                         <Product
@@ -142,24 +183,19 @@ export const Product=({service})=>{
   // eslint-disable-next-line no-unused-vars
     const [ {services},dispatch] = useStateValue();
     const ViewService=()=>{
-      console.log("dispatch fired");
-      console.log(services)
+      //console.log("dispatch fired");
+      //console.log(services)
       dispatch({
         type: "VIEW_SERVICE",
         services: {
           id:service._id,
           mainimage:service.mainimage,
           servicename:service.servicename,
-          price:service.price,
           location:service.location,
-          stats:service.stats,
           description:service.description,
-          amenities:service.amenities,
-          overviewimage:service.overviewimage,
-          reviews:service.reviews,
-          vacancy:service.vacancy,
           contact:service.contact,
-          area:service.area
+          area:service.area,
+          type:service.type
         },
       });
     }
@@ -184,9 +220,8 @@ export const Product=({service})=>{
             alt="logo" style={{width:"100%",height:"150px",objectFit:"cover",borderRadius:"10px"}}
             />
           <div style={{padding:"5px"}}>
-            <h3 style={{fontFamily:"Poppins-Bold"}}>Laundry<span style={{color:"#eeeeee"}}></span></h3>
-            <p>Rate</p>
-            <p style={{fontSize:"0.6rem",color:"grey"}}>Location</p>
+            <h3 style={{fontFamily:"Poppins-Bold"}}>{service.servicename}<span style={{color:"#eeeeee"}}></span></h3>
+            <p style={{fontSize:"0.6rem",color:"grey"}}>{service.location}</p>
           </div>
       </Link>
     </div>

@@ -24,15 +24,11 @@ function ServicesView(){
                 key={service.id}
                 id={service._id}
                 mainimage={service.mainimage}
-                overviewimage={service.overviewimage}
                 servicename={service.servicename}
                 type={service.type}
                 area={service.area}
                 location={service.location}
-                stats={service.stats}
                 description={service.description}
-                policies={service.policies}
-                reviews={service.reviews}
                 contact={service.contact}
           />
           )
@@ -52,31 +48,11 @@ const ViewDetails=({
             location,
             stats,
             description,
-            amenities,
-            overviewimage,
-            vacancy,
-            reviews,
             contact,
             area
           }
             
 )=>{
-  //console.log(reviews)
-  // const ColorButton = styled(Button)(({ theme }) => ({
-  //   color: theme.palette.getContrastText("#ffa31a"),
-  //   backgroundColor: "#ffa31a",
-  //   '&:hover': {
-  //     backgroundColor: "#ffa31a",
-  //   },
-  // }));
-  // // eslint-disable-next-line no-unused-vars
-  // const [{showreviews},dispatch] = useStateValue('')
-  
-  // const [showcontact,setShowContact]=useState();
-  // const HandleContact = () =>{
-  //   setShowContact(true)
-  // }
-
   const[like,setLike]=useState();
   const HandleLike=()=>{
     setLike(!like);
@@ -130,7 +106,7 @@ const ViewDetails=({
                         {contact}</p>
                       </div>                      
                   </div>
-                  <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px"}}>
+                  <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"",padding:"5px",borderRadius:"5px",margin:"5px"}}>
                         <WhatsAppIcon style={{fontSize:"1rem",margin:"0 5px"}} />
                         <p 
                         >

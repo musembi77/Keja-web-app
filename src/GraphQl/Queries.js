@@ -63,11 +63,8 @@ export const GET_SERVICE_QUERY = gql`
             location
             area
             description
-            packages
-            policy
             contact
             mainimage
-            overviewimage
             createdAt
             author{
                 _id

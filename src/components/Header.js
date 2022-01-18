@@ -111,7 +111,7 @@ export const Menubar = ({currentUser}) =>{
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/exploreservices'>Services</Link>
-                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>SignIn/SignOut</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>SignIn</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/listwithUs'>List with Us</Link>
                 
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/about'>About</Link>
@@ -124,10 +124,9 @@ export const Menubar = ({currentUser}) =>{
                     <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/support'>Support</Link>
                 </div>
                 
-                <div style={{marginTop:"",borderTop:"1px solid #ffa31a",width:"100px",display:"flex"}}>
+                <div style={{marginTop:"",borderTop:"1px solid #ffa31a",width:"100px",display:"flex",justifyContent:"center"}}>
                     <a href='https://www.instagram.com/keja_app/' target="_blank" rel="noopener noreferrer" style={{color:'#000000'}}><Instagram style={{marginRight:"10px",fontSize:"1.2rem",}}/></a>
-                    <p style={{color:'#000000'}}><Facebook style={{marginRight:"10px",fontSize:"1.2rem"}}/></p>
-                    <p style={{color:'#000000'}}><Twitter style={{marginRight:"5px",fontSize:"1.2rem",}}/></p>
+                    <a href='https://twitter.com/intent/tweet?url=https://twitter.com/Keja_app?t=zgzb5QSgs_tYOu8YGH9uKg&s=08&text=' target="_blank" rel="noopener noreferrer"  style={{color:'#000000'}}><Twitter style={{marginRight:"5px",fontSize:"1.2rem",color:""}}/></a>
                 </div>
             </div>
         </div>
