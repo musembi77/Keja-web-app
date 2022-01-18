@@ -315,6 +315,7 @@ const handleSubmit = async (e) =>{
               setType(e.target.value)
             }}
             >
+            <option value="BedSitter">Select type</option>
             <option value="BedSitter">BedSitter</option>
             <option value="Hostel">Hostel</option>
             <option value="OneBedroom">OneBedroom</option>
