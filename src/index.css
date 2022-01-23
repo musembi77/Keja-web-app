@@ -7,6 +7,9 @@
   cursor: S;
   
 }
+p {
+  margin-bottom: 0em !important;
+}
 @font-face {
   font-family: "Poppins-bold";
   src: local("Poppins-Bold"), url(./fonts/Poppins-Bold.otf) format("opentype");

@@ -6,7 +6,6 @@ import {
     Close,
     Home,
     SupportAgent,
-    Facebook,
     Instagram,
     Twitter,
 } 
@@ -35,9 +34,9 @@ function Header({onClick,showmenu}) {
             }}
         >
             <Link to="/home"
-                style={{fontFamily:'Poppins-Bold',fontsize:'1.2 rem',textDecoration:"none",color:'#1b1b1b',alignItems: 'center',textAlign:'center',display:'flex'}}
+                style={{fontFamily:'Poppins-Bold',fontsize:'1.2 rem',textDecoration:"none",color:'#1b1b1b',display:'flex',justifyContent:"center",alignItems: 'center',textAlign:'center'}}
             >
-                <h3 >KEJA</h3>
+                <h3 style={{marginTop:"10px"}}>KEJA</h3>
                 <Room style={{color:'#ffa31a'}}/>
             </Link>
             <div
@@ -112,7 +111,7 @@ export const Menubar = ({currentUser}) =>{
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/exploreservices'>Services</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>SignIn</Link>
-                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/listwithUs'>List with Us</Link>
+                
                 
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/about'>About</Link>
 

@@ -1,5 +1,5 @@
+/* eslint-disable array-callback-return */
 import React,{useState,useEffect} from 'react'
-// import Skeleton from '../components/Skeleton.js'
 import DryCleaningIcon from '@mui/icons-material/DryCleaning';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import WeekendIcon from '@mui/icons-material/Weekend';
@@ -74,16 +74,16 @@ function Services(){
                   setSearchOption(e.target.value)
                   }}
                   >
-                    <option value="propertyname">Name</option>
-                    <option value="price">Price</option>
+                  <option value="servicename">default</option>
+                    <option value="servicename">Name</option>
                     <option value="area">Area</option>
-                    <option value="type">Property type</option>
+                    <option value="type">service type</option>
                 </select>
         </div>
         
             <div style={{display:"flex",justifyContent:"center",margin:"0 10%",alignItems:"center"}}>
                 <input 
-                    placeholder="Search Apartment by ..."
+                    placeholder="Search service by ..."
                     style={{
                         fontSize:'0.9rem',
                         outline:'none',
@@ -100,7 +100,7 @@ function Services(){
                 <SearchIcon />
             </div >
 			<div>
-        <p>Services</p>
+        <p>Services Available</p>
         <div style={{
           display:"flex",
           alignItems:"center",
@@ -112,7 +112,7 @@ function Services(){
           {Services.map((item)=>{
             return(
               <ul style={{
-                  backgroundColor:"#f79d00",
+                  //backgroundColor:"#f79d00",
                   width:"",
                   textAlign:"center",
                   placeItems:"center",
@@ -144,7 +144,7 @@ function Services(){
           })}
         </div>
       </div>
-      		<div style={{display:"flex",flexWrap:"Wrap"}}>
+      		<div style={{display:"flex",flexWrap:"Wrap",backgroundColor:"#e5e5e5",margin:"10px 0"}}>
       		{isloading && !data? 
               <Skeleton /> :
                 data.get_Services

@@ -49,7 +49,8 @@ const PopUp=({
           image3:property.image3,
           image4:property.image4,
 	          reviews:property.reviews,
-	          vacancy:property.vacancy
+	          vacancy:property.vacancy,
+	          policy:property.policy
 	        },
 	      });
 	      
@@ -57,10 +58,8 @@ const PopUp=({
 	return(
 	
 		<div style={{display:"flex",width:"50px",height:"",backgroundColor:"grey",borderRadius:"5px",flexDirection:"column"}} onClick={ViewProperty}>
-		
-			<img src={mainimage} alt="pp" style={{width:"100%",height:"35px",objectFit:"cover",borderRadius:"5px 5px 0 0"}}/>
-		
-			<p style={{fontSize:"0.65rem",padding:"0 5px"}}>{propertyname}</p>
+		<img src={mainimage} alt="pp" style={{width:"",height:"35px",objectFit:"cover",borderRadius:"5px 5px 0 0"}}/>
+		<p style={{fontSize:"0.4rem",padding:"0 5px"}}>{propertyname}</p>
 		</div>
 
 	)

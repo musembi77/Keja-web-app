@@ -305,3 +305,5 @@ mapboxgl.workerClass = MapboxWorker;
             Get Started
             </button>
         </form>
+
+        <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/listwithUs'>List with Us</Link>

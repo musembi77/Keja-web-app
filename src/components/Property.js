@@ -27,7 +27,8 @@ function Property({property}){
           reviews:property.reviews,
           vacancy:property.vacancy,
           contact:property.contact,
-          area:property.area
+          area:property.area,
+          type:property.type
         },
       });
     }
@@ -54,6 +55,7 @@ function Property({property}){
           <div style={{padding:"5px"}}>
             <h3 style={{fontFamily:"Poppins-Bold"}}>Ksh.{property.price}<span style={{color:"#eeeeee"}}>/month</span></h3>
             <p>{property.propertyname}</p>
+            <p style={{fontSize:"0.6rem",color:"#ffa31a"}}>{property.type}</p>
             <p style={{fontSize:"0.6rem",color:"grey"}}>{property.area}</p>
           </div>
       </Link>

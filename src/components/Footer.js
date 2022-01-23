@@ -1,7 +1,6 @@
 import React from 'react'
 import {Link } from "react-router-dom"
 import {Room,
-        Facebook,
         Instagram,
         Copyright,
         Twitter,
@@ -13,7 +12,7 @@ function Footer(){
 			<div style={{display:"flex",flexWrap:"wrap"}}>
 				<div style={{fontFamily:'Poppins-Bold',fontsize:'0.7rem',textDecoration:"none",color:'#ffffff',}}>	
 		            		<div style={{display:"flex",}}>
-						<h3 >KEJA</h3>
+						<h3 style={{color:"#ffffff"}}>KEJA</h3>
 		                		<Room style={{color:'#ffa31a',fontSize:'1.1rem'}}/>
 					</div>
 	                		<span style={{fontSize:'0.6rem'}}>Find the Right Apartment</span>

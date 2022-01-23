@@ -36,14 +36,13 @@ function PropertyView(){
                 price={property.price}
                 area={property.area}
                 location={property.location}
-                stats={property.stats}
                 description={property.description}
                 amenities={property.amenities}
                 policy={property.policy}
-                overview={property.overview}
                 reviews={property.reviews}
                 vacancy={property.vacancy}
                 contact={property.contact}
+                type={property.type}
           />
           )
       })}
@@ -70,7 +69,8 @@ const ViewDetails=({
             vacancy,
             reviews,
             contact,
-            area
+            area,
+            type
           }
             
 )=>{
@@ -137,6 +137,10 @@ const ViewDetails=({
         
       </div>
       <div style={{display:"flex"}}>
+      <p style={{fontSize:"0.9rem"}}>Property Type :</p>
+      <p style={{fontSize:"0.9rem",marginLeft:"5px",color:"#ffa31a"}}>{type}</p>
+      </div>
+      <div style={{display:"flex"}}>
       <p style={{fontSize:"0.9rem"}}>Area :</p>
       <p style={{fontSize:"0.9rem",marginLeft:"5px"}}>{area}</p>
       </div>
@@ -171,10 +175,10 @@ const ViewDetails=({
         <p style={{whiteSpace:"pre"}}>{policy}</p>
       </div>
       <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-around"}}>
-        <img src={image1} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
-        <img src={image2} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
-        <img src={image3} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
-        <img src={image4} alt="logo" style={{width:"150px",height:"120px",objectFit:"cover",borderRadius:"10px",margin:"5px 10px"}}/>
+        <img src={image1} alt="logo" style={{width:"175px",height:"150px",objectFit:"cover",margin:"5px 10px"}}/>
+        <img src={image2} alt="logo" style={{width:"175px",height:"150px",objectFit:"cover",margin:"5px 10px"}}/>
+        <img src={image3} alt="logo" style={{width:"175px",height:"150px",objectFit:"cover",margin:"5px 10px"}}/>
+        <img src={image4} alt="logo" style={{width:"175px",height:"150px",objectFit:"cover",margin:"5px 10px"}}/>
       </div>
         {
           //Review

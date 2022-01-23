@@ -5,9 +5,11 @@ import Map from '../components/Map.js'
 import CloseIcon from '@mui/icons-material/Close';
 import Skeleton from '../components/Skeleton'
 import {useQuery,} from '@apollo/client';
-import {GET_PROPERTY_QUERY,GET_SERVICE_QUERY} from '../GraphQl/Queries.js'
+import {GET_PROPERTY_QUERY} from '../GraphQl/Queries.js'
 import Footer from '../components/Footer'
 import {Link } from "react-router-dom"
+import 'antd/dist/antd.css'
+import { Carousel } from "antd";
 
 function Home({property}){
   const [showmap,setShowMap]=useState('')
@@ -15,8 +17,8 @@ function Home({property}){
     setShowMap(!showmap)
   }
   const [isloading, setIsLoading]=useState([]);
-  const { loading, data } = useQuery(GET_PROPERTY_QUERY,GET_SERVICE_QUERY);
 
+  const { loading, data} = useQuery(GET_PROPERTY_QUERY);
   const [pageNumber, setPageNumber]=useState(0)
     const propertyPerPage= 4;
     const pagesVisted = pageNumber * propertyPerPage;
@@ -25,25 +27,51 @@ function Home({property}){
             setIsLoading(isloading)
         }
         if(data){
-            //console.log(data.get_Services)
+            
             setPageNumber('')
         }
     },[data,isloading,loading]);
+    const contentStyle = {
+      color: "#000",
+      //lineHeight: "160px",
+      textAlign: "center",
+      background: "#ffa31a",
+      width: "calc(100vw)",
+      height:"200px",
+      objectFit:"cover"
+    };
+
   return(
     <div style={{backgroundColor:"#eeeeee"}}>
-      
+      <Carousel autoplay>
+        <div>
+          <img src='./banner3.png' alt='banner' style={contentStyle}/>
+        </div>
+        <Link to='/support' style={{position:"relative"}}>
+          <img src='./support.jpg' alt='banner' style={contentStyle}/>
+          <p style={{fontSize:"1.3rem",position:"absolute",top:"40%",
+                zIndex:"99",margin:"auto",fontFamily:"Poppins-bold",color:"#ffffff"}}>Get Gas Delivery around juja</p>
+                <p style={{fontSize:"1.5rem",position:"absolute",top:"55%",
+                zIndex:"99",margin:"auto",fontFamily:"Poppins-bold",color:"#000"}}>Contact Us <span style={{fontSize:"1rem"}}>0771712005</span></p>
+        </Link>
+
+        <div>
+          <img src='./gas.jpeg' alt='banner' style={contentStyle}/>
+        </div>
+      </Carousel>
+
       <div style={{padding:"5px"}}>
       {
-        //Communities
+        //map
       }
-      <div style={{width:"100vw",objectFit:"contain"}}>
+      <div style={{width:"99vw",objectFit:"contain"}}>
         
         {showmap?
           <> 
           <CloseIcon onClick={HandleMap}/>
           <Map />
           </>:
-          <div style={{height:"",backgroundColor:"#eee",display:"flex",margin:"10px 5px",alignItems:"center"}}>
+          <div style={{backgroundColor:"#eee",display:"flex",margin:"10px 0px",alignItems:"center"}}>
             <MapIcon onClick={HandleMap} style={{backgroundColor:"#ffa31a",borderRadius:"99px",padding:"3px",margin:"0 5px"}}/>
             <div style={{backgroundColor:""}}>
               <p style={{fontSize:"0.8rem",fontFamily:"Poppins-Bold"}}>Show Map</p>
@@ -90,7 +118,9 @@ function Home({property}){
                                 })
                         }
         </div>
-      </div>      
+      </div>
+
+            
       {
         //NewBuildings
       }
