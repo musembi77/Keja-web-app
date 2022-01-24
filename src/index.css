@@ -82,6 +82,7 @@ p {
   background-color: #ffa31a;
   border-radius: 50px;
 }
+
 @media screen and (max-width:600px){
     
   .scrollbar::-webkit-scrollbar{
@@ -107,6 +108,7 @@ p {
     
     margin: 10px 0;
   }
+
 }
 @media screen and (min-width:600px){
   .Login{

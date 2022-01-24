@@ -3,8 +3,6 @@ import {Link } from "react-router-dom"
 import {Room,
         Star,
         Call,
-        FavoriteBorder,
-        Favorite,
         Create,
         NavigateNext
 } from '@mui/icons-material'
@@ -16,6 +14,8 @@ import Review from '../components/Review.js'
 // import FmdBadIcon from '@mui/icons-material/FmdBad';
 // import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Footer from '../components/Footer'
+import 'antd/dist/antd.css'
+import { Carousel } from "antd";
 
 function PropertyView(){
   const [{ product,}] = useStateValue();
@@ -91,10 +91,7 @@ const ViewDetails=({
     setShowContact(true)
   }
 
-  const[like,setLike]=useState();
-  const HandleLike=()=>{
-    setLike(!like);
-  }
+  
   
   const HandleShowAllReview=()=>{
     // console.log("show all reviews")
@@ -108,20 +105,37 @@ const ViewDetails=({
         },
       });
   }
+  const contentStyle = {
+      color: "#000",
+      //lineHeight: "160px",
+      textAlign: "center",
+      background: "#ffa31a",
+      width: "calc(100vw)",
+      height:"400px",
+      objectFit:"cover"
+    };
   return(
     <div style={{position:"relative"}}>
     {
       //Image
     }
-    <div style={{position:"  relative",cursor:"pointer"}}>
-      <img src={mainimage} alt="logo" style={{width:"100%",height:"50vh",objectFit:"cover"}}/>
-      <div onClick={HandleLike} style={{width:"30px",height:"30px",backgroundColor:"#e5e5e5",borderRadius:"100px",textAlign:"center",position:"absolute",top:"10px",right:"10px"}}>
-      {like ? 
-        <Favorite style={{fontSize:"1.2rem",margin:"6px auto",color:"#ffa31a"}}/>
-        :
-        <FavoriteBorder style={{fontSize:"1.2rem",margin:"6px auto"}}/>}
-      </div>
-    </div>
+    <Carousel autoplay>
+        <div>
+          <img src={mainimage} alt="logo" style={contentStyle}/>
+        </div>
+        <div>
+          <img src={image1} alt="logo" style={contentStyle}/>
+        </div>
+        <div>
+          <img src={image2} alt="logo" style={contentStyle}/>
+        </div>
+        <div>
+          <img src={image3} alt="logo" style={contentStyle}/>
+        </div>
+        <div>
+          <img src={image4} alt="logo" style={contentStyle}/>
+        </div>
+      </Carousel>
     {
       //Information
     }
@@ -173,12 +187,6 @@ const ViewDetails=({
       <div style={{color:"grey"}}>
         <h4 style={{color:"#000000"}}>Policies</h4>
         <p style={{whiteSpace:"pre"}}>{policy}</p>
-      </div>
-      <div style={{display:"flex",flexWrap:"wrap",justifyContent:"space-around"}}>
-        <img src={image1} alt="logo" style={{width:"175px",height:"150px",objectFit:"cover",margin:"5px 10px"}}/>
-        <img src={image2} alt="logo" style={{width:"175px",height:"150px",objectFit:"cover",margin:"5px 10px"}}/>
-        <img src={image3} alt="logo" style={{width:"175px",height:"150px",objectFit:"cover",margin:"5px 10px"}}/>
-        <img src={image4} alt="logo" style={{width:"175px",height:"150px",objectFit:"cover",margin:"5px 10px"}}/>
       </div>
         {
           //Review
