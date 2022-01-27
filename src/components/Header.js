@@ -4,14 +4,12 @@ import {
     Room ,
     Menu,
     Close,
-    Home,
     SupportAgent,
     Instagram,
     Twitter,
 } 
     from '@mui/icons-material';
 import '../index.css'
-import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import {useStateValue} from "./StateProvider"
 
 function Header({onClick,showmenu}) {
@@ -46,8 +44,8 @@ function Header({onClick,showmenu}) {
                 justifyContent:"center",
                 }} 
             >
-            <Link to='/home' style={{textDecoration:"none",color:"#000000",paddingTop:"7px"}}><Home style={{fontSize:'1.2rem',margin:'5px'}}/></Link>
-            <Link to='/explore' style={{textDecoration:"none",color:"#000000",paddingTop:"7px",margin:"0 5px"}}><TravelExploreIcon style={{fontSize:'1.2rem',margin:'5px 0'}}/></Link>
+            <Link to='/home' style={{textDecoration:"none",color:"#000",fontFamily:'Poppins-Bold',backgroundColor:"#e5e5e5",padding:"2px"}}>Home</Link>
+            <Link to='/explore' style={{textDecoration:"none",color:"#ffa31a",margin:"0 5px"}}>Explore</Link>
             <Link style={{display:"flex",alignItems:"center",textDecoration:"none"}} to='/login'>
                   
                 {currentUser ? 
@@ -110,6 +108,7 @@ export const Menubar = ({currentUser}) =>{
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/exploreservices'>Services</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/map'>Map</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>SignIn</Link>
                 
                 

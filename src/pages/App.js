@@ -13,7 +13,7 @@ import WishList from './WishList';
 import Services from './Services'
 import About from './About'
 import Support from './Support'
-
+import Mappage from './Mappage'
 import ServicesView from './ServicesView'
 import Reviewpage from './Reviewpage'
 
@@ -45,8 +45,9 @@ function App() {
             <Route path='/services'  element = {<ServicesView />}/>
             <Route path='/about'  element = {<About />}/>
             <Route path='/support'  element = {<Support />}/>
-
+            <Route path='/map'  element = {<Mappage />}/>
             <Route path='/reviews'  element = {<Reviewpage />}/>
+
           </Routes>
           </div>
         </Router>

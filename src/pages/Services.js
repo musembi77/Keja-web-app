@@ -1,9 +1,6 @@
 /* eslint-disable array-callback-return */
 import React,{useState,useEffect} from 'react'
-import DryCleaningIcon from '@mui/icons-material/DryCleaning';
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import WeekendIcon from '@mui/icons-material/Weekend';
-import WifiIcon from '@mui/icons-material/Wifi';
+
 import SearchIcon from '@mui/icons-material/Search';
 import {Link } from "react-router-dom"
 
@@ -27,35 +24,8 @@ function Services(){
         }
     },[data,isloading,loading]);
     const [searchoption, setSearchOption]=useState('servicename')
-	const Services=[
-  // {
-  // icon:<CreditScoreIcon />,
-  // color:'#e5e5e5',
-  // title:"Pay Rent",
-  // },
-  {
-    icon:<LocalShippingIcon/>,
-    image:"./movers.svg",
-    title:"Movers",
-  },
-  {
-    icon:<WeekendIcon />,
-    image:"./furniture.svg",
-    title:"Furniture",
-  },
-  {
-    icon:<DryCleaningIcon />,
-    image:"./laundry.png",
-    title:"Laundry",
-  },
-  {
-    icon:<WifiIcon />,
-    image:"./wifi.png",
-    title:"Wi-fi",
-  },
-]
 	return(
-		<div style={{padding:"10px"}}>
+		<div style={{padding:""}}>
 			<div style={{display:"flex",alignItems:"center",backgroundColor:"#eeeeee",margin:"10px 0",justifyContent:"space-between"}}>
             <p style={{fontSize:"0.7rem",padding:"0 10px"}}>Select option to search by:</p>
             <select 
@@ -99,52 +69,8 @@ function Services(){
                 />
                 <SearchIcon />
             </div >
-			<div>
-        <p>Services Available</p>
-        <div style={{
-          display:"flex",
-          alignItems:"center",
-          textAlign:"center",
-          overflow:"auto",
-          whiteSpace:"nowrap",
-          width:"100%",
-        }} className="scrollbar">
-          {Services.map((item)=>{
-            return(
-              <ul style={{
-                  //backgroundColor:"#f79d00",
-                  width:"",
-                  textAlign:"center",
-                  placeItems:"center",
-                  position:"relative",              
-                  margin:"0 5px",
-                  textDecoration:"none",
-                  listStyle:"none",
-                  borderRadius:"999px",
-
-                }}>
-
-                  <li style={{width:"80px",height:"80px",borderRadius:"999px"}}>
-                    <Link style={{
-                      color:"#000000",
-                      fontSize:"0.9rem",
-                      fontFamily:"Poppins-Bold",
-                      textDecoration:"none",paddingTop:"10px",
-                      display:"flex",flexDirection:"column",justifyContent:"center",alignItems:"center"
-
-                    }} to=''>
-                    {item.icon}
-                      <p style={{fontSize:"1rem"}}>{item.title}</p>
-                      
-                      
-                    </Link>
-                  </li>
-                </ul>
-            )
-          })}
-        </div>
-      </div>
-      		<div style={{display:"flex",flexWrap:"Wrap",backgroundColor:"#e5e5e5",margin:"10px 0"}}>
+			
+      		<div style={{display:"flex",flexWrap:"Wrap",backgroundColor:"",margin:"10px 0"}}>
       		{isloading && !data? 
               <Skeleton /> :
                 data.get_Services

@@ -60,6 +60,7 @@ const [searchoption, setSearchOption]=useState('price')
                   setSearchOption(e.target.value)
                   }}
                   >
+                    <option value="propertyname">select option</option>
                     <option value="propertyname">Name</option>
                     <option value="price">Price</option>
                     <option value="area">Area</option>

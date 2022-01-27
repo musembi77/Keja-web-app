@@ -1,16 +1,12 @@
-import React,{useState} from 'react'
+import React from 'react'
 // import Button from '@mui/material/Button';
 // import { styled } from '@mui/material/styles';
 import { useStateValue } from "../components/StateProvider";
 import {Room,
         Call,
-        FavoriteBorder,
-        Favorite,
 } from '@mui/icons-material'
 // import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Footer from '../components/Footer'
-
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 function ServicesView(){
 	const [{ services,}] = useStateValue();
@@ -53,10 +49,6 @@ const ViewDetails=({
           }
             
 )=>{
-  const[like,setLike]=useState();
-  const HandleLike=()=>{
-    setLike(!like);
-  }
   return(
     <div style={{position:"relative"}}>
     {
@@ -64,12 +56,6 @@ const ViewDetails=({
     }
     <div style={{position:"  relative",cursor:"pointer"}}>
       <img src={mainimage} alt="logo" style={{width:"100%",height:"50vh",objectFit:"cover"}}/>
-      <div onClick={HandleLike} style={{width:"30px",height:"30px",backgroundColor:"#e5e5e5",borderRadius:"100px",textAlign:"center",position:"absolute",top:"10px",right:"10px"}}>
-      {like ? 
-        <Favorite style={{fontSize:"1.2rem",margin:"6px auto",color:"#ffa31a"}}/>
-        :
-        <FavoriteBorder style={{fontSize:"1.2rem",margin:"6px auto"}}/>}
-      </div>
     </div>
     {
       //Information
@@ -94,25 +80,12 @@ const ViewDetails=({
         }
         <div style={{display:"flex",flexDirection:"column"}}>
           <h4>Contacts</h4>
-          <div style={{display:"flex",flexDirection:"",margin:"10px 0",borderRadius:"10px",padding:"10px",backgroundColor:"#eeeeee"}}>
-                
-                
-                  
-                  <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:""}}>
-                      <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
+          <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"120px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
                         <Call style={{fontSize:"1rem",marginRight:"5px"}}/>
-                        <p 
-                        >
-                        {contact}</p>
-                      </div>                      
-                  </div>
-                  <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"",padding:"5px",borderRadius:"5px",margin:"5px"}}>
-                        <WhatsAppIcon style={{fontSize:"1rem",margin:"0 5px"}} />
-                        <p 
+                        <p style={{fontSize:'0.9rem'}}
                         >
                         {contact}</p>
                       </div>
-                </div>
               
         </div>
         

@@ -5,20 +5,24 @@ import Map from '../components/Map.js'
 import CloseIcon from '@mui/icons-material/Close';
 import Skeleton from '../components/Skeleton'
 import {useQuery,} from '@apollo/client';
-import {GET_PROPERTY_QUERY} from '../GraphQl/Queries.js'
+import {GET_PROPERTY_QUERY,GET_SERVICE_QUERY} from '../GraphQl/Queries.js'
 import Footer from '../components/Footer'
 import {Link } from "react-router-dom"
 import 'antd/dist/antd.css'
 import { Carousel } from "antd";
+import {Product} from './Services'
 
 function Home({property}){
   const [showmap,setShowMap]=useState('')
   const HandleMap=()=>{
     setShowMap(!showmap)
   }
+
   const [isloading, setIsLoading]=useState([]);
 
-  const { loading, data} = useQuery(GET_PROPERTY_QUERY);
+  const { loading, data,} = useQuery(GET_PROPERTY_QUERY);
+  const service = useQuery(GET_SERVICE_QUERY);
+
   const [pageNumber, setPageNumber]=useState(0)
     const propertyPerPage= 4;
     const pagesVisted = pageNumber * propertyPerPage;
@@ -31,6 +35,7 @@ function Home({property}){
             setPageNumber('')
         }
     },[data,isloading,loading]);
+    const [query]=useState('shop');
     const contentStyle = {
       color: "#000",
       //lineHeight: "160px",
@@ -54,10 +59,9 @@ function Home({property}){
                 <p style={{fontSize:"1.5rem",position:"absolute",top:"55%",
                 zIndex:"99",margin:"auto",fontFamily:"Poppins-bold",color:"#000"}}>Contact Us <span style={{fontSize:"1rem"}}>0771712005</span></p>
         </Link>
-
-        <div>
+        <Link to='/exploreservices' style={{position:"relative"}}>
           <img src='./gas.jpeg' alt='banner' style={contentStyle}/>
-        </div>
+        </Link>
       </Carousel>
 
       <div style={{padding:"5px"}}>
@@ -119,6 +123,30 @@ function Home({property}){
                         }
         </div>
       </div>
+      {
+        //services
+      } 
+      <div>
+      <div style={{display:"flex",justifyContent:"space-between",padding:'0 5px'}}>
+      <p>Services</p>
+      <Link to='/services' style={{textDecoration:"none",color:"#ffa31a"}}>See all</Link>
+      </div>
+        <div style={{display:"flex",flexWrap:"Wrap",backgroundColor:"#e5e5e5",margin:"10px 0"}}>
+          {isloading && !data? 
+              <Skeleton /> :
+                service.data?.get_Services.map((service)=>{
+                    return(
+                      <div>
+                        <Product
+                          service={service}
+                          key={service.id}
+                        />
+                      </div>
+                    )
+                  })
+                }
+          </div>
+      </div>
 
             
       {
@@ -126,7 +154,7 @@ function Home({property}){
       }
       <div>
       <div style={{display:"flex",justifyContent:"space-between",padding:'0 5px'}}>
-      <p>Featured</p>
+      <p>Shops</p>
       <Link to='/explore' style={{textDecoration:"none",color:"#ffa31a"}}>See all</Link>
       </div>
         
@@ -145,7 +173,7 @@ function Home({property}){
                             <Skeleton /> :
                                 data.get_Properties
                                 .slice(pagesVisted, pagesVisted + propertyPerPage)
-                                .reverse()
+                                .filter(property => property.type.toString().toLowerCase().includes(query.toLowerCase()))
                                 .map((property)=>{
                                     return(
                                         <div>
