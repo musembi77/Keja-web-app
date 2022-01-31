@@ -11,6 +11,7 @@ import {
   ApolloProvider,
 } from '@apollo/client';
 
+import * as serviceWorker from './serviceworker'
 const client = new ApolloClient({
   uri:'https://kejaapp.herokuapp.com',
   cache: new InMemoryCache(),
@@ -27,6 +28,7 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+serviceWorker.register();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
