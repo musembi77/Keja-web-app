@@ -1,6 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
-//import SearchIcon from "@mui/icons-material/Search"
 import RoomIcon from "@mui/icons-material/Room"
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { useNavigate } from 'react-router-dom';
@@ -18,14 +18,15 @@ function Index(){
     const users = useQuery(GET_USERS_QUERY);
 
     const [propertynumber,setNumber]=useState('')
-    const [userscount,setUsers]=useState('')
+    const [userscount,setUsers]=useState(0)
 
     useEffect(()=>{
         if(data){
             setNumber(data.get_Properties.length)
-            setUsers(users.data.get_Users.length)
+            
+        setUsers(users.data.get_Users.length)
         }
-    },[data,users.data.get_Users.length,loading]);
+    },[data,loading]);
 
   return(
     <div >
@@ -98,6 +99,7 @@ function Index(){
         <div >
           <p style={{fontSize:"1.5rem"}}>{propertynumber} </p>
           <span>verified flats listed</span>
+          
           <p  style={{fontSize:"1.5rem"}}>{userscount} </p>
           <span>Home seekers</span>
           <p  style={{fontSize:"1rem"}}>Daily updates</p>
