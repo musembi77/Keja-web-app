@@ -1,16 +1,31 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {Link} from 'react-router-dom';
 //import SearchIcon from "@mui/icons-material/Search"
 import RoomIcon from "@mui/icons-material/Room"
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import { useNavigate } from 'react-router-dom';
+import {useQuery,} from '@apollo/client';
+import {GET_PROPERTY_QUERY,GET_USERS_QUERY} from '../GraphQl/Queries.js'
 import Footer from '../components/Footer'
+
 function Index(){
   const navigate = useNavigate();
   const HandleFilter=(e)=>{
     navigate("/home");
   }
 
+  const { loading, data } = useQuery(GET_PROPERTY_QUERY);
+    const users = useQuery(GET_USERS_QUERY);
+
+    const [propertynumber,setNumber]=useState('')
+    const [userscount,setUsers]=useState('')
+
+    useEffect(()=>{
+        if(data){
+            setNumber(data.get_Properties.length)
+            setUsers(users.data.get_Users.length)
+        }
+    },[data,users.data.get_Users.length,loading]);
 
   return(
     <div >
@@ -30,7 +45,7 @@ function Index(){
 
       <div style={{backgroundColor:"#ffffff",justifyContent:'center',color:"#000000",textAlign:"center",width:"100%",height:"300px",fontSize:"1.8rem",fontWeight:"bold",padding:"10px"}}>
           <p>Every Apartment Near You, In One Place</p>
-          <span style={{fontSize:"0.9rem",margin:"0 5%",width:"50%",color:"#000000"}}>Browse 1000+ apartments and find the perfect place for you</span>
+          <span style={{fontSize:"0.9rem",margin:"0 5%",width:"50%",color:"#000000"}}>Browse {propertynumber}+ apartments and find the perfect place for you</span>
           <Link className="btn_1" to="./explore">
             <TravelExploreIcon />
             <p>Explore</p>
@@ -81,9 +96,9 @@ function Index(){
       </div>
       <div style={{display:"flex",justifyContent:"space-between",backgroundColor:"grey",height:"100%",color:"white",fontFamily:"Poppins-Bold",padding:"10px"}}>
         <div >
-          <p style={{fontSize:"1.5rem"}}>100+ </p>
+          <p style={{fontSize:"1.5rem"}}>{propertynumber} </p>
           <span>verified flats listed</span>
-          <p  style={{fontSize:"1.5rem"}}>2,000+ </p>
+          <p  style={{fontSize:"1.5rem"}}>{userscount} </p>
           <span>Home seekers</span>
           <p  style={{fontSize:"1rem"}}>Daily updates</p>
         </div>  

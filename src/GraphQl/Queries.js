@@ -53,6 +53,15 @@ export const GET_USER_QUERY=`
       }
               
 `
+export const GET_USERS_QUERY=gql`
+    query{
+        get_Users{
+            _id
+            name
+            email
+        }
+    }
+`
 export const GET_SERVICE_QUERY = gql`
     query{
         get_Services{
