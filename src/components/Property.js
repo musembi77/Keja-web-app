@@ -53,7 +53,7 @@ function Property({property}){
             alt="logo" style={{width:"100%",height:"150px",objectFit:"cover",borderRadius:"10px"}}
             />
           <div style={{padding:"5px"}}>
-            <h3 style={{fontFamily:"Poppins-Bold"}}>Ksh.{property.price}<span style={{color:"#eeeeee"}}>/month</span></h3>
+            <h3 style={{fontFamily:"Poppins-Bold"}}>Ksh.{property.price}<span style={{color:"#e5e5e5"}}>/month</span></h3>
             <p>{property.propertyname}</p>
             <p style={{fontSize:"0.6rem",color:"#ffa31a"}}>{property.type}</p>
             <p style={{fontSize:"0.6rem",color:"grey"}}>{property.area}</p>

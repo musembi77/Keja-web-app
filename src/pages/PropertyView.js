@@ -3,7 +3,6 @@ import {Link } from "react-router-dom"
 import {Room,
         Star,
         Call,
-        Create,
         NavigateNext
 } from '@mui/icons-material'
 import Button from '@mui/material/Button';
@@ -11,8 +10,6 @@ import { styled } from '@mui/material/styles';
 import { useStateValue } from "../components/StateProvider";
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Review from '../components/Review.js'
-// import FmdBadIcon from '@mui/icons-material/FmdBad';
-// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Footer from '../components/Footer'
 import 'antd/dist/antd.css'
 import { Carousel } from "antd";
@@ -195,7 +192,7 @@ const ViewDetails=({
             <div style={{display:"flex",justifyContent:"space-between"}}>
               <h4 style={{color:"#000000"}}>Reviews</h4>
               {
-                currentUser?(<Link to="/reviews" style={{margin:"0px 10px",fontSize:"13px",color:"#000000",textDecoration:"none"}} onClick={HandleShowAllReview}>Show All <NavigateNext style={{fontSize:"0.9rem",paddingTop:"2px"}}/></Link>)
+                currentUser?(<Link to="/reviews" style={{color:"#ffa31a",margin:"0px 10px",fontSize:"13px",fontFamily:"Poppins-Bold",textDecoration:"none"}} onClick={HandleShowAllReview}>Show All Reviews<NavigateNext style={{fontSize:"0.9rem",paddingTop:"2px"}}/></Link>)
                 :
                 (<p style={{fontSize:"0.8rem"}}><Link to="/login">Log in</Link> to see all reviews</p>)
               }
@@ -207,9 +204,6 @@ const ViewDetails=({
                 <p style={{fontFamily:""}}>4.0</p>
                 <p style={{fontSize:"0.6rem",color:"grey",margin:"auto 10px"}}>reviews</p>
               </div>
-              <Link to={currentUser?"/reviews":'/login'} style={{display:"flex",margin:"0",alignItems:"center",fontSize:"13px",textDecoration:"none",color:"#ffa31a"}} >      
-                  Write a review<Create style={{fontSize:"0.8rem",color:"#000000"}}/>
-              </Link>
             </div>  
             {reviews.length === 0  ?(
         <p style={{fontSize:"0.8rem"}}>We have no Reviews For this apartment yet</p>

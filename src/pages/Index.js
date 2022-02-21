@@ -17,14 +17,22 @@ function Index(){
   const { loading, data } = useQuery(GET_PROPERTY_QUERY);
     const users = useQuery(GET_USERS_QUERY);
 
-    const [propertynumber,setNumber]=useState('')
-    const [userscount,setUsers]=useState(0)
+    const [propertynumber,setNumber]=useState('...')
+    const [totalusers,setTotalUsers] = useState('...')
 
     useEffect(()=>{
         if(data){
             setNumber(data.get_Properties.length)
+            try {
+              const userscount = (users.data.get_Users.length)
+              setTotalUsers(userscount)
+            console.log(userscount)
+              }
+              catch(err){
+                console.error('unable to find the number of users')
+              }
             
-        setUsers(users.data.get_Users.length)
+            //setUsers(users.get_Users.length)
         }
     },[data,loading]);
 
@@ -52,6 +60,14 @@ function Index(){
             <p>Explore</p>
           </Link>
       </div>
+      <div style={{marginTop:"10px",height:"300px",width:"100vw",backgroundColor:"#ffa31a"}}>
+        <div style={{display:"flex",justifyContent:"space-between",width:"100%",textAlign:"center"}}>
+          <p>Look for a House</p>
+           <p style={{backgroundColor:"#fff",height:"300px",textAlign:"center",width:"40%",paddingTop:"10px"}}>We offer free 24/7 advertisement of  properties listed on the platform by driving a huge traffic on the platform using digital marketing strategies.
+        </p>
+          <p>Make House Hunting Fun</p>
+        </div>
+      </div>
       {
         //host an apartment
       }
@@ -70,16 +86,6 @@ function Index(){
           //backgroundColor:"rgb(255,255,255,0.7",
           
         }}>List an Apartment</p>
-        <p style={{
-          position:"absolute",
-          top:"180px",
-          left:"20px",
-          color:"#ffffff",
-          fontSize:"0.9rem",
-          textAlign:"center",
-          overflow:"wrap",
-          fontFamily:"Poppins-regular",
-        }}>List an Apartment</p>
         <Link style={{
           position:"absolute",
           top:"250px",
@@ -95,17 +101,22 @@ function Index(){
           
         }} to="./listwithUs">List an Apartment </Link>
       </div>
+      {loading && !data? 
+      
+      
+      <p>Loading</p>
+      :
       <div style={{display:"flex",justifyContent:"space-between",backgroundColor:"grey",height:"100%",color:"white",fontFamily:"Poppins-Bold",padding:"10px"}}>
         <div >
-          <p style={{fontSize:"1.5rem"}}>{propertynumber} </p>
+          <p style={{fontSize:"1.5rem",color:"#ffa31a"}}>{propertynumber} </p>
           <span>verified flats listed</span>
           
-          <p  style={{fontSize:"1.5rem"}}>{userscount} </p>
+          <p  style={{fontSize:"1.5rem",color:"#ffa31a"}}>{totalusers}</p>
           <span>Home seekers</span>
-          <p  style={{fontSize:"1rem"}}>Daily updates</p>
         </div>  
         <RoomIcon style={{fontSize:"5rem",margin:"50px",color:"#ffa31a"}}/>
       </div>
+      }
       <Footer />
     </div>
   )

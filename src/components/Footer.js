@@ -15,7 +15,7 @@ function Footer(){
 						<h3 style={{color:"#ffffff"}}>KEJA</h3>
 		                		<Room style={{color:'#ffa31a',fontSize:'1.1rem'}}/>
 					</div>
-	                		<span style={{fontSize:'0.6rem'}}>Find the Right Apartment</span>
+	                		<span style={{fontSize:'0.6rem'}}>Helping you Find the Right Apartment</span>
 	                		<div style={{width:"",backgroundColor:"",margin:"5px 0"}}>
 	                			<p style={{color:"#ffa31a"}}>Contact Us</p>
 	                			<div style={{fontSize:"0.7rem",alignItems:"center"}}>

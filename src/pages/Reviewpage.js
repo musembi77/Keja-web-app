@@ -10,8 +10,7 @@ import Footer from '../components/Footer'
 function Reviewpage(){
   const client = useClient()
 
-  const [{ showreviews},] = useStateValue();
-  console.log(showreviews.reviews)
+  const [{ showreviews},] = useStateValue('');
   const[propertyId,setPropertyId]=useState('')
    const [review,setReview]=useState('')
   const ColorButton = styled(Button)(({ theme }) => ({
@@ -31,7 +30,7 @@ function Reviewpage(){
     console.log('Property Created',{createReview})
   }
 	return(
-		<div style={{height:""}}>
+		<div style={{}}>
     <form style={{margin:"0 0px"}} className="Review">
               <p style={{fontSize:"small"}}>Highlight Your Experience</p>
               <textarea 
