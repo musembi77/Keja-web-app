@@ -18,7 +18,7 @@ function Index(){
     const users = useQuery(GET_USERS_QUERY);
 
     const [propertynumber,setNumber]=useState('...')
-    const [totalusers,setTotalUsers] = useState('...')
+    const [totalusers,setTotalUsers] = useState('loading')
 
     useEffect(()=>{
         if(data){
@@ -26,7 +26,7 @@ function Index(){
             try {
               const userscount = (users.data.get_Users.length)
               setTotalUsers(userscount)
-            console.log(userscount)
+              console.log(userscount)
               }
               catch(err){
                 console.error('unable to find the number of users')
@@ -62,8 +62,7 @@ function Index(){
       </div>
       <div style={{marginTop:"10px",height:"300px",width:"100vw",backgroundColor:"#ffa31a"}}>
         <div style={{display:"flex",justifyContent:"space-between",width:"100%",textAlign:"center"}}>
-          <p>Look for a House</p>
-           <p style={{backgroundColor:"#fff",height:"300px",textAlign:"center",width:"40%",paddingTop:"10px"}}>We offer free 24/7 advertisement of  properties listed on the platform by driving a huge traffic on the platform using digital marketing strategies.
+           <p style={{backgroundColor:"#fff",height:"300px",textAlign:"center",width:"",paddingTop:"10px"}}>We offer free 24/7 advertisement of  properties listed on the platform by driving a huge traffic on the platform using digital marketing strategies.
         </p>
           <p>Make House Hunting Fun</p>
         </div>

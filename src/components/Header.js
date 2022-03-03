@@ -108,7 +108,7 @@ export const Menubar = ({currentUser}) =>{
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/exploreservices'>Services</Link>
-                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/map'>Map</Link>
+                
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>SignIn</Link>
                 
                 

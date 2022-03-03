@@ -13,24 +13,28 @@ import WishList from './WishList';
 import Services from './Services'
 import About from './About'
 import Support from './Support'
-import Mappage from './Mappage'
 import ServicesView from './ServicesView'
 import Reviewpage from './Reviewpage'
+import LogInPopUp from '../components/LogInPopUp'
+
 
 function App() {
-   const [showmenu, setShowmenu]=useState('');
+     const [showmenu, setShowmenu]=useState('');
     
     const HandleMenu=()=>{
         setShowmenu(!showmenu);
     }
-
+    
   return (
       <div style={{position:"relative"}} >
       <Router>
           <Header onClick={HandleMenu} showmenu={showmenu}/>
+          
+          <LogInPopUp />
           <div onClick={()=>{
              setShowmenu(false)
             }}>
+            
           <Routes >
             <Route path='/' element={<Index />}/>
             <Route path='/home'  element = {<Home />}/>
@@ -45,7 +49,6 @@ function App() {
             <Route path='/services'  element = {<ServicesView />}/>
             <Route path='/about'  element = {<About />}/>
             <Route path='/support'  element = {<Support />}/>
-            <Route path='/map'  element = {<Mappage />}/>
             <Route path='/reviews'  element = {<Reviewpage />}/>
 
           </Routes>

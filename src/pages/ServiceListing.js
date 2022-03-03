@@ -289,7 +289,7 @@ const handleSubmit = async (e) =>{
             }}
           />
         </div>
-        {submission? <p style={{color:"green"}}>Submission success</p>:<p>Post your Listing</p>}
+        {submission? <p style={{color:"green"}}>Submission success</p>:<p></p>}
         <div style={{display:"flex",justifyContent:"center"}}>
           <ColorButton
             style={{margin:"20px 10px",width:"40%"}}
@@ -303,7 +303,15 @@ const handleSubmit = async (e) =>{
             type="submit"
             style={{margin:"20px 10px",width:"40%"}}
             endIcon={<SendIcon />}
-            
+            disabled={
+              !servicename.trim() 
+              || !type.trim() 
+              || !location.trim() 
+              || !area.trim() 
+              || !description.trim() 
+              || !contact.trim()
+              || !mainimage.trim()  
+            }
             onClick={handleSubmit}
           >
             submit

@@ -48,6 +48,7 @@ const PopUp=({
           image2:property.image2,
           image3:property.image3,
           image4:property.image4,
+          type:property.type,
 	          reviews:property.reviews,
 	          vacancy:property.vacancy,
 	          policy:property.policy

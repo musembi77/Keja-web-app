@@ -42,15 +42,15 @@ function Home({property}){
       textAlign: "center",
       background: "#ffa31a",
       width: "calc(100vw)",
-      height:"200px",
+      height:"",
       objectFit:"cover"
     };
 
   return(
     <div style={{backgroundColor:"#eeeeee"}}>
       <Carousel autoplay>
-        <div>
-          <img src='./banner3.png' alt='banner' style={contentStyle}/>
+        <div className='imageLarge'>
+          <img src='./banner3.png' alt='banner' style={contentStyle} />
         </div>
         <Link to='/support' style={{position:"relative"}}>
           <img src='./support.jpg' alt='banner' style={contentStyle}/>
@@ -129,7 +129,7 @@ function Home({property}){
       <div>
       <div style={{display:"flex",justifyContent:"space-between",padding:'0 5px'}}>
       <p>Services</p>
-      <Link to='/services' style={{textDecoration:"none",color:"#ffa31a"}}>See all</Link>
+      <Link to='/exploreservices' style={{textDecoration:"none",color:"#ffa31a"}}>See all</Link>
       </div>
         <div style={{display:"flex",flexWrap:"Wrap",backgroundColor:"#e5e5e5",margin:"10px 0"}}>
           {isloading && !data? 

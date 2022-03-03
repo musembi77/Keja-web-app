@@ -9,28 +9,29 @@ import axios from 'axios'
 import {useStateValue} from '../components/StateProvider'
 import {useClient} from '../Client.js'
 import Footer from '../components/Footer'
+import "antd/dist/antd.css";
+import { Modal } from 'antd';
 
 function PostListing (){
-  const ColorButton = withStyles((theme) => ({
-    root: {
-      color: theme.palette.getContrastText("#ffa31a"),
-      backgroundColor: "#ffa31a",
-    },
-  }))(Button);
   const [{ currentUser }] = useStateValue();
-  const HandleLogin = () =>{
-    window.location.href="/login"
-  }
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   return(
     <div>
      {currentUser?
       <Form />
       :
-      <div>
-      <h2>You need to be logged In</h2>
-      <ColorButton onClick={HandleLogin}>You need to be logged in</ColorButton>
-      </div>
+      <Modal title="Modal Title"
+          visible={isModalVisible}
+          onOk={() => {
+            setIsModalVisible(false);
+          }}
+          onCancel={() => {
+            setIsModalVisible(false);
+          }}>
+          <p>Sample Modal contents</p>
+  
+        </Modal>
       }
       
     </div>
@@ -208,11 +209,23 @@ const handleSubmit = async (e) =>{
     console.error(error)
   }
 }
-  
+  const [isModalVisible, setIsModalVisible] = useState(true);
   
   return(
     <form style={{backgroundColor:"#e5e5e5",fontSize:"0.9rem",paddingTop:"10px"}} className='form_handle'>
-        
+        <Modal title="! Posting your property"
+          visible={isModalVisible}
+          onOk={() => {
+            setIsModalVisible(false);
+          }}
+          onCancel={() => {
+            setIsModalVisible(false);
+          }}>
+          <p>1.Ensure all Fields are required to be filled</p>
+          <p>2.The description includes how the house is e.g Ample Lighting, ceilings, Tiles e.t.c</p>
+          <p>3.The Map longitude and latitude are required to make house hunting more easy </p>
+          <p>4.The Contact you provide will be used to call you in the advent of house hunter has selected your property</p>
+        </Modal>
         <div style={{fontSize:"0.6rem",padding:"10px"}}>
             <p >We will use your location to help make your apartment visible on maps</p>
             {propertyPosition?
@@ -407,7 +420,8 @@ const handleSubmit = async (e) =>{
             }}
             onChange={(e)=>{
               setArea(e.target.value)
-            }}
+            }}            
+
             >
             <option value="Gate A">Gate A</option>
             <option value="Gate B">Gate B</option>

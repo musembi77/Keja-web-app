@@ -120,4 +120,7 @@ p {
     margin: 15px 0;
 
   }
+  .imageLarge{
+    height: 400px;
+  }
 }

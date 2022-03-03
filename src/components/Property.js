@@ -48,7 +48,7 @@ function Property({property}){
       style={{fontFamily:"Poppins-Bold",textDecoration:"none",color:"#000000"}}
       to='/property'
       >
-          <img 
+          <img
             src={property.mainimage}  
             alt="logo" style={{width:"100%",height:"150px",objectFit:"cover",borderRadius:"10px"}}
             />

@@ -116,9 +116,9 @@ const ViewDetails=({
     {
       //Image
     }
-    <Carousel autoplay>
-        <div>
-          <img src={mainimage} alt="logo" style={contentStyle}/>
+    <Carousel autoplay >
+        <div >
+          <img src={mainimage} alt="logo" style={contentStyle} />
         </div>
         <div>
           <img src={image1} alt="logo" style={contentStyle}/>
