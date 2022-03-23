@@ -50,16 +50,6 @@ function Home({property}){
         <div className='imageLarge'>
           <img src='./banner3.png' alt='banner' style={contentStyle} />
         </div>
-        <Link to='/support' style={{position:"relative"}}>
-          <img src='./support.jpg' alt='banner' style={contentStyle}/>
-          <p style={{fontSize:"1.3rem",position:"absolute",top:"40%",
-                zIndex:"99",margin:"auto",fontFamily:"Poppins-bold",color:"#ffffff"}}>Get Gas Delivery around juja</p>
-                <p style={{fontSize:"1.5rem",position:"absolute",top:"55%",
-                zIndex:"99",margin:"auto",fontFamily:"Poppins-bold",color:"#000"}}>Contact Us <span style={{fontSize:"1rem"}}>0771712005</span></p>
-        </Link>
-        <Link to='/exploreservices' style={{position:"relative"}}>
-          <img src='./gas.jpeg' alt='banner' style={contentStyle}/>
-        </Link>
       </Carousel>
 
       <div style={{padding:"5px"}}>
