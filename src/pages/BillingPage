@@ -605,4 +605,32 @@
           </div>
       </div>
 
-       
+       {showBookingForm ? (
+          <>
+          <Modal title=" Keja"
+          visible={isModalVisible}
+          onOk={() => {
+            setIsModalVisible(false);
+          }}
+          onCancel={() => {
+            setIsModalVisible(false);
+          }}>
+          <p> - We guarantee a safe, reliable, efficient and Trustworthy process</p>
+          <p> - Get 40% cashback after getting an apartment</p>
+          <p> - We shall contact you once you have submitted the booking form </p>
+  
+          </Modal>
+          <BookingForm />
+          <Button variant='contained' onClick={()=>{
+              setShowBookingForm(false)
+              console.log('cancelled')
+            }}
+            >Cancel Form </Button>
+          </>
+        ):
+        (
+           <ColorButton style={{display:"flex",margin:"10px 5px",alignItems:"center",fontSize:"13px",width:"100%",}} onClick={HandleBookingForm}>      
+            <p>Book This apartment</p>
+          </ColorButton>
+        )
+      }

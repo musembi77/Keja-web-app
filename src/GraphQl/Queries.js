@@ -42,6 +42,7 @@ export const GET_PROPERTY_QUERY = gql`
         }
     }
 `
+
 export const GET_COSHARING_QUERY=gql`
     query{
         get_CoSharings{

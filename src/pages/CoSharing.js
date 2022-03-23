@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { Alert,Modal} from 'antd';
 import {useQuery,} from '@apollo/client';
 import {GET_COSHARING_QUERY} from '../GraphQl/Queries.js'
-import Skeleton from '../components/Skeleton'
 
 function CoSharing(){
 	const navigate = useNavigate()
@@ -22,7 +21,7 @@ function CoSharing(){
 					setFormVisible(true)
 					setIsModalVisible(true)
 				}else{
-					await new Promise(resolve => setTimeout(resolve, 3000)); // 3 sec
+					await new Promise(resolve => setTimeout(resolve, 6000)); // 3 sec
 					console.log(2);
 					navigate("/login")
 				}
@@ -39,7 +38,7 @@ function CoSharing(){
 	//querying all ads
 	const { loading, data } = useQuery(GET_COSHARING_QUERY);
 	const [isloading, setIsLoading]=useState(false);
-	
+
 	useEffect(()=>{
 		try{
 			if(loading){
@@ -82,23 +81,15 @@ function CoSharing(){
             Host a roommate
         </Button>
         
-
       </div>
-      		{isloading? 
-				 <Skeleton /> :
-	                                data.get_CoSharings
-	                                .map((item)=>{
-	                                    return(
-	                                        <div>
-	                                            <PropShare 
-													item={item}
-													key={item.id}
-												/>
-	                                        </div>
-	                                    )
-	                                })
-	                            }
-		</div>
+      {data?.get_CoSharings.map((item)=>{
+      	return(
+      		<div>
+      			<PropShare item={item}/>
+      		</div>
+      	)
+      })}
+	</div>
 	)
 }
 

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import {Link } from "react-router-dom"
 import {Room,
         Star,
@@ -13,10 +13,7 @@ import Footer from '../components/Footer'
 import 'antd/dist/antd.css'
 import { Carousel } from "antd";
 import * as turf from '@turf/turf'
-import BookingForm from '../components/BookingForm'
 import "antd/dist/antd.css";
-import { Modal} from 'antd';
-
 function PropertyView(){
   const [{ product,}] = useStateValue();
   
@@ -89,14 +86,6 @@ const ViewDetails=({
   }));
   // eslint-disable-next-line no-unused-vars
   const [{showreviews},dispatch] = useStateValue('')
-  
-  const [showBookingForm,setShowBookingForm]=useState();
-  const HandleBookingForm = () =>{
-    setShowBookingForm(true)
-  }
-  
-  const [isModalVisible, setIsModalVisible] = useState(true);
-
   const HandleShowAllReview=()=>{
     // console.log("show all reviews")
     // console.log("dispatch fired");
@@ -254,35 +243,7 @@ const ViewDetails=({
                       </ColorButton>                      
                   </div>
         </div>
-      {showBookingForm ? (
-          <>
-          <Modal title=" Keja"
-          visible={isModalVisible}
-          onOk={() => {
-            setIsModalVisible(false);
-          }}
-          onCancel={() => {
-            setIsModalVisible(false);
-          }}>
-          <p> - We guarantee a safe, reliable, efficient and Trustworthy process</p>
-          <p> - Get 40% cashback after getting an apartment</p>
-          <p> - We shall contact you once you have submitted the booking form </p>
-  
-          </Modal>
-          <BookingForm />
-          <Button variant='contained' onClick={()=>{
-              setShowBookingForm(false)
-              console.log('cancelled')
-            }}
-            >Cancel Form </Button>
-          </>
-        ):
-        (
-           <ColorButton style={{display:"flex",margin:"10px 5px",alignItems:"center",fontSize:"13px",width:"100%",}} onClick={HandleBookingForm}>      
-            <p>Book This apartment</p>
-          </ColorButton>
-        )
-      }
+      
       </div>
     </div>
     
