@@ -38,16 +38,16 @@ function CoSharing(){
 	const [isModalVisible, setIsModalVisible] = useState(false);
 	//querying all ads
 	const { loading, data } = useQuery(GET_COSHARING_QUERY);
-	const [isloading, setIsLoading]=useState([]);
+	const [isloading, setIsLoading]=useState(false);
 	
 	useEffect(()=>{
 		try{
-		if(loading){
-            setIsLoading(isloading)
-        }
-		if(data){
-			console.log(data.get_CoSharings)
-		}
+			if(loading){
+	            setIsLoading(true)
+	        }
+			if(data){
+				console.log(data.get_CoSharings)
+			}
 		}catch(error){
 			console.error(error)
 		}
@@ -98,7 +98,6 @@ function CoSharing(){
 	                                    )
 	                                })
 	                            }
-	  /    }
 		</div>
 	)
 }

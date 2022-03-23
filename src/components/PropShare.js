@@ -19,7 +19,7 @@ function PropShare({item}){
 			fontSize:"0.6rem",	
 				//justifyContent:"space-between"
 		}}>
-			<Image width={100} src={item.coverimage} style={{height:"100%",objectFit:'',}}/>
+			<Image width={100} src="./Keja.jpg" style={{height:"100%",objectFit:'',}}/>
 			<div style={{flex:1,padding:"5px"}}>
 				<p style={{color:"#ffa31a",fontFamily:'Poppins-bold',fontSize:""}}>Ksh {item.price}/month</p>
 				<p style={{fontFamily:'Poppins-bold'}}><LocationCitySharpIcon style={{fontSize:"0.6rem"}}/>{item.propertytype}</p>
