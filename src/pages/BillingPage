@@ -1,0 +1,608 @@
+<Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        <Modal title="! Posting your property"
+          visible={isModalVisible}
+          onOk={() => {
+            setIsModalVisible(false);
+          }}
+          onCancel={() => {
+            setIsModalVisible(false);
+          }}>
+          <p>1.All Fields are <span style={{color:"red"}}>required</span> and must to be filled, For Unapplicable fields fill N/a.</p>
+          <p>2.The description includes how the house is e.g Ample Lighting, ceilings, Tiles e.t.c</p>
+          <p>3.The Map longitude and latitude are required to make your house easily accesible.</p>
+          <p>4.The Contact you provide will be used to call you in the advent a potential tenant has selected your property.</p>
+          <p>5.In the case, a client books your apartment Our Agent will inform you and initiate the whole process 
+              to ensure a safe, trustworthy and efficient process and we Kindly request your co-operation.</p>
+        </Modal>
+        <div style={{fontSize:"0.6rem",padding:"10px"}}>
+            <p >We will use your location to help make your apartment visible on maps</p>
+            {propertyPosition?
+              <div>
+                <p>Your Location Is</p>
+                <p>longitude: <span style={{color:"#ffa31a"}}>{propertyPosition.longitude}</span></p>
+                <p>latitude : <span style={{color:"#ffa31a"}}>{propertyPosition.latitude}</span></p>
+              </div>:
+              <div>
+                <p>longitude</p>
+                <p>latitude </p>
+              </div>
+            }
+          </div>
+          <Form.Item name={['user', 'name']} label="LandlordName" rules={[{ required: true }]}>
+            <Input onChange={(e)=>{
+              setLandlordname(e.target.value)
+            }}/>
+          </Form.Item>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>LandlordName:</p>
+          <input
+            type="text"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            onChange={(e)=>{
+              setLandlordname(e.target.value)
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>PropertyName:</p>
+          <input
+            type="text"
+            
+            //onChange={(e) => setEmail(e.target.value)}
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+             onChange={(e)=>{
+              setPropertyname(e.target.value)
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Price/month:</p>
+          <input
+            type="text"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+             onChange={(e)=>{
+              setPrice(e.target.value)
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>PropertyType:</p>
+          <select 
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            onChange={(e)=>{
+              setType(e.target.value)
+            }}
+            >
+            <option value="BedSitter">Select type</option>
+            <option value="Singles">Singles</option>
+            <option value="BedSitter">BedSitter</option>
+            <option value="Hostel">Hostel</option>
+            <option value="OneBedroom">OneBedroom</option>
+            <option value="TwoBedroom">TwoBedroom</option>
+            <option value="ThreeBedroom">Three Bedroom</option>
+          </select>
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Location:</p>
+          <input
+            type="text"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+             onChange={(e)=>{
+              setLocation(e.target.value)
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Latitude:</p>
+          <input
+            type="text"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            
+             onChange={(e)=>{
+              setLatitude(e.target.value)
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Longitude:</p>
+          <input
+            type="text"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            
+             onChange={(e)=>{
+              setLongitude(e.target.value)
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Area:</p>
+          <select 
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            onChange={(e)=>{
+              setArea(e.target.value)
+            }}            
+
+            >
+            <option value="Gate A">Gate A</option>
+            <option value="Gate B">Gate B</option>
+            <option value="Gachororo">Gachororo</option>
+            <option value="Gate C">Gate C</option>
+            <option value="Gate D">Gate D</option>
+          </select>
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Description:</p>
+          <textarea 
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+             onChange={(e)=>{
+              setDescription(e.target.value)
+            }}
+            />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Amenities:</p>
+          <textarea 
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+             onChange={(e)=>{
+              setAmenities(e.target.value)
+            }}
+            />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Policies:</p>
+          <textarea 
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+             onChange={(e)=>{
+              setPolicy(e.target.value)
+            }}
+            />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Vacancy:</p>
+          <input
+            type="text"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+             onChange={(e)=>{
+              setVacancy(e.target.value)
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Contact:</p>
+          <input
+            type="text"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 10px",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+             onChange={(e)=>{
+              setContact(e.target.value)
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>CoverImage:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+              setMainimage(e.target.files[0])
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 1:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage1(e.target.files[0])
+              }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 2:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage2(e.target.files[0])
+              }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 3:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage3(e.target.files[0])
+              }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 4:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage4(e.target.files[0])
+              }}
+          />
+        </div>
+        {submission? 
+          <div>
+          <p style={{color:"green"}}>Submission success</p>
+          <ColorButton
+            style={{margin:"20px 0",width:"100%"}}
+            endIcon={<DeleteIcon />}
+            
+            type="reset"
+          >
+            New Property
+          </ColorButton>
+          </div>
+        :
+
+        <div style={{display:"flex",justifyContent:"center"}}>
+          <ColorButton
+            style={{margin:"20px 10px",width:"40%"}}
+            endIcon={<DeleteIcon />}
+            
+            type="reset"
+          >
+            Discard
+          </ColorButton>
+          <ColorButton
+            type="submit"
+            style={{margin:"20px 10px",width:"40%"}}
+            endIcon={<SendIcon />}
+            disabled={
+              !propertyname.trim() || !price.trim() 
+            }
+            onClick={handleSubmit}
+          >
+            submit
+          </ColorButton>
+        </div>
+        }
+        
+        <Footer />
+    </Form>
+    <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>CoverImage:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            listType="picture"
+            accept="images*"
+            onChange={(e)=>{
+              setMainimage(e.target.files[0])
+            }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 1:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage1(e.target.files[0])
+              }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 2:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage2(e.target.files[0])
+              }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 3:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage3(e.target.files[0])
+              }}
+          />
+        </div>
+        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+          <p style={{width:"20%"}}>Image 4:</p>
+          <input
+            type="file"
+            style={{
+              fontFamily: "Poppins-Regular",
+              fontSize: "14px",
+              color: "#1b1b1b",
+              border: "none",
+              height: "100%",
+              padding: "5px 0",
+              margin: "11px",
+              outline: "none",
+              overflowWrap: "break-word",
+              
+            }}
+            accept="images*"
+            onChange={(e)=>{
+                setImage4(e.target.files[0])
+              }}
+          />
+
+          {
+        //services
+      } 
+      <div>
+      <div style={{display:"flex",justifyContent:"space-between",padding:'0 5px'}}>
+      <p>Services</p>
+      <Link to='/exploreservices' style={{textDecoration:"none",color:"#ffa31a"}}>See all</Link>
+      </div>
+        <div style={{display:"flex",flexWrap:"Wrap",backgroundColor:"#e5e5e5",margin:"10px 0"}}>
+          {isloading && !data? 
+              <Skeleton /> :
+                service.data?.get_Services.map((service)=>{
+                    return(
+                      <div>
+                        <Product
+                          service={service}
+                          key={service.id}
+                        />
+                      </div>
+                    )
+                  })
+                }
+          </div>
+      </div>
+
+       

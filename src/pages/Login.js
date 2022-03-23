@@ -6,11 +6,11 @@ import { useStateValue } from "../components/StateProvider"
 import {GET_USER_QUERY} from "../GraphQl/Queries.js"
 import {BASE_URL} from '../Client.js'
 import { useNavigate } from 'react-router-dom';
-import Footer from '../components/Footer'
 
 function Login(){
     const [{ currentUser }, dispatch] = useStateValue();
     const navigate = useNavigate();
+    
       const onSuccess = async googleUser =>{
         try{
           const idToken = googleUser.getAuthResponse().id_token;
@@ -19,10 +19,11 @@ function Login(){
             headers:{authorization: idToken}
           })
           const { get_User } = await client.request(GET_USER_QUERY)
-          //console.log({get_User})
+          //console.log(get_User.userinfo)
+
           dispatch({
             type:"LOGIN_USER",
-            payload:get_User
+            payload:get_User,
           })
           dispatch({
             type:"IS_LOGGEDIN",
@@ -33,6 +34,7 @@ function Login(){
             onFailure(err)
           }
       }
+
 
       const onFailure = err =>{
         console.log("Error Logging in", err)
@@ -45,7 +47,7 @@ function Login(){
         //console.log("user signed out")
       }
     return(
-        <div style={{width:"100vw",height:"80vh",display:""}}>
+        <div style={{width:"100vw",height:"80vh",display:""}}>          
           <div className="Login" >
             <div style={{margin:"0 15%"}}>
               {currentUser ? 
@@ -111,8 +113,7 @@ function Login(){
                   </div>
             </div>
           </div>
-         <Footer /> 
-        </div>
+          </div>
     )
 }
 

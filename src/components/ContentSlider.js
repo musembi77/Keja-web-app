@@ -1,14 +1,17 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React,{useState} from 'react'
+import {useNavigate,generatePath} from 'react-router-dom';
 import { useStateValue } from "../components/StateProvider"
 
 function ContentSlider({property}){
   // eslint-disable-next-line
 	const [ {product},dispatch] = useStateValue();
+    const [id] = useState(property._id);
+    const navigate = useNavigate();
 
     const ViewProperty=()=>{
       // console.log("dispatch fired");
-      // console.log(product);
+      id && navigate(generatePath("/property/:id", { id }))
+      console.log(id)
       dispatch({
       type: "VIEW_PROPERTY",
       product: {
@@ -28,20 +31,21 @@ function ContentSlider({property}){
           reviews:property.reviews,
           vacancy:property.vacancy,
           contact:property.contact,
-          area:property.area
+          area:property.area,
+          longitude:property.longitude,
+          latitude:property.latitude
         },
     });
   }
 	return(
-		<div style={{width:"200px",height:"",margin:"0px 5px",backgroundColor:"#fff"}}>
-			<Link
+		<div style={{width:"200px",height:"",margin:"0px 5px",backgroundColor:"#fff"}} onClick={ViewProperty}>
+			<div
 		      style={{fontFamily:"Poppins-Bold",textDecoration:"none",color:"#000000"}}
-		      to='/property'
 		    >
 				<img src={property.mainimage} 
           alt="logo"
 					style={{ width:"100%",height:"130px",objectFit:"cover",borderRadius:"5px"}}
-				onClick={ViewProperty}
+				
 				/>
         <div style={{display:"flex",flexDirection:"column",textAlign:"left",padding:"0 5px"}}>
         <p style={{backgroundColor:"",marginTop:"",fontSize:"0.6rem",color:"#ffa31a"}}>{property.type}</p>
@@ -49,7 +53,7 @@ function ContentSlider({property}){
         <p style={{backgroundColor:"",marginTop:"",fontSize:"0.7rem",color:"grey"}}>{property.area}</p>
 			  
        </div>
-      </Link>
+      </div>
 		</div>
 	)
 }

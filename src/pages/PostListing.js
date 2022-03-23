@@ -9,8 +9,12 @@ import axios from 'axios'
 import {useStateValue} from '../components/StateProvider'
 import {useClient} from '../Client.js'
 import Footer from '../components/Footer'
+import {
+  Form,
+  Input,
+  Modal,
+} from 'antd';
 import "antd/dist/antd.css";
-import { Modal } from 'antd';
 
 function PostListing (){
   const [{ currentUser }] = useStateValue();
@@ -19,7 +23,7 @@ function PostListing (){
   return(
     <div>
      {currentUser?
-      <Form />
+      <FormPost />
       :
       <Modal title="Modal Title"
           visible={isModalVisible}
@@ -40,7 +44,7 @@ function PostListing (){
 
 export default PostListing;
 
-const Form=()=>{
+const FormPost=()=>{
   const client = useClient()
   const ColorButton = withStyles((theme) => ({
     root: {
@@ -201,9 +205,9 @@ const handleSubmit = async (e) =>{
         vacancy,
         contact
       }
-    const {CreateProperty} = await client.request(CREATE_PROPERTY_MUTATION,variables);
-    console.log('Property Created',{CreateProperty})
-    setSubmission({CreateProperty})
+    const {createProperty} = await client.request(CREATE_PROPERTY_MUTATION,variables);
+    console.log('Property Created',{createProperty})
+    setSubmission({createProperty})
     
   }catch(error){
     console.error(error)
@@ -211,8 +215,12 @@ const handleSubmit = async (e) =>{
 }
   const [isModalVisible, setIsModalVisible] = useState(true);
   
+  const layout = {
+    labelCol: { span: 8 },
+    wrapperCol: { span: 16 },
+  };
   return(
-    <form style={{backgroundColor:"#e5e5e5",fontSize:"0.9rem",paddingTop:"10px"}} className='form_handle'>
+    <Form {...layout} name="nest-messages" >
         <Modal title="! Posting your property"
           visible={isModalVisible}
           onOk={() => {
@@ -221,10 +229,12 @@ const handleSubmit = async (e) =>{
           onCancel={() => {
             setIsModalVisible(false);
           }}>
-          <p>1.Ensure all Fields are required to be filled</p>
+          <p>1.All Fields are <span style={{color:"red"}}>required</span> and must be filled, For Unapplicable fields fill N/a.</p>
           <p>2.The description includes how the house is e.g Ample Lighting, ceilings, Tiles e.t.c</p>
-          <p>3.The Map longitude and latitude are required to make house hunting more easy </p>
-          <p>4.The Contact you provide will be used to call you in the advent of house hunter has selected your property</p>
+          <p>3.The Map longitude and latitude are <span style={{color:"red"}}>required</span> to make your house easily accesible.</p>
+          <p>4.The Contact you provide will be used to call you in the advent a potential tenant has selected your property.</p>
+          <p>5.In the case, a client books your apartment Our Agent will inform you and initiate the whole process 
+              to ensure a safe, trustworthy and efficient process and we Kindly request your co-operation.</p>
         </Modal>
         <div style={{fontSize:"0.6rem",padding:"10px"}}>
             <p >We will use your location to help make your apartment visible on maps</p>
@@ -238,78 +248,24 @@ const handleSubmit = async (e) =>{
                 <p>longitude</p>
                 <p>latitude </p>
               </div>
-              
-              
             }
-            
           </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          
-          <p style={{width:"20%"}}>LandlordName:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-            onChange={(e)=>{
+          <Form.Item  label="LandlordName" required='true'>
+            <Input onChange={(e)=>{
               setLandlordname(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>PropertyName:</p>
-          <input
-            type="text"
-            
-            //onChange={(e) => setEmail(e.target.value)}
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
+            }}/>
+          </Form.Item>
+          <Form.Item  label="Property Name" required='true'>
+            <Input onChange={(e)=>{
               setPropertyname(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Price/month:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
+            }}/>
+          </Form.Item>
+          <Form.Item  label="Price/month:" required='true'>
+            <Input onChange={(e)=>{
               setPrice(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+            }}/>
+          </Form.Item>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
           <p style={{width:"20%"}}>PropertyType:</p>
           <select 
             style={{
@@ -335,75 +291,24 @@ const handleSubmit = async (e) =>{
             <option value="OneBedroom">OneBedroom</option>
             <option value="TwoBedroom">TwoBedroom</option>
             <option value="ThreeBedroom">Three Bedroom</option>
-            <option value="shop">Shop</option>
           </select>
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Location:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
+          <Form.Item  label="Location" required='true'>
+            <Input onChange={(e)=>{
               setLocation(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Latitude:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-            
-             onChange={(e)=>{
+            }}/>
+          </Form.Item>
+          <Form.Item  label="Latitude" required='true'>
+            <Input  onChange={(e)=>{
               setLatitude(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Longitude:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-            
-             onChange={(e)=>{
+            }}/>
+          </Form.Item>
+          <Form.Item  label="Longitude" required='true'>
+            <Input  onChange={(e)=>{
               setLongitude(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+            }}/>
+          </Form.Item>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
           <p style={{width:"20%"}}>Area:</p>
           <select 
             style={{
@@ -430,132 +335,32 @@ const handleSubmit = async (e) =>{
             <option value="Gate D">Gate D</option>
           </select>
         </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Description:</p>
-          <textarea 
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
+          <Form.Item  label="Description" required='true'>
+            <Input.TextArea  onChange={(e)=>{
               setDescription(e.target.value)
-            }}
-            />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Amenities:</p>
-          <textarea 
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
+            }}/>
+          </Form.Item>
+          <Form.Item  label="Amenities" required='true'>
+            <Input.TextArea  onChange={(e)=>{
               setAmenities(e.target.value)
-            }}
-            />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Policies:</p>
-          <textarea 
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
+            }}/>
+          </Form.Item>
+          <Form.Item  label="Policies / Rules" required='true'>
+            <Input.TextArea  onChange={(e)=>{
               setPolicy(e.target.value)
-            }}
-            />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Vacancy:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
+            }}/>
+          </Form.Item>
+          <Form.Item  label="Vacancy" required='true'>
+            <Input  onChange={(e)=>{
               setVacancy(e.target.value)
-            }}
-          />
-        </div>
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-          <p style={{width:"20%"}}>Contact:</p>
-          <input
-            type="text"
-            style={{
-              fontFamily: "Poppins-Regular",
-              fontSize: "14px",
-              color: "#1b1b1b",
-              border: "none",
-              height: "100%",
-              padding: "5px 10px",
-              margin: "11px",
-              outline: "none",
-              overflowWrap: "break-word",
-              
-            }}
-             onChange={(e)=>{
+            }}/>
+          </Form.Item>
+          <Form.Item  label="Contact" required='true'>
+            <Input  onChange={(e)=>{
               setContact(e.target.value)
-            }}
-          />
-        </div>
-        {
-          // <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
-        //   <p style={{width:"20%"}}>Mpesa ref code:</p>
-        //   <input
-        //     type="text"
-        //     style={{
-        //       fontFamily: "Poppins-Regular",
-        //       fontSize: "14px",
-        //       color: "#1b1b1b",
-        //       border: "none",
-        //       height: "100%",
-        //       padding: "5px 10px",
-        //       margin: "11px",
-        //       outline: "none",
-        //       overflowWrap: "break-word",
-        //       
-        //     }}
-        //      onChange={(e)=>{
-        //       setPayment(e.target.value)
-        //     }}
-        //   />
-        // </div>
-      }
-        <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
+            }}/>
+          </Form.Item>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-around"}}>
           <p style={{width:"20%"}}>CoverImage:</p>
           <input
             type="file"
@@ -663,8 +468,9 @@ const handleSubmit = async (e) =>{
             onChange={(e)=>{
                 setImage4(e.target.files[0])
               }}
+              required
           />
-        </div>
+          </div>
         {submission? 
           <div>
           <p style={{color:"green"}}>Submission success</p>
@@ -703,6 +509,6 @@ const handleSubmit = async (e) =>{
         }
         
         <Footer />
-    </form>
+    </Form>
   )
 }

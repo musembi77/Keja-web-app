@@ -82,6 +82,18 @@ p {
   background-color: #ffa31a;
   border-radius: 50px;
 }
+.setactive{
+  outline: none;
+  border:none;
+  backgroundColor: #eee;
+  color: #ffa31a;
+  font-family: Poppins-bold;
+}
+.active{
+  outline: none;
+  border: none;
+  backgroundColor:#eee;
+}
 
 @media screen and (max-width:600px){
     

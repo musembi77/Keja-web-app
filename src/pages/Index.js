@@ -54,17 +54,28 @@ function Index(){
 
       <div style={{backgroundColor:"#ffffff",justifyContent:'center',color:"#000000",textAlign:"center",width:"100%",height:"300px",fontSize:"1.8rem",fontWeight:"bold",padding:"10px"}}>
           <p>Every Apartment Near You, In One Place</p>
-          <span style={{fontSize:"0.9rem",margin:"0 5%",width:"50%",color:"#000000"}}>Browse {propertynumber}+ apartments and find the perfect place for you</span>
+          <span style={{fontSize:"0.9rem",margin:"0 5%",width:"50%",color:"#000000"}}>Find Rental Apartments around Top institutions</span>
           <Link className="btn_1" to="./explore">
             <TravelExploreIcon />
             <p>Explore</p>
           </Link>
       </div>
-      <div style={{marginTop:"10px",height:"300px",width:"100vw",backgroundColor:"#ffa31a"}}>
-        <div style={{display:"flex",justifyContent:"space-between",width:"100%",textAlign:"center"}}>
-           <p style={{backgroundColor:"#fff",height:"300px",textAlign:"center",width:"",paddingTop:"10px"}}>We offer free 24/7 advertisement of  properties listed on the platform by driving a huge traffic on the platform using digital marketing strategies.
-        </p>
-          <p>Make House Hunting Fun</p>
+      <div style={{marginTop:"10px",height:"300px",width:"",backgroundColor:"#ffa31a"}}>
+        <div style={{display:"",justifyContent:"space-between",width:"100%",textAlign:"right",}}>
+          <p style={{
+          color:"#ffffff",
+          fontSize:"2.4rem",
+          textAlign:"right",
+          overflow:"wrap",
+          width:"",
+          fontFamily:"Portico-regular",
+          //backgroundColor:"rgb(255,255,255,0.7",
+          
+        }}>Find a home</p>
+        <p>Find a home , find affordable housing around your
+           instituion from the comfort of your phone.</p>
+           <p>Say no to Scammers, no to agent fees, no to scorching heat when looking for a home</p>
+           <p>We redefine House Hunting and make the process safe, reliable, affordable and efficient</p>
         </div>
       </div>
       {

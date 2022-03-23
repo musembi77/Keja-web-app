@@ -5,12 +5,11 @@ import Map from '../components/Map.js'
 import CloseIcon from '@mui/icons-material/Close';
 import Skeleton from '../components/Skeleton'
 import {useQuery,} from '@apollo/client';
-import {GET_PROPERTY_QUERY,GET_SERVICE_QUERY} from '../GraphQl/Queries.js'
+import {GET_PROPERTY_QUERY} from '../GraphQl/Queries.js'
 import Footer from '../components/Footer'
 import {Link } from "react-router-dom"
 import 'antd/dist/antd.css'
 import { Carousel } from "antd";
-import {Product} from './Services'
 
 function Home({property}){
   const [showmap,setShowMap]=useState('')
@@ -21,7 +20,6 @@ function Home({property}){
   const [isloading, setIsLoading]=useState([]);
 
   const { loading, data,} = useQuery(GET_PROPERTY_QUERY);
-  const service = useQuery(GET_SERVICE_QUERY);
 
   const [pageNumber, setPageNumber]=useState(0)
     const propertyPerPage= 4;
@@ -123,32 +121,14 @@ function Home({property}){
                         }
         </div>
       </div>
-      {
-        //services
-      } 
-      <div>
-      <div style={{display:"flex",justifyContent:"space-between",padding:'0 5px'}}>
-      <p>Services</p>
-      <Link to='/exploreservices' style={{textDecoration:"none",color:"#ffa31a"}}>See all</Link>
-      </div>
-        <div style={{display:"flex",flexWrap:"Wrap",backgroundColor:"#e5e5e5",margin:"10px 0"}}>
-          {isloading && !data? 
-              <Skeleton /> :
-                service.data?.get_Services.map((service)=>{
-                    return(
-                      <div>
-                        <Product
-                          service={service}
-                          key={service.id}
-                        />
-                      </div>
-                    )
-                  })
-                }
-          </div>
-      </div>
-
-            
+      <div style={{display:"flex",flexDirection:"column",backgroundColor:"#fff",padding:'10px',margin:"10px 0",borderRadius:"5px"}}>
+        <h3 style={{fontFamily:"Poppins-bold",margin:"0"}}>Try Hosting</h3>
+        <p>List a Home/Apartment</p>
+        <Link to='/listwithus'style={{backgroundColor:"#000",color:"#fff",width:"150px",padding:"5px",borderRadius:"5px",margin:"5px 0"}} >
+            Become a Host
+        </Link>
+        <img src='./listad3.jpeg' alt='img' style={{objectFit:"fit",width:"",height:""}}/>
+      </div>     
       {
         //NewBuildings
       }

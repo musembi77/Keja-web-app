@@ -42,13 +42,33 @@ export const GET_PROPERTY_QUERY = gql`
         }
     }
 `
-export const GET_USER_QUERY=`
-      {
+export const GET_COSHARING_QUERY=gql`
+    query{
+        get_CoSharings{
+            _id
+            name
+            price
+            propertytype
+            description
+            location
+            gender
+            contact
+            coverimage
+            createdAt
+        }
+    }
+`
+export const GET_USER_QUERY=gql`
+      query{
         get_User {
                 name
                 _id
                 email
                 picture
+                userinfo{
+                    phonenumber
+                    location
+                }
               }
       }
               

@@ -16,7 +16,9 @@ import Support from './Support'
 import ServicesView from './ServicesView'
 import Reviewpage from './Reviewpage'
 import LogInPopUp from '../components/LogInPopUp'
-
+import Mappage from './Mappage'
+import Account from './Account'
+import CoSharing from './CoSharing'
 
 function App() {
      const [showmenu, setShowmenu]=useState('');
@@ -39,7 +41,7 @@ function App() {
             <Route path='/' element={<Index />}/>
             <Route path='/home'  element = {<Home />}/>
             <Route path='/explore'  element = {<Explore />}/>
-            <Route path='/property'  element = {<PropertyView />}/>
+            <Route path="/property/:id"  element = {<PropertyView />}/>
             <Route path='/login'  element = {<Login />}/>
             <Route path='/wishlist'  element = {<WishList />}/>
             <Route path='/listwithUs'  element = {<ListingIndex />}/>
@@ -48,9 +50,11 @@ function App() {
             <Route path='/exploreservices'  element = {<Services />}/>
             <Route path='/services'  element = {<ServicesView />}/>
             <Route path='/about'  element = {<About />}/>
-            <Route path='/support'  element = {<Support />}/>
+            <Route path='/kejacare'  element = {<Support />}/>
             <Route path='/reviews'  element = {<Reviewpage />}/>
-
+            <Route path='/account'  element = {<Account />}/>
+            <Route path='/CoSharing'  element = {<CoSharing />}/>
+            <Route path='/map'  element = {<Mappage />}/>
           </Routes>
           </div>
         </Router>

@@ -9,6 +9,7 @@ import ReactPaginate from 'react-paginate';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import Footer from '../components/Footer'
+import { Alert } from 'antd';
 
 function Explore() {
     const [isloading, setIsLoading]=useState([]);
@@ -37,46 +38,53 @@ function Explore() {
     const handlePageClick = ({selected})=>{
         setPageNumber(selected)
     }
-const [searchoption, setSearchOption]=useState('price')
+    const [searchoption, setSearchOption]=useState('price')
+    const [active]=useState('setactive')
+
+    const [visible, setVisible] = useState(true);
+    const [alertMessage, setAlertMessage] = useState('price is the default search option')
+    const handleClose = () => {
+        setVisible(false);
+    };
 //const searchoption = 'area'
 //console.log(searchoption)
     return (
         <div style={{width:"100%",position:"relative",height:""}}>
-        <div style={{display:"flex",alignItems:"center",backgroundColor:"#eeeeee",margin:"10px 0",justifyContent:"space-between"}}>
-            <p style={{fontSize:"0.7rem",padding:"0 10px"}}>Select option to search by:</p>
-            <select 
-                  style={{
-                    fontFamily: "Poppins-Regular",
-                    fontSize: "14px",
-                    color: "#1b1b1b",
-                    border: "none",
-                    height: "100%",
-                    padding: "5px 10px",
-                    outline: "none",
-                    overflowWrap: "break-word",
-                    flex:0.7
-                  }}
-                  onChange={(e)=>{
-                  setSearchOption(e.target.value)
-                  }}
-                  >
-                    <option value="propertyname">select option</option>
-                    <option value="propertyname">Name</option>
-                    <option value="price">Price</option>
-                    <option value="area">Area</option>
-                    <option value="type">Property type</option>
-                </select>
+        {visible ? (
+        <Alert message={alertMessage} type="info" showIcon closable afterClose={handleClose} />
+        ) : null}
+        <div style={{cursor:"pointer",width:"90%",margin:"0 auto",backgroundColor:"#eeeeee",padding:"10px",borderRadius:"5px",}}>
+        <div style={{display:"flex",alignItems:"center",margin:"10px 0",justifyContent:"space-around",}}>
+            <button  className={active} onClick={(e)=>{
+                  setSearchOption("propertyname")
+                  setVisible(true)
+                  setAlertMessage('You are now searching by propertyname option')
+                  }}>Property Name</button>
+            <button   className={active} onClick={(e)=>{
+                  setSearchOption("price")
+                  setVisible(true)
+                  setAlertMessage('You are now searching by price option')
+                  }}>Price</button>
+            <button  className={active} onClick={(e)=>{
+                  setSearchOption("area")
+                  setVisible(true)
+                  setAlertMessage('You are now searching by Area option')
+                  }}>Area</button>
+            <button className={active} onClick={(e)=>{
+                  setSearchOption("type")
+                  setVisible(true)
+                  setAlertMessage('You are now searching by Propertytype option')
+                  }}>Property type</button>
         </div>
-        
-            <div style={{display:"flex",justifyContent:"center",margin:"0 10%",alignItems:"center"}}>
+        <div style={{display:"flex",justifyContent:"center",margin:"0 10%",alignItems:"center"}}>
                 <input 
-                    placeholder="Search Apartment by ..."
+                    placeholder="Search by name, property type, price"
                     style={{
                         fontSize:'0.9rem',
                         outline:'none',
                         padding:'7px',
                         border:'none',
-                        borderRadius:"999px",
+                        borderRadius:"5px",
                         height:'100%',
                         width:'80%',
                         overflowWrap:'break-word',
@@ -84,8 +92,10 @@ const [searchoption, setSearchOption]=useState('price')
                     }}
                     onChange={(e)=>setQuery(e.target.value)}
                 />
-                <SearchIcon />
-            </div >    
+                <SearchIcon style={{color:"#000"}}/>
+            </div >
+        </div>
+            
             <div style={{
                 width:'100vw',
                 backgroundColor:'#ffffff',

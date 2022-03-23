@@ -1,13 +1,17 @@
-import React from 'react'
-import {Link} from 'react-router-dom';
+import React,{useState} from 'react'
+import {useNavigate,generatePath} from 'react-router-dom';
 import { useStateValue } from "./StateProvider"
 
 function Property({property}){
     // eslint-disable-next-line no-unused-vars
     const [ {product},dispatch] = useStateValue();
+    const [id] = useState(property._id);
+    const navigate = useNavigate();
+
     const ViewProperty=()=>{
       // console.log("dispatch fired");
-     
+      id && navigate(generatePath("/property/:id", { id }))
+      console.log(id)
       dispatch({
         type: "VIEW_PROPERTY",
         product: {
@@ -28,7 +32,9 @@ function Property({property}){
           vacancy:property.vacancy,
           contact:property.contact,
           area:property.area,
-          type:property.type
+          type:property.type,
+          longitude:property.longitude,
+          latitude:property.latitude
         },
       });
     }
@@ -44,9 +50,8 @@ function Property({property}){
     }}
     onClick={ViewProperty}
     >
-    <Link
+    <div
       style={{fontFamily:"Poppins-Bold",textDecoration:"none",color:"#000000"}}
-      to='/property'
       >
           <img
             src={property.mainimage}  
@@ -58,7 +63,7 @@ function Property({property}){
             <p style={{fontSize:"0.6rem",color:"#ffa31a"}}>{property.type}</p>
             <p style={{fontSize:"0.6rem",color:"grey"}}>{property.area}</p>
           </div>
-      </Link>
+      </div>
     </div>
     
   )

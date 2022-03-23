@@ -47,7 +47,39 @@ export const CREATE_PROPERTY_MUTATION =`
 		}
 	}
 `
-
+export const CREATE_COSHARING_MUTATION = `
+	mutation(
+		$name:String!,
+		$price:String!,
+		$propertytype:String!,
+		$description:String!,
+		$location:String!,
+		$gender:String!,
+		$coverimage:String!,
+		$contact:String!,
+	){
+		createCoSharing(input:{
+			name:$name
+			price:$price
+			propertytype:$propertytype
+			description:$description
+			location:$location
+			gender:$gender
+			coverimage:$coverimage
+			contact:$contact
+		}){
+			_id
+			name
+			price
+			contact
+			description
+			location
+			coverimage
+			propertytype
+			gender
+		}
+	}
+`
 export const DELETE_PROPERTY_MUTATION =`
 	mutation($propertyId: ID!){
 		deleteProperty(propertyId:$propertyId){
@@ -95,4 +127,21 @@ export const CREATE_REVIEW_MUTATION = `
 				_id
 				propertyname
 		}}
+`
+export const CREATE_USERINFO_MUTATION = `
+	mutation(
+		$userId:ID!,
+		$phonenumber:String!,
+		$location:String!
+	){
+		createUserInfo(
+			userId:$userId,
+			phonenumber:$phonenumber,
+			location:$location
+		){
+			_id
+			
+		}
+	}
+
 `

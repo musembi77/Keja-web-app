@@ -8,11 +8,14 @@ import {Room,
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { useStateValue } from "../components/StateProvider";
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import Review from '../components/Review.js'
 import Footer from '../components/Footer'
 import 'antd/dist/antd.css'
 import { Carousel } from "antd";
+import * as turf from '@turf/turf'
+import BookingForm from '../components/BookingForm'
+import "antd/dist/antd.css";
+import { Modal} from 'antd';
 
 function PropertyView(){
   const [{ product,}] = useStateValue();
@@ -40,6 +43,8 @@ function PropertyView(){
                 vacancy={property.vacancy}
                 contact={property.contact}
                 type={property.type}
+                longitude={property.longitude}
+                latitude={property.latitude}
           />
           )
       })}
@@ -67,11 +72,13 @@ const ViewDetails=({
             reviews,
             contact,
             area,
-            type
+            type,
+            longitude,
+            latitude
           }
             
 )=>{
-  //console.log(reviews)
+  console.log(contact)
   const [{currentUser}]=useStateValue();
   const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText("#ffa31a"),
@@ -83,13 +90,13 @@ const ViewDetails=({
   // eslint-disable-next-line no-unused-vars
   const [{showreviews},dispatch] = useStateValue('')
   
-  const [showcontact,setShowContact]=useState();
-  const HandleContact = () =>{
-    setShowContact(true)
+  const [showBookingForm,setShowBookingForm]=useState();
+  const HandleBookingForm = () =>{
+    setShowBookingForm(true)
   }
+  
+  const [isModalVisible, setIsModalVisible] = useState(true);
 
-  
-  
   const HandleShowAllReview=()=>{
     // console.log("show all reviews")
     // console.log("dispatch fired");
@@ -111,6 +118,19 @@ const ViewDetails=({
       height:"400px",
       objectFit:"cover"
     };
+    //calculating distance to nearest gate
+    const lng = 37.0131750
+    const lat = -1.0991730
+    //console.log(longitude,latitude)
+    const to = [longitude, latitude] //lng, lat
+    const from = [lng, lat] //lng, lat
+    const options = {
+        units: 'metres'
+      };
+    const dist = turf.distance(to, from, options)
+    const distance = Math.ceil(dist)
+    //console.log(distance)
+
   return(
     <div style={{position:"relative"}}>
     {
@@ -143,8 +163,8 @@ const ViewDetails=({
         <Room style={{fontSize:"1.4rem",color:"#ffa31a"}}/>
         <p>{location}</p>
       </div>
-      <div style={{color:"",display:"flex",width:"80px",fontSize:"1rem",margin:"5px 0"}}>
-        <p>Vacancy:<span style={{color:"#ffa31a",margin:"0 5px"}}>{vacancy}</span></p>
+      <div style={{color:"",display:"flex",width:"",fontSize:"1rem",margin:"5px 0"}}>
+        <p>Distance to school(Approx):<span style={{color:"#ffa31a",margin:"0 5px"}}>{distance} meters</span></p>
         
       </div>
       <div style={{display:"flex"}}>
@@ -153,7 +173,7 @@ const ViewDetails=({
       </div>
       <div style={{display:"flex"}}>
       <p style={{fontSize:"0.9rem"}}>Area :</p>
-      <p style={{fontSize:"0.9rem",marginLeft:"5px"}}>{area}</p>
+      <p style={{fontSize:"0.9rem",marginLeft:"5px",color:"#ffa31a"}}>{area}</p>
       </div>
       
       {
@@ -223,47 +243,49 @@ const ViewDetails=({
         {
           //Contacts
         }
-        {showcontact ? (
-          <div style={{display:"flex",flexDirection:"column"}}>
-          <h4>Contacts</h4>
-          <div style={{display:"flex",flexDirection:"column",margin:"10px 0",borderRadius:"10px",padding:"10px",backgroundColor:"#eeeeee"}}>
-                <div>
-                  <div style={{display:"flex"}}>
-                    <img src='./Keja.jpg' alt="logo" style={{margin:"0 5px",fontSize:"2rem",width:"30px",height:"30px",borderRadius:"100px"}}/>
-                    <p style={{fontSize:"0.9rem"}}>Keja agent</p>
-                  </div>
-                  <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:""}}>
-                      <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"110px",padding:"5px",borderRadius:"5px",margin:"5px 0"}}>
+        <div style={{display:"flex",flexDirection:"column"}}>
+          <h4>Contact</h4>
+          <div style={{display:"flex",margin:"0 5px",alignItems:"",fontSize:"13px",flexDirection:""}}>
+                      <ColorButton style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"100%",padding:"5px",borderRadius:"5px",margin:"0"}}>
                         <Call style={{fontSize:"1rem",marginRight:"5px"}}/>
-                        <p href = "https://wa.link/nv8tti" 
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <a href="tel:{contact}"
                         >
-                        0771712005</p>
-                      </div>
-                      <div style={{display:"flex",alignItems:"center",textDecoration:"none",backgroundColor:"#ffa31a",width:"",padding:"5px",borderRadius:"5px",margin:"5px"}}>
-                        <WhatsAppIcon style={{fontSize:"1rem",margin:"0 5px"}} />
-                        <a href = "https://wa.link/nv8tti" 
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                        0771712005</a>
-                      </div>
-                      
+                        {contact}</a>
+                      </ColorButton>                      
                   </div>
-                </div>
-               </div> 
         </div>
+      {showBookingForm ? (
+          <>
+          <Modal title=" Keja"
+          visible={isModalVisible}
+          onOk={() => {
+            setIsModalVisible(false);
+          }}
+          onCancel={() => {
+            setIsModalVisible(false);
+          }}>
+          <p> - We guarantee a safe, reliable, efficient and Trustworthy process</p>
+          <p> - Get 40% cashback after getting an apartment</p>
+          <p> - We shall contact you once you have submitted the booking form </p>
+  
+          </Modal>
+          <BookingForm />
+          <Button variant='contained' onClick={()=>{
+              setShowBookingForm(false)
+              console.log('cancelled')
+            }}
+            >Cancel Form </Button>
+          </>
         ):
         (
-          <ColorButton style={{display:"flex",margin:"10px 5px",alignItems:"center",fontSize:"13px",width:"100%",}} onClick={HandleContact}>      
-            <p>Check Availability</p>
+           <ColorButton style={{display:"flex",margin:"10px 5px",alignItems:"center",fontSize:"13px",width:"100%",}} onClick={HandleBookingForm}>      
+            <p>Book This apartment</p>
           </ColorButton>
         )
       }
-        
       </div>
     </div>
+    
     <Footer />
   </div>
   )

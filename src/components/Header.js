@@ -7,6 +7,7 @@ import {
     SupportAgent,
     Instagram,
     Twitter,
+    SettingsSharp,
 } 
     from '@mui/icons-material';
 import '../index.css'
@@ -44,19 +45,19 @@ function Header({onClick,showmenu}) {
                 justifyContent:"center",
                 }} 
             >
-            <Link to='/home' style={{textDecoration:"none",color:"#000",fontFamily:'Poppins-Bold',backgroundColor:"#e5e5e5",padding:"2px"}}>Home</Link>
-            <Link to='/explore' style={{textDecoration:"none",color:"#ffa31a",margin:"0 5px"}}>Explore</Link>
-            <Link style={{display:"flex",alignItems:"center",textDecoration:"none"}} to='/login'>
+            <Link to='/home' style={{textDecoration:"none",color:"#000",fontFamily:'Poppins-Bold',backgroundColor:"#fff",padding:"2px"}}>Home</Link>
+            <Link to='/explore' style={{textDecoration:"none",color:"#ffa31a",margin:"0 5px"}}>Browse</Link>
+            <div style={{display:"flex",alignItems:"center",textDecoration:"none"}} >
                   
                 {currentUser ? 
-                    <div style={{display:"flex",alignItems:"center"}}>
-                    <img src={currentUser.picture} alt='pp' style={{width:"20px",height:"20px",borderRadius:"2px"}}/>
-                    <p style={{fontSize:"0.6rem",margin:"0 5px"}}>{currentUser.name}</p>
-                    </div>
+                    <Link to='/account' style={{display:"flex",alignItems:"center",padding:"6px",backgroundColor:"#e5e5e5",borderRadius:"99px"}}>
+                        <img src={currentUser.picture} alt='pp' style={{width:"20px",height:"20px",borderRadius:"2px"}}/>
+                        <SettingsSharp style={{width:"20px",height:"20px",borderRadius:"2px",color:"#000",marginLeft:'5px'}}/>
+                    </Link>
                     :
-                    <p style={{fontSize:'1.2 rem',margin:'0 8px',textDecoration:"none",color:"#000000"}} >{currentUser ? 'SignOut':'SignIn'}</p>
+                    <Link to='/login' style={{fontSize:'1.2 rem',margin:'0 8px',textDecoration:"none",color:"#000000"}} >SignIn</Link>
                 }
-            </Link>
+            </div>
             <div style={{alignItems:"center"}}>
             {showmenu ?
                 <div onClick={onClick}>
@@ -106,20 +107,16 @@ export const Menubar = ({currentUser}) =>{
                
             }}>
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/home' >Home</Link>
-                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Explore</Link>
-                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/exploreservices'>Services</Link>
-                
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/explore' >Browse</Link>
+                <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/CoSharing'>Cosharing</Link>                
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/login'>SignIn</Link>
-                
-                
                 <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/about'>About</Link>
 
-                
             </div>
             <div style={{}}>
                 <div style={{display:'flex',alignItems:"center"}}>
                     <SupportAgent />
-                    <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/support'>Support</Link>
+                    <Link style={{margin: '0 10px',textDecoration:"none",color:"#000000"}} to ='/kejacare'>KejaCare</Link>
                 </div>
                 
                 <div style={{marginTop:"",borderTop:"1px solid #ffa31a",width:"100px",display:"flex",justifyContent:"center"}}>

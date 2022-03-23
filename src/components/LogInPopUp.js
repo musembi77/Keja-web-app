@@ -9,6 +9,7 @@ function LogInPopUp ({onClick}){
 	const HandleLogin=()=>{
 		navigate('/login')
 		console.log('sucks')
+		setIsModalVisible(false)
 	}	
 	useEffect(()=>{
 		if(window.location.pathname === '/login' || window.location.pathname === '/' ){
@@ -17,7 +18,7 @@ function LogInPopUp ({onClick}){
 	},[])
 	return(
 		<div>
-		<Modal title=" We noticed you aren't logged In."
+		<Modal title=" We noticed you are not logged In."
           visible={isModalVisible}
           onOk={HandleLogin}
           onCancel={() => {
